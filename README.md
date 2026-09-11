@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-# Ritesh Singh — Portfolio Website
-=======
-# Ritesh Singh — Build With Ritesh
->>>>>>> bc690cb (Polish portfolio interactions and add new project previews)
+# Ritesh Singh — Personal Portfolio
 
 The professional portfolio of **Ritesh Singh**, a web developer and digital marketer with **4+ years of professional experience**. The website connects his background in WordPress development with Google Ads, Meta Ads, SEO, social media marketing, landing page optimisation and performance reporting.
 
