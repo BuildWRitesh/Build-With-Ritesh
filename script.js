@@ -113,29 +113,22 @@
   const contactForm = document.getElementById('contact-form');
   const contactFormStatus = document.getElementById('contact-form-status');
   if (contactForm) {
-    contactForm.addEventListener('submit', event => {
+    contactForm.addEventListener('submit', async event => {
       event.preventDefault();
       if (!contactForm.reportValidity()) return;
-
-      const values = new FormData(contactForm);
-      const name = String(values.get('name') || '').trim();
-      const email = String(values.get('email') || '').trim();
-      const project = String(values.get('project') || '').trim();
-      const message = String(values.get('message') || '').trim();
-      const subject = `Portfolio enquiry from ${name}`;
-      const body = [
-        `Name: ${name}`,
-        `Email: ${email}`,
-        project ? `Project type: ${project}` : '',
-        '',
-        message
-      ].filter(Boolean).join('\n');
-      const mailto = `mailto:buildwritesh@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-      if (contactFormStatus) contactFormStatus.textContent = 'Opening your email app…';
-      window.location.href = mailto;
-      window.setTimeout(() => {
-        if (contactFormStatus) contactFormStatus.textContent = 'If your email app did not open, email buildwritesh@gmail.com directly.';
-      }, 900);
+      const button = contactForm.querySelector('[type="submit"]');
+      const payload = Object.fromEntries(new FormData(contactForm));
+      if (contactFormStatus) contactFormStatus.textContent = 'Sending securely…';
+      if (button) button.disabled = true;
+      try {
+        const response = await fetch('/api/contact', { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify(payload) });
+        const result = await response.json().catch(() => ({}));
+        if (!response.ok) throw new Error(result.error || 'Message delivery failed.');
+        contactForm.reset();
+        if (contactFormStatus) contactFormStatus.textContent = result.message || 'Thanks — your message has been sent.';
+      } catch (error) {
+        if (contactFormStatus) contactFormStatus.textContent = `${error.message} You can email buildwritesh@gmail.com directly.`;
+      } finally { if (button) button.disabled = false; }
     });
   }
 

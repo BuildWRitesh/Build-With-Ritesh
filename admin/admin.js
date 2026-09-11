@@ -22,6 +22,7 @@
   let currentPost = null;
   let slugManuallyChanged = false;
   let uploadMode = 'featured';
+  let csrfToken = '';
 
   const setStatus = (element, message, isError = false) => {
     if (!element) return;
@@ -29,7 +30,8 @@
     element.classList.toggle('is-error', isError);
   };
   const api = async (url, options = {}) => {
-    const response = await fetch(url, { credentials: 'same-origin', headers: { Accept: 'application/json', ...(options.body ? { 'Content-Type': 'application/json' } : {}) }, ...options });
+    const method = String(options.method || 'GET').toUpperCase();
+    const response = await fetch(url, { credentials: 'same-origin', headers: { Accept: 'application/json', ...(options.body ? { 'Content-Type': 'application/json' } : {}), ...(method !== 'GET' && csrfToken ? { 'X-CSRF-Token': csrfToken } : {}) }, ...options });
     let payload = {};
     try { payload = await response.json(); } catch { /* empty response */ }
     if (!response.ok) throw Object.assign(new Error(payload.error || `Request failed (${response.status})`), { status: response.status, payload });
@@ -151,7 +153,7 @@
   });
   const uploadImage = async file => {
     if (!file) return null;
-    if (file.size > 5 * 1024 * 1024) throw new Error('Choose an image smaller than 5 MB.');
+    if (file.size > 3 * 1024 * 1024) throw new Error('Choose an image smaller than 3 MB.');
     const data = await readFileAsDataUrl(file);
     const payload = await api('/api/admin/upload', { method: 'POST', body: JSON.stringify({ filename: file.name, mime: file.type, data }) });
     return payload.url ? String(payload.url).replace(/^\/+/, '') : null;
@@ -159,6 +161,23 @@
   const getContentHtml = () => {
     if (!fields.source.hidden) fields.editor.innerHTML = fields.source.value;
     return fields.editor.innerHTML.trim();
+  };
+  const loadMedia = async () => {
+    const list = $('media-list');
+    if (!list) return;
+    try {
+      const payload = await api('/api/admin/media');
+      const media = Array.isArray(payload.media) ? payload.media : [];
+      list.replaceChildren(...media.map(item => {
+        const button = document.createElement('button');
+        button.type = 'button'; button.className = 'admin-media-item'; button.title = `Use ${item.filename || 'image'}`;
+        const image = document.createElement('img'); image.src = item.url; image.alt = item.alt_text || ''; image.loading = 'lazy';
+        button.append(image);
+        button.addEventListener('click', () => { fields.imageUrl.value = item.url; setPreview(item.url, fields.imageAlt.value); setStatus($('media-status'), 'Featured image selected.'); });
+        return button;
+      }));
+      setStatus($('media-status'), media.length ? `${media.length} uploaded ${media.length === 1 ? 'image' : 'images'}.` : 'No uploaded images yet.');
+    } catch (error) { setStatus($('media-status'), error.message, true); }
   };
   const savePost = async status => {
     const contentHtml = getContentHtml();
@@ -182,16 +201,18 @@
     setStatus(loginStatus, 'Signing in…');
     try {
       const payload = await api('/api/admin/login', { method: 'POST', body: JSON.stringify({ email: $('login-email').value.trim(), password: $('login-password').value }) });
+      csrfToken = payload.csrfToken || '';
       $('admin-user').textContent = payload.user?.email || '';
       $('login-password').value = '';
-      setView(true); resetEditor(); await loadPosts();
+      setView(true); resetEditor(); await Promise.all([loadPosts(), loadMedia()]);
     } catch (error) { setStatus(loginStatus, error.message, true); }
   });
   $('logout-button')?.addEventListener('click', async () => {
     try { await api('/api/admin/logout', { method: 'POST', body: '{}' }); } catch { /* show login even if the session already expired */ }
-    setView(false); setStatus(loginStatus, 'You have been signed out.');
+    csrfToken = ''; setView(false); setStatus(loginStatus, 'You have been signed out.');
   });
   $('new-post-button')?.addEventListener('click', resetEditor);
+  $('refresh-media-button')?.addEventListener('click', loadMedia);
   $('post-search')?.addEventListener('input', renderPosts);
   $('post-status-filter')?.addEventListener('change', renderPosts);
   fields.title?.addEventListener('input', () => { if (!slugManuallyChanged) fields.slug.value = slugify(fields.title.value); });
@@ -204,11 +225,12 @@
       if (!url) throw new Error('Upload did not return an image path.');
       if (uploadMode === 'content') {
         if (!fields.source.hidden) fields.editor.innerHTML = fields.source.value;
-        document.execCommand('insertHTML', false, `<img src="/${url}" alt="${(fields.imageAlt.value || 'Article image').replaceAll('"', '&quot;')}">`);
+        const articleImageUrl = /^https?:\/\//i.test(url) ? url : `/${url.replace(/^\/+/, '')}`;
+        document.execCommand('insertHTML', false, `<img src="${articleImageUrl}" alt="${(fields.imageAlt.value || 'Article image').replaceAll('"', '&quot;')}">`);
         fields.source.value = fields.editor.innerHTML;
         setStatus(editorStatus, 'Image inserted into the article.');
       } else {
-        fields.imageUrl.value = url; setPreview(url, fields.imageAlt.value); uploadMode = 'featured'; setStatus(editorStatus, 'Featured image uploaded.');
+        fields.imageUrl.value = url; setPreview(url, fields.imageAlt.value); uploadMode = 'featured'; setStatus(editorStatus, 'Featured image uploaded.'); await loadMedia();
       }
     } catch (error) { setStatus(editorStatus, error.message, true); }
     uploadMode = 'featured';
@@ -248,8 +270,8 @@
   (async () => {
     try {
       const payload = await api('/api/admin/session');
-      if (payload.authenticated) { $('admin-user').textContent = payload.user?.email || ''; setView(true); resetEditor(); await loadPosts(); }
+      if (payload.authenticated) { csrfToken = payload.csrfToken || ''; $('admin-user').textContent = payload.user?.email || ''; setView(true); resetEditor(); await Promise.all([loadPosts(), loadMedia()]); }
       else setView(false);
-    } catch { setView(false); setStatus(loginStatus, 'Start the Node content server to use the dashboard.', true); }
+    } catch { setView(false); setStatus(loginStatus, 'The secure content service is unavailable. Check the production configuration.', true); }
   })();
 })();

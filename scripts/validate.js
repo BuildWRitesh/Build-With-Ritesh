@@ -88,8 +88,8 @@ function validateSite(root) {
   const newTabHelperSingular = ['open', 'in', 'new', 'tab'].join(' ');
   assert(!html.toLowerCase().includes(newTabHelper) && !html.toLowerCase().includes(newTabHelperSingular), 'Unwanted new-tab helper text remains');
   assert.equal((html.match(/id="contact-form"/g) || []).length, 1, 'Contact form is missing or duplicated');
-  assert(/<form\b[^>]*id="contact-form"[^>]*action="mailto:buildwritesh@gmail\.com"/i.test(html), 'Contact form destination is incorrect');
-  assert(script.includes('contactForm.reportValidity()') && script.includes('mailto:buildwritesh@gmail.com') && script.includes('window.location.href = mailto'), 'Contact form submission handler is incomplete');
+  assert(/<form\b[^>]*id="contact-form"[^>]*action="\/api\/contact"[^>]*method="post"/i.test(html), 'Contact form destination is incorrect');
+  assert(script.includes('contactForm.reportValidity()') && script.includes("fetch('/api/contact'") && script.includes('buildwritesh@gmail.com'), 'Contact form submission handler is incomplete');
   const meta = key => tags.find(tag => /^<meta\b/i.test(tag.text) && (tag.attrs.name === key || tag.attrs.property === key))?.attrs.content;
   assert(meta('description')?.includes('Ritesh Singh'), 'Missing owner-specific meta description');
   assert(meta('viewport')?.includes('width=device-width'), 'Missing responsive viewport');
@@ -114,6 +114,7 @@ function validateSite(root) {
     const url = new URL(reference, new URL(from, siteUrl));
     if (url.origin !== siteUrl.origin) return;
     const relative = decodeURIComponent(url.pathname.replace(/^\/+/, '')) || 'index.html';
+    if (relative === 'api' || relative.startsWith('api/')) return;
     const file = path.resolve(root, relative);
     const inside = path.relative(root, file);
     assert(!inside.startsWith('..') && !path.isAbsolute(inside), `Asset escapes the site root: ${reference} from ${from}`);

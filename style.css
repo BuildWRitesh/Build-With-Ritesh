@@ -678,3 +678,4 @@ body.page-ready .section-progress { display: flex; opacity: .9; transform: none;
   .hero-code-fragments span { animation: none; }
   .project__preview img { translate: none !important; }
 }
+.form-honeypot { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }

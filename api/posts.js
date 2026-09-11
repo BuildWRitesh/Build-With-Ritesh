@@ -1,0 +1,4 @@
+'use strict';
+const { ensureSchema, sqlClient, mapPost } = require('./lib/db');
+const { json } = require('./lib/core');
+module.exports = async (req,res) => { try { if(req.method!=='GET') return json(res,405,{error:'Method not allowed.'},{Allow:'GET'}); await ensureSchema(); const sql=sqlClient(); const slug=String(req.query?.slug||''); const rows=slug?await sql.query(`SELECT * FROM blog_posts WHERE slug=$1 AND status='published' LIMIT 1`,[slug]):await sql.query(`SELECT * FROM blog_posts WHERE status='published' ORDER BY published_at DESC NULLS LAST, created_at DESC`); if(slug&&!rows[0]) return json(res,404,{error:'Article not found.'}); res.setHeader('Cache-Control','public, s-maxage=60, stale-while-revalidate=300'); return json(res,200,slug?{post:mapPost(rows[0])}:{posts:rows.map(mapPost)}); } catch(error){ return json(res,error.status||500,{error:error.status?error.message:'Unable to load articles.'}); } };

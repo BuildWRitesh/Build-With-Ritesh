@@ -3,6 +3,16 @@
   "framework": null,
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
+  "rewrites": [
+    { "source": "/api/admin/:path*", "destination": "/api/admin?path=:path*" },
+    { "source": "/api/posts/:slug", "destination": "/api/posts?slug=:slug" },
+    { "source": "/blog/:slug([a-z0-9-]+)", "destination": "/api/article?slug=:slug" },
+    { "source": "/sitemap.xml", "destination": "/api/sitemap" }
+  ],
+  "headers": [
+    { "source": "/api/(.*)", "headers": [{ "key": "X-Frame-Options", "value": "DENY" }, { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" }, { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=()" }] },
+    { "source": "/admin/(.*)", "headers": [{ "key": "X-Robots-Tag", "value": "noindex, nofollow" }, { "key": "X-Frame-Options", "value": "DENY" }] }
+  ],
   "cleanUrls": true,
   "trailingSlash": false
 }

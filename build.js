@@ -62,4 +62,21 @@ for (const relativePath of [...productionFiles, ...optionalFiles]) {
   fs.cpSync(source, destination, { recursive: true });
 }
 
+// Keep local source URLs stable while allowing Vercel production metadata to
+// follow the assigned custom or project domain.
+const configuredSiteUrl = String(process.env.APP_URL || '').replace(/\/$/, '');
+if (configuredSiteUrl && /^https:\/\//.test(configuredSiteUrl) && configuredSiteUrl !== 'https://buildwritesh.github.io') {
+  const replaceOrigin = directory => {
+    for (const entry of fs.readdirSync(directory, { withFileTypes: true })) {
+      const file = path.join(directory, entry.name);
+      if (entry.isDirectory()) replaceOrigin(file);
+      else if (entry.isFile() && ['.html', '.xml', '.json', '.webmanifest'].includes(path.extname(entry.name))) {
+        const source = fs.readFileSync(file, 'utf8');
+        fs.writeFileSync(file, source.replaceAll('https://buildwritesh.github.io', configuredSiteUrl), 'utf8');
+      }
+    }
+  };
+  replaceOrigin(outputDirectory);
+}
+
 console.log(`Production site built at ${outputDirectory}`);
