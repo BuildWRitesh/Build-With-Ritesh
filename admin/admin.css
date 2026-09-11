@@ -1,4 +1,4 @@
-.admin-main { padding: clamp(85px, 10vw, 120px) 0 115px; }
+.admin-main { padding: clamp(85px, 10vw, 120px) 0 115px; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: calc(100vh - 91px - 100px); }
 .admin-auth { max-width: 620px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; text-align: center; }
 .admin-auth h1, .admin-dashboard h1, .admin-dashboard h2 { margin: 18px 0 20px; font-family: var(--display-font); font-size: clamp(58px, 8vw, 110px); letter-spacing: -.075em; line-height: .88; }
 .admin-auth h1 em, .admin-dashboard h1 em, .admin-dashboard h2 em { color: var(--brand-accent); font-style: normal; }
@@ -69,10 +69,10 @@
 .admin-page .form-status { min-height: 1.3em; color: var(--brand-accent); font-family: var(--mono-font); font-size: 10px; letter-spacing: .04em; }
 .admin-page .form-status.is-error { color: #a64242; }
 .admin-page [hidden] { display: none !important; }
-.admin-main { padding-top: clamp(42px,6vw,78px); padding-bottom: 76px; }
+.admin-main { padding-top: clamp(60px,8vw,100px); padding-bottom: clamp(60px,8vw,100px); }
 .admin-auth { max-width: 860px; }
 .admin-auth h1,.admin-dashboard__head h2 { font-size: clamp(38px,5.3vw,70px); line-height: 1.06; text-wrap: wrap; letter-spacing: -.05em; }
-.admin-auth .admin-form { max-width: 520px; padding: 32px; border: 1px solid var(--brand-border); background: var(--brand-surface); border-radius: 12px; }
+.admin-auth .admin-form { max-width: 520px; padding: 40px 48px; border: 1px solid var(--brand-border); background: var(--brand-surface); border-radius: 14px; box-shadow: 0 8px 32px rgba(12,25,44,.08); }
 .admin-lede { max-width: 600px; font-size: 16px; margin-bottom: 24px; }
 .admin-stats { margin-block: 24px; }
 .admin-stats>div { transition: background .2s ease; }
@@ -96,7 +96,7 @@
   .admin-post-list { max-height: 300px; }
 }
 @media (max-width: 700px) {
-  .admin-main { padding-top: 38px; }
+  .admin-main { padding-top: clamp(40px,8vw,70px); padding-bottom: clamp(40px,8vw,70px); min-height: calc(100vh - 76px - 100px); }
   .admin-dashboard__head { align-items: flex-start; flex-direction: column; }
   .admin-dashboard__actions { width: 100%; justify-content: space-between; padding-bottom: 0; }
   .admin-stats { grid-template-columns: repeat(3,minmax(0,1fr)); }
