@@ -151,6 +151,8 @@ ul, ol { margin: 0; padding: 0; }
 .button span { font-size: 18px; line-height: 1; }
 .button--dark { color: var(--paper); background: var(--teal); }
 .button--dark:hover { color: var(--teal); background: var(--sage); }
+.button--light { color: var(--brand-primary); background: var(--brand-background); border-color: var(--brand-background); }
+.button--light:hover { color: var(--brand-primary); background: var(--brand-highlight); border-color: var(--brand-highlight); }
 .hero__perspective { position: relative; min-width: 0; display: flex; flex-direction: column; justify-content: space-between; padding: clamp(26px, 3.05vw, 46px); color: var(--paper); background: var(--teal); }
 .perspective__top { display: flex; justify-content: space-between; gap: 16px; align-items: start; margin-bottom: 22px; }
 .perspective__top > span:first-child, .hero__perspective > .eyebrow { font-family: var(--mono-font); font-size: 10px; line-height: 1.6; text-transform: uppercase; letter-spacing: .09em; }
@@ -301,6 +303,22 @@ a.project__preview:hover img { transform: scale(1.025); }
 .contact__links a > small, .contact__links a > .eyebrow { color: var(--brand-on-dark-muted); font-family: var(--mono-font); font-size: 10px; text-transform: uppercase; letter-spacing: .07em; }
 .contact__links a > strong, .contact__links a > span:not(.eyebrow):not(.contact__arrow) { font-family: var(--display-font); font-size: clamp(17px, 1.5vw, 24px); font-weight: 500; line-height: 1.5; letter-spacing: -.02em; overflow-wrap: anywhere; }
 .contact__links .contact__arrow, .contact__links a > i { position: absolute; right: 0; bottom: 23px; font-size: 22px; font-style: normal; }
+.contact-form { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 25px 30px; margin-top: 4px; padding: clamp(28px, 4vw, 46px); border: 1px solid var(--rule-light); background: rgba(12, 25, 44, .16); }
+.contact-form__intro { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(130px, .45fr) 1fr; gap: 28px; align-items: start; padding-bottom: 6px; }
+.contact-form__intro .eyebrow { margin: 0; color: var(--sage); }
+.contact-form__intro > p:last-child { max-width: 440px; margin: 0; color: var(--brand-on-dark-muted); font-size: 14px; line-height: 1.8; }
+.form-field { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.form-field--full { grid-column: 1 / -1; }
+.form-field label { color: var(--paper); font-family: var(--mono-font); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; }
+.form-field label span { color: var(--brand-on-dark-muted); text-transform: none; letter-spacing: 0; }
+.form-field input, .form-field select, .form-field textarea { width: 100%; min-height: 44px; padding: 9px 0 11px; border: 0; border-bottom: 1px solid var(--rule-light); border-radius: 0; outline: 0; color: var(--paper); background: transparent; font: inherit; font-size: 14px; line-height: 1.55; transition: border-color .18s ease, background .18s ease; }
+.form-field select { cursor: pointer; appearance: none; background-image: linear-gradient(45deg, transparent 50%, var(--sage) 50%), linear-gradient(135deg, var(--sage) 50%, transparent 50%); background-position: calc(100% - 7px) 19px, calc(100% - 2px) 19px; background-size: 5px 5px, 5px 5px; background-repeat: no-repeat; padding-right: 25px; }
+.form-field select option { color: var(--brand-primary); background: var(--brand-background); }
+.form-field textarea { min-height: 126px; resize: vertical; }
+.form-field input::placeholder, .form-field textarea::placeholder { color: var(--brand-on-dark-muted); }
+.form-field input:focus-visible, .form-field select:focus-visible, .form-field textarea:focus-visible { border-color: var(--brand-highlight); box-shadow: 0 3px 0 -2px var(--brand-highlight); }
+.contact-form .button { justify-self: start; min-width: 178px; margin-top: 4px; }
+.form-status { grid-column: 2; align-self: center; min-height: 19px; margin: 4px 0 0; color: var(--brand-highlight); font-size: 12px; line-height: 1.6; }
 .footer-shell { background: var(--brand-primary); color: var(--brand-background); }
 .footer-shell .site-footer { display: flex; align-items: center; justify-content: space-between; gap: 28px; min-height: 100px; padding-block: 22px; border-top: 1px solid var(--rule-light); }
 .footer-brand { display: inline-flex; align-items: center; gap: 11px; min-height: 44px; font-family: var(--display-font); font-size: 16px; font-weight: 600; letter-spacing: -.03em; }
@@ -474,6 +492,12 @@ a.project__preview:hover img { transform: scale(1.025); }
   .contact__grid > div > p { font-size: 13px; }
   .contact__links a { min-height: 91px; gap: 9px; }
   .contact__links a > strong, .contact__links a > span:not(.eyebrow):not(.contact__arrow) { font-size: 20px; }
+  .contact-form { grid-template-columns: 1fr; gap: 21px; margin-top: 0; padding: 26px 22px; }
+  .contact-form__intro { grid-template-columns: 1fr; gap: 12px; padding-bottom: 2px; }
+  .contact-form__intro > p:last-child { font-size: 13px; }
+  .form-field--full { grid-column: auto; }
+  .contact-form .button { grid-column: auto; width: 100%; justify-self: stretch; }
+  .form-status { grid-column: auto; margin-top: -4px; }
   .footer-shell .site-footer { flex-wrap: wrap; gap: 10px 24px; min-height: 110px; padding-block: 23px; }
   .site-footer p { width: 100%; order: 3; text-align: left; font-size: 9px; }
   .site-footer > a:last-child { margin-left: auto; font-size: 9px; }

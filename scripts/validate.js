@@ -7,6 +7,8 @@ const { createSiteServer } = require('../server.js');
 const projectRoot = path.resolve(__dirname, '..');
 const siteUrl = new URL('https://buildwritesh.github.io/');
 const resumePath = 'assets/resume/Ritesh_Singh_Resume.pdf';
+const contactEmail = 'buildwritesh@gmail.com';
+const legacyEmail = Buffer.from('cml0ZXNoc2luZ2gwMTAxMkBnbWFpbC5jb20=', 'base64').toString('ascii');
 const textExtensions = new Set(['.html', '.css', '.js', '.json', '.md', '.txt', '.svg', '.xml', '.yml', '.yaml', '.toml']);
 // Encoded legacy identifiers keep obsolete branding out of source and search results.
 const legacyIdentifiers = [
@@ -53,12 +55,21 @@ function attributes(tag) {
 function validateSite(root) {
   const html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
   const css = fs.readFileSync(path.join(root, 'style.css'), 'utf8');
+  const script = fs.readFileSync(path.join(root, 'script.js'), 'utf8');
   const tags = [...html.matchAll(/<[a-z][^>]*>/gi)].map(match => ({ text: match[0], attrs: attributes(match[0]) }));
   const ids = tags.filter(tag => tag.attrs.id).map(tag => tag.attrs.id);
   assert.equal(new Set(ids).size, ids.length, 'Duplicate HTML IDs found');
   assert.equal((html.match(/<h1(?:\s|>)/gi) || []).length, 1, 'Use exactly one H1');
   assert(/<html[^>]+lang=["']en["']/i.test(html), 'Missing English page language');
   assert(/<title>[^<]*Ritesh Singh[^<]*<\/title>/i.test(html), 'Missing Ritesh Singh page title');
+  assert(html.includes(contactEmail), 'New contact email is missing');
+  assert(!html.toLowerCase().includes(legacyEmail), 'Legacy contact email remains in page source');
+  const newTabHelper = ['opens', 'in', 'a', 'new', 'tab'].join(' ');
+  const newTabHelperSingular = ['open', 'in', 'new', 'tab'].join(' ');
+  assert(!html.toLowerCase().includes(newTabHelper) && !html.toLowerCase().includes(newTabHelperSingular), 'Unwanted new-tab helper text remains');
+  assert.equal((html.match(/id="contact-form"/g) || []).length, 1, 'Contact form is missing or duplicated');
+  assert(/<form\b[^>]*id="contact-form"[^>]*action="mailto:buildwritesh@gmail\.com"/i.test(html), 'Contact form destination is incorrect');
+  assert(script.includes('contactForm.reportValidity()') && script.includes('mailto:buildwritesh@gmail.com') && script.includes('window.location.href = mailto'), 'Contact form submission handler is incomplete');
 
   const meta = key => tags.find(tag => /^<meta\b/i.test(tag.text) && (tag.attrs.name === key || tag.attrs.property === key))?.attrs.content;
   assert(meta('description')?.includes('Ritesh Singh'), 'Missing owner-specific meta description');
@@ -106,7 +117,7 @@ function validateSite(root) {
   };
 
   for (const { text, attrs } of tags) {
-    for (const key of ['src', 'href', 'poster']) {
+    for (const key of ['src', 'href', 'poster', 'action']) {
       if (Object.hasOwn(attrs, key)) checkReference(attrs[key]);
     }
     if (attrs.srcset) {

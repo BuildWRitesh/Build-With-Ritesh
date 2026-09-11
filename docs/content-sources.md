@@ -26,7 +26,7 @@ The resume supports positioning as a **Performance Marketer and Meta Ads Special
 | Senior secondary education | 12th, PCM; S.B. College, Ara; June 2016–June 2018; 60% | Include because it is listed in the latest resume. |
 | Secondary education | 10th; Shanti-Smriti Sambhawana Awasiya Uchcha Vidyalaya, Ara; April 2015–May 2016; 9.2 CGPA | Include because it is listed in the latest resume. |
 | Public location | Gurugram, India | Prefer resume location to the older Noida address. |
-| Public email | riteshsingh01012@gmail.com | Present in resume and historical portfolio. |
+| Public email | buildwritesh@gmail.com | Current public contact destination used by the website and updated repository resume. |
 | Public phone | +91 7004787408 | Present in resume and historical portfolio. |
 
 The repository resume and historical portfolio contain earlier arrangements and date precision. They yield to the latest resume above. The latest resume lists the indofast internship separately even though its dates overlap the DleafTech developer role; the public timeline keeps both entries distinct rather than merging them.

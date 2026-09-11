@@ -53,7 +53,7 @@ Validation covers asset paths and filename casing, internal anchors, previous id
 
 ## Content and maintenance
 
-The page includes an introduction, professional background, career timeline, education and certifications, services and skills, a filterable portfolio of twelve supplied project links, professional profiles, resume download and direct contact links. There is no simulated contact form or invented project metric.
+The page includes an introduction, professional background, career timeline, education and certifications, services and skills, a filterable portfolio of twelve supplied project links, professional profiles, resume download, direct contact links and a responsive contact form. The form prepares a prefilled email to `buildwritesh@gmail.com`; no server-side data is stored.
 
 The downloadable resume is served as `assets/resume/Ritesh_Singh_Resume.pdf`. Replace that file whenever a new approved PDF is supplied, then rebuild and validate. Website social links use the owner’s supplied current handles; an older resume may contain a different LinkedIn handle.
 

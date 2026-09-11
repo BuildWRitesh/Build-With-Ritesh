@@ -101,6 +101,35 @@
     mobileWidth.addEventListener('change', event => { if (!event.matches) closeMenu(); });
   }
 
+  const contactForm = document.getElementById('contact-form');
+  const contactFormStatus = document.getElementById('contact-form-status');
+  if (contactForm) {
+    contactForm.addEventListener('submit', event => {
+      event.preventDefault();
+      if (!contactForm.reportValidity()) return;
+
+      const values = new FormData(contactForm);
+      const name = String(values.get('name') || '').trim();
+      const email = String(values.get('email') || '').trim();
+      const project = String(values.get('project') || '').trim();
+      const message = String(values.get('message') || '').trim();
+      const subject = `Portfolio enquiry from ${name}`;
+      const body = [
+        `Name: ${name}`,
+        `Email: ${email}`,
+        project ? `Project type: ${project}` : '',
+        '',
+        message
+      ].filter(Boolean).join('\n');
+      const mailto = `mailto:buildwritesh@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      if (contactFormStatus) contactFormStatus.textContent = 'Opening your email app…';
+      window.location.href = mailto;
+      window.setTimeout(() => {
+        if (contactFormStatus) contactFormStatus.textContent = 'If your email app did not open, email buildwritesh@gmail.com directly.';
+      }, 900);
+    });
+  }
+
   const sections = [...document.querySelectorAll('main section[id]')];
   const navLinks = [...document.querySelectorAll('.desktop-nav a')];
   const progressDots = [...document.querySelectorAll('[data-progress-section]')];
