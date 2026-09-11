@@ -1,0 +1,11 @@
+{
+  "name": "Ritesh Singh — Build With Ritesh",
+  "short_name": "Ritesh Singh",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f5f7f4",
+  "theme_color": "#0c192c",
+  "icons": [
+    { "src": "/assets/branding/ritesh-singh-logo.png", "sizes": "500x500", "type": "image/png", "purpose": "any maskable" }
+  ]
+}

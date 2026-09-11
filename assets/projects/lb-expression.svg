@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 600" role="img" aria-labelledby="title desc">
+  <title id="title">LB Expression project cover</title>
+  <desc id="desc">A branded preview cover for the LB Expression website project.</desc>
+  <rect width="1000" height="600" fill="#0c192c"/>
+  <rect x="64" y="130" width="260" height="260" fill="#03a099"/>
+  <rect x="154" y="220" width="260" height="260" fill="#64b9b6" fill-opacity=".85"/>
+  <path d="M570 96V504M570 300H936" stroke="#b2cbc8" stroke-width="2" stroke-opacity=".45"/>
+  <text x="64" y="78" fill="#b2cbc8" font-family="Arial, sans-serif" font-size="18" letter-spacing="5">06 / WEBSITE</text>
+  <text x="500" y="254" fill="#f5f7f4" font-family="Arial, sans-serif" font-size="86" font-weight="700" letter-spacing="-4">LB</text>
+  <text x="500" y="344" fill="#64b9b6" font-family="Arial, sans-serif" font-size="66" font-weight="700" letter-spacing="-3">EXPRESSION</text>
+  <text x="500" y="548" fill="#b2cbc8" font-family="Arial, sans-serif" font-size="17" letter-spacing="2">WEBSITE PROJECT · RITESH SINGH</text>
+</svg>

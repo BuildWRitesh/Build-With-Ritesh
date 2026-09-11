@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 600" role="img" aria-labelledby="title desc">
+  <title id="title">Ojas project cover</title>
+  <desc id="desc">A branded preview cover for the Ojas holding company website.</desc>
+  <rect width="1000" height="600" fill="#e7f0ee"/>
+  <path d="M64 108H936M64 492H936" stroke="#0c192c" stroke-opacity=".18"/>
+  <circle cx="810" cy="188" r="122" fill="#03a099"/>
+  <circle cx="810" cy="188" r="72" fill="#0c192c"/>
+  <text x="64" y="78" fill="#50606a" font-family="Arial, sans-serif" font-size="18" letter-spacing="5">01 / WEBSITE</text>
+  <text x="64" y="308" fill="#0c192c" font-family="Arial, sans-serif" font-size="126" font-weight="700" letter-spacing="-6">OJAS</text>
+  <text x="68" y="382" fill="#006f69" font-family="Arial, sans-serif" font-size="24" letter-spacing="4">HOLDING COMPANY · GLOBAL VENTURES</text>
+  <text x="64" y="548" fill="#50606a" font-family="Arial, sans-serif" font-size="17" letter-spacing="2">INSPIRE · EMPOWER · IMPACT · TRANSFORM</text>
+</svg>

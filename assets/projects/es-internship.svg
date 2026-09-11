@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 600" role="img" aria-labelledby="title desc">
+  <title id="title">ES Internship project cover</title>
+  <desc id="desc">A branded preview cover for the ES Internship website project.</desc>
+  <rect width="1000" height="600" fill="#202c3b"/>
+  <rect x="64" y="132" width="872" height="334" fill="#0c192c" stroke="#64b9b6" stroke-opacity=".5"/>
+  <path d="M112 198H888M112 244H644M112 372H524" stroke="#03a099" stroke-width="10" stroke-linecap="round"/>
+  <path d="M112 418H380" stroke="#64b9b6" stroke-width="10" stroke-linecap="round"/>
+  <circle cx="818" cy="358" r="62" fill="#03a099"/>
+  <text x="64" y="78" fill="#b2cbc8" font-family="Arial, sans-serif" font-size="18" letter-spacing="5">08 / WEBSITE</text>
+  <text x="112" y="330" fill="#f5f7f4" font-family="Arial, sans-serif" font-size="88" font-weight="700" letter-spacing="-4">ES INTERNSHIP</text>
+  <text x="64" y="548" fill="#b2cbc8" font-family="Arial, sans-serif" font-size="17" letter-spacing="2">WEBSITE PROJECT · RITESH SINGH</text>
+</svg>

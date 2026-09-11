@@ -1,203 +1,145 @@
 (() => {
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const hasGSAP = typeof window.gsap !== 'undefined';
-  const header = document.querySelector('.site-header');
+  'use strict';
+
+  document.documentElement.classList.add('js');
+  requestAnimationFrame(() => document.body?.classList.add('page-ready'));
+
+  const year = document.getElementById('year');
+  if (year) year.textContent = String(new Date().getFullYear());
   const menuButton = document.querySelector('.menu-toggle');
-  const mobileMenu = document.querySelector('.mobile-menu');
-  const cursor = document.querySelector('.cursor');
+  const menu = document.getElementById('mobile-menu');
+  const mobileWidth = window.matchMedia('(max-width: 980px)');
+  const filterButtons = [...document.querySelectorAll('.portfolio-filter')];
+  const portfolioItems = [...document.querySelectorAll('.project[data-category]')];
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  document.getElementById('year').textContent = new Date().getFullYear();
+  // The reference uses a small, playful pointer. Keep it desktop-only and stop the
+  // animation loop once the pointer settles so touch and low-power devices are unaffected.
+  const cursor = document.querySelector('.custom-cursor');
+  const finePointer = window.matchMedia('(pointer: fine) and (hover: hover)').matches;
+  if (cursor && finePointer && !prefersReducedMotion) {
+    document.body.classList.add('has-custom-cursor');
+    let targetX = -80;
+    let targetY = -80;
+    let currentX = targetX;
+    let currentY = targetY;
+    let frame = 0;
+    let active = false;
+    const renderCursor = () => {
+      currentX += (targetX - currentX) * .22;
+      currentY += (targetY - currentY) * .22;
+      cursor.style.left = currentX + 'px';
+      cursor.style.top = currentY + 'px';
+      if (active && (Math.abs(targetX - currentX) > .15 || Math.abs(targetY - currentY) > .15)) frame = requestAnimationFrame(renderCursor);
+      else frame = 0;
+    };
+    const scheduleCursor = () => { if (!frame) frame = requestAnimationFrame(renderCursor); };
+    document.addEventListener('pointermove', event => {
+      targetX = event.clientX;
+      targetY = event.clientY;
+      active = true;
+      cursor.classList.add('is-visible');
+      scheduleCursor();
+    }, { passive: true });
+    document.addEventListener('pointerover', event => {
+      const interactive = event.target.closest?.('a, button, [data-cursor]');
+      if (!interactive) return;
+      cursor.classList.add('is-hovering');
+      cursor.classList.toggle('is-project', interactive.matches('[data-cursor="project"]') || Boolean(interactive.closest('[data-cursor="project"]')));
+    });
+    document.addEventListener('pointerout', event => {
+      const interactive = event.target.closest?.('a, button, [data-cursor]');
+      if (!interactive || interactive.contains(event.relatedTarget)) return;
+      cursor.classList.remove('is-hovering', 'is-project');
+    });
+    window.addEventListener('blur', () => { active = false; cursor.classList.remove('is-visible', 'is-hovering', 'is-project'); });
+  }
 
-  let previousScroll = 0;
-  window.addEventListener('scroll', () => {
-    const currentScroll = window.scrollY;
-    header.classList.toggle('scrolled', currentScroll > 24);
-    header.classList.toggle('hide', currentScroll > previousScroll && currentScroll > 180 && !document.body.classList.contains('menu-open'));
-    previousScroll = currentScroll;
-  }, { passive: true });
-
-  function toggleMenu(forceClose = false) {
-    const isOpen = forceClose ? false : !document.body.classList.contains('menu-open');
-    document.body.classList.toggle('menu-open', isOpen);
-    menuButton.setAttribute('aria-expanded', String(isOpen));
-    menuButton.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
-    mobileMenu.setAttribute('aria-hidden', String(!isOpen));
-
-    if (hasGSAP && !reduceMotion) {
-      gsap.to(mobileMenu, { autoAlpha: isOpen ? 1 : 0, duration: .45, ease: 'power3.out' });
-      gsap.fromTo('.mobile-menu a', { y: isOpen ? 40 : 0, opacity: isOpen ? 0 : 1 }, {
-        y: isOpen ? 0 : -20,
-        opacity: isOpen ? 1 : 0,
-        stagger: .06,
-        duration: .5,
-        ease: 'power3.out'
+  if (filterButtons.length && portfolioItems.length) {
+    filterButtons.forEach(button => button.addEventListener('click', () => {
+      const filter = button.dataset.filter;
+      filterButtons.forEach(control => {
+        const active = control === button;
+        control.classList.toggle('is-active', active);
+        control.setAttribute('aria-pressed', String(active));
       });
-    } else {
-      mobileMenu.style.visibility = isOpen ? 'visible' : 'hidden';
-      mobileMenu.style.opacity = isOpen ? '1' : '0';
-    }
-  }
-
-  menuButton.addEventListener('click', () => toggleMenu());
-  mobileMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => toggleMenu(true)));
-
-  if (window.matchMedia('(pointer: fine)').matches) {
-    window.addEventListener('mousemove', event => {
-      cursor.classList.add('is-active');
-      if (hasGSAP) gsap.to(cursor, { x: event.clientX, y: event.clientY, duration: .18, ease: 'power2.out' });
-      else cursor.style.transform = `translate(${event.clientX}px, ${event.clientY}px)`;
-    });
-
-    document.querySelectorAll('.cursor-view').forEach(element => {
-      element.addEventListener('mouseenter', () => cursor.classList.add('is-view'));
-      element.addEventListener('mouseleave', () => cursor.classList.remove('is-view'));
-    });
-
-    document.querySelectorAll('.magnetic').forEach(element => {
-      element.addEventListener('mousemove', event => {
-        if (!hasGSAP || reduceMotion) return;
-        const rect = element.getBoundingClientRect();
-        gsap.to(element, {
-          x: (event.clientX - rect.left - rect.width / 2) * .18,
-          y: (event.clientY - rect.top - rect.height / 2) * .18,
-          duration: .3
-        });
+      portfolioItems.forEach(item => {
+        const categories = item.dataset.category.split(/\s+/);
+        item.hidden = filter !== 'all' && !categories.includes(filter);
       });
-      element.addEventListener('mouseleave', () => hasGSAP && gsap.to(element, { x: 0, y: 0, duration: .6, ease: 'elastic.out(1, .4)' }));
-    });
+      window.ScrollTrigger?.refresh();
+    }));
   }
 
-  if (!hasGSAP || reduceMotion) {
-    document.querySelector('.loader')?.remove();
-    return;
-  }
-
-  gsap.registerPlugin(ScrollTrigger);
-
-  function splitWords(element) {
-    const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT);
-    const nodes = [];
-    while (walker.nextNode()) {
-      if (walker.currentNode.nodeValue.trim()) nodes.push(walker.currentNode);
-    }
-    nodes.forEach(node => {
-      const fragment = document.createDocumentFragment();
-      const parts = node.nodeValue.split(/(\s+)/);
-      parts.forEach(part => {
-        if (/^\s+$/.test(part)) fragment.appendChild(document.createTextNode(part));
-        else if (part) {
-          const wrap = document.createElement('span');
-          wrap.className = 'word-wrap';
-          const word = document.createElement('span');
-          word.className = 'word';
-          word.textContent = part;
-          wrap.appendChild(word);
-          fragment.appendChild(wrap);
-        }
-      });
-      node.parentNode.replaceChild(fragment, node);
+  if (menuButton && menu && typeof menu.showModal === 'function') {
+    menuButton.hidden = false;
+    const closeMenu = () => { if (menu.open) menu.close(); };
+    menuButton.addEventListener('click', () => {
+      menu.showModal();
+      menuButton.setAttribute('aria-expanded', 'true');
+      document.body.classList.add('menu-open');
     });
-  }
-
-  document.querySelectorAll('.split-text').forEach(splitWords);
-
-  const loaderTimeline = gsap.timeline({
-    onComplete: () => document.querySelector('.loader')?.remove()
-  });
-  const count = { value: 0 };
-  loaderTimeline
-    .to(count, { value: 100, duration: 1.05, ease: 'power2.inOut', onUpdate: () => {
-      document.querySelector('.loader__count').textContent = String(Math.round(count.value)).padStart(2, '0');
-    }})
-    .to('.loader__line span', { width: '100%', duration: 1.05, ease: 'power2.inOut' }, 0)
-    .to('.loader', { yPercent: -100, duration: .8, ease: 'power4.inOut' })
-    .from('.hero__title .title-line > span', { yPercent: 110, duration: 1, stagger: .1, ease: 'power4.out' }, '-=.15')
-    .from('.hero__eyebrow, .hero__lower', { opacity: 0, y: 25, duration: .65, stagger: .12, ease: 'power3.out' }, '-=.65');
-
-  gsap.utils.toArray('.split-text').forEach(element => {
-    gsap.from(element.querySelectorAll('.word'), {
-      scrollTrigger: { trigger: element, start: 'top 85%', once: true },
-      yPercent: 115,
-      duration: .8,
-      stagger: .025,
-      ease: 'power4.out'
+    menu.querySelector('.menu-close').addEventListener('click', closeMenu);
+    menu.addEventListener('close', () => {
+      document.body.classList.remove('menu-open');
+      menuButton.setAttribute('aria-expanded', 'false');
     });
-  });
-
-  gsap.utils.toArray('.reveal-up, .reveal-row').forEach(element => {
-    gsap.from(element, {
-      scrollTrigger: { trigger: element, start: 'top 90%', once: true },
-      y: 32,
-      opacity: 0,
-      duration: .75,
-      ease: 'power3.out'
+    menu.addEventListener('click', event => {
+      if (event.target !== menu) return;
+      const rect = menu.getBoundingClientRect();
+      if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) closeMenu();
     });
-  });
-
-  gsap.utils.toArray('.services .reveal-card').forEach((element, index) => {
-    gsap.from(element, {
-      scrollTrigger: { trigger: '.services', start: 'top 82%', once: true },
-      y: 70,
-      opacity: 0,
-      duration: .9,
-      delay: index * .09,
-      ease: 'power3.out'
-    });
-  });
-
-  gsap.utils.toArray('.work-card').forEach((element, index) => {
-    gsap.from(element, {
-      scrollTrigger: { trigger: element, start: 'top 92%', once: true },
-      y: 55,
-      opacity: 0,
-      duration: .8,
-      delay: (index % 4) * .05,
-      ease: 'power3.out'
-    });
-  });
-
-  gsap.to('.hero__title', {
-    scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: 1 },
-    yPercent: 18,
-    opacity: .25,
-    ease: 'none'
-  });
-
-  gsap.utils.toArray('.phone').forEach(phone => {
-    const speed = Number(phone.dataset.speed || 1);
-    gsap.fromTo(phone, { y: speed < 1 ? 80 : -50 }, {
-      y: speed < 1 ? -55 : 55,
-      ease: 'none',
-      scrollTrigger: { trigger: '.case-study__visual', start: 'top bottom', end: 'bottom top', scrub: 1.2 }
-    });
-  });
-
-  document.querySelectorAll('[data-count]').forEach(element => {
-    const target = Number(element.dataset.count);
-    const suffix = element.dataset.suffix || '';
-    const decimals = target % 1 === 0 ? 0 : 1;
-    const value = { current: 0 };
-    gsap.to(value, {
-      current: target,
-      duration: 1.8,
-      ease: 'power3.out',
-      scrollTrigger: { trigger: element, start: 'top 90%', once: true },
-      onUpdate: () => {
-        element.textContent = value.current.toLocaleString('en-US', {
-          minimumFractionDigits: decimals,
-          maximumFractionDigits: decimals
-        }) + suffix;
+    menu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+      closeMenu();
+      const target = link.hash && document.getElementById(link.hash.slice(1));
+      if (target) {
+        target.tabIndex = -1;
+        target.focus({ preventScroll: true });
+        target.addEventListener('blur', () => target.removeAttribute('tabindex'), { once: true });
       }
+    }));
+    mobileWidth.addEventListener('change', event => { if (!event.matches) closeMenu(); });
+  }
+
+  const sections = [...document.querySelectorAll('main section[id]')];
+  const navLinks = [...document.querySelectorAll('.desktop-nav a')];
+  const progressDots = [...document.querySelectorAll('[data-progress-section]')];
+  const setActiveSection = id => {
+    navLinks.forEach(link => {
+      if (link.hash === '#' + id) link.setAttribute('aria-current', 'location');
+      else link.removeAttribute('aria-current');
     });
-  });
+    progressDots.forEach(dot => dot.classList.toggle('is-active', dot.dataset.progressSection === id));
+  };
+  if (sections.length) {
+    let progressFrame = 0;
+    const updateSectionState = () => {
+      progressFrame = 0;
+      const marker = window.innerHeight * .42;
+      let current = sections[0].id;
+      for (const section of sections) {
+        if (section.getBoundingClientRect().top <= marker) current = section.id;
+      }
+      setActiveSection(current);
+    };
+    const scheduleSectionState = () => { if (!progressFrame) progressFrame = requestAnimationFrame(updateSectionState); };
+    window.addEventListener('scroll', scheduleSectionState, { passive: true });
+    window.addEventListener('resize', scheduleSectionState, { passive: true });
+    scheduleSectionState();
+  }
 
-  gsap.to('.contact__orb', {
-    xPercent: -10,
-    yPercent: 12,
-    scale: 1.12,
-    ease: 'none',
-    scrollTrigger: { trigger: '.contact', start: 'top bottom', end: 'bottom bottom', scrub: 1 }
-  });
-
-  ScrollTrigger.refresh();
+  // Retain GSAP and ScrollTrigger for subtle, once-only movement.
+  if (!window.gsap || !window.ScrollTrigger) return;
+  const { gsap, ScrollTrigger } = window;
+  gsap.registerPlugin(ScrollTrigger);
+  if (!prefersReducedMotion) {
+    gsap.utils.toArray('.reveal-up').forEach(element => {
+      gsap.from(element, {
+        opacity: 0, y: 24, duration: .72, ease: 'power3.out', clearProps: 'transform,opacity',
+        scrollTrigger: { trigger: element, start: 'top 94%', once: true }
+      });
+    });
+  }
+  document.fonts?.ready.then(() => ScrollTrigger.refresh());
+  window.addEventListener('load', () => ScrollTrigger.refresh(), { once: true });
 })();

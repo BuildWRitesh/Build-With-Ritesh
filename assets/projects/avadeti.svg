@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 600" role="img" aria-labelledby="title desc">
+  <title id="title">Avadeti project cover</title>
+  <desc id="desc">A branded preview cover for the Avadeti strategy website.</desc>
+  <rect width="1000" height="600" fill="#0c192c"/>
+  <path d="M64 106H936M64 494H936" stroke="#64b9b6" stroke-opacity=".34"/>
+  <path d="M700 78L920 298L700 520" fill="none" stroke="#03a099" stroke-width="8"/>
+  <path d="M768 78L988 298L768 520" fill="none" stroke="#64b9b6" stroke-width="2"/>
+  <text x="64" y="78" fill="#b2cbc8" font-family="Arial, sans-serif" font-size="18" letter-spacing="5">02 / WEBSITE</text>
+  <text x="64" y="304" fill="#f5f7f4" font-family="Arial, sans-serif" font-size="110" font-weight="700" letter-spacing="-5">AVADETI</text>
+  <text x="68" y="380" fill="#64b9b6" font-family="Arial, sans-serif" font-size="24" letter-spacing="4">NARRATIVE INTELLIGENCE</text>
+  <text x="64" y="548" fill="#b2cbc8" font-family="Arial, sans-serif" font-size="17" letter-spacing="2">STRATEGY · CULTURE · CONSEQUENCE</text>
+</svg>
