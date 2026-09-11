@@ -111,3 +111,9 @@ Career dates and education follow the resume. Historical portfolio projects are 
 [LinkedIn](https://in.linkedin.com/in/buildwithritesh) · [Build With Ritesh on LinkedIn](https://in.linkedin.com/company/buildwithritesh) · [Instagram](https://www.instagram.com/buildwritesh/) · [Facebook](https://www.facebook.com/buildwithritesh/)
 
 The homepage includes an accessible command panel (whoami, skills, projects, contact and help). Alt+T focuses the command input; the optional source command reveals a short implementation note. Motion respects reduced-motion preferences.
+
+Shared page styling lives in `style.css`, with editorial layouts in `content.css` and dashboard layouts in `admin/admin.css`. The static generator and Vercel article endpoint share the same article template, including navigation, metadata, related reading and interaction hooks. The runtime passes its configured application origin into the renderer.
+
+Pointer spotlights, magnetic buttons and the custom cursor run only with a fine pointer above 980px and without reduced motion. Internal public-page transitions last 300ms; modified clicks, downloads, external links and admin editing retain normal browser behaviour. Scroll reveals supplement the existing GSAP system, and the header and progress indicator use scheduled scroll updates.
+
+The visual refinement was checked across 12 page/layout states at 13 widths from 320px to 1680px, including tablet widths 768/820/834/1024px. Browser checks covered overflow, rendered images, terminal commands, project filters, mobile navigation, Back navigation, reduced motion and touch cursor behaviour. Dashboard and populated Instagram layouts used local test fixtures; contact success/error tests used mocked delivery. These checks do not establish live database, Instagram, storage or email connectivity. `npm run build` and `npm test` validate the source and both development and production-preview resources.

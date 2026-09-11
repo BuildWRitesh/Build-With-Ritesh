@@ -70,6 +70,12 @@
       const dateText = document.createElement('span');
       dateText.textContent = formatDate(post.date);
       meta.append(categoryText, dateText);
+      if (post.readingMinutes || post.contentHtml) {
+        const reading = document.createElement('span');
+        const words = String(post.contentHtml || '').replace(/<[^>]*>/g, ' ').trim().split(/\s+/).filter(Boolean).length;
+        reading.textContent = (post.readingMinutes || Math.max(1, Math.ceil(words / 220))) + ' min read';
+        meta.append(reading);
+      }
       const title = document.createElement('h3');
       title.textContent = post.title;
       const excerpt = document.createElement('p');

@@ -14,10 +14,11 @@ const escapeHtml = value => String(value ?? '')
 // Content is authored in JSON and can later be edited through the dashboard.
 // Keep the renderer defensive so unsafe markup never becomes part of a page.
 const sanitizeContentHtml = require('./sanitize-content');
+const readingMinutes = html => Math.max(1, Math.ceil(String(html || '').replace(/<[^>]*>/g, ' ').trim().split(/\s+/).filter(Boolean).length / 220));
 
-const imageUrl = value => {
-  if (!value) return `${siteOrigin}/assets/branding/social-preview.png`;
-  return /^(?:https?:|data:)/i.test(value) ? value : `${siteOrigin}/${String(value).replace(/^\/+/, '')}`;
+const imageUrl = (value, origin = siteOrigin) => {
+  if (!value) return `${origin}/assets/branding/social-preview.png`;
+  return /^(?:https?:|data:)/i.test(value) ? value : `${origin}/${String(value).replace(/^\/+/, '')}`;
 };
 
 const assetSrc = (value, prefix = '') => {
@@ -43,19 +44,18 @@ function renderRelated(posts, current, prefix) {
   const related = posts.filter(post => post.slug !== current.slug && post.status === 'published' && post.category === current.category).slice(0, 3);
   const fallback = related.length ? related : posts.filter(post => post.slug !== current.slug && post.status === 'published').slice(0, 3);
   if (!fallback.length) return '';
-  const cards = fallback.map(post => `<article class="article-card"><a class="article-card__link" data-cursor="project" href="../${encodeURIComponent(post.slug)}/"><div class="article-card__image-wrap"><img class="article-card__image" src="${escapeHtml(assetSrc(post.featuredImage, prefix))}" alt="${escapeHtml(post.imageAlt || post.title)}" width="800" height="500" loading="lazy" decoding="async"></div><div class="article-card__body"><div class="article-card__meta"><strong>${escapeHtml(post.category || 'Journal')}</strong><span>${escapeHtml(post.date)}</span></div><h3>${escapeHtml(post.title)}</h3><span class="article-card__read">Read article <span aria-hidden="true">↗</span></span></div></a></article>`).join('');
+  const cards = fallback.map(post => `<article class="article-card"><a class="article-card__link" data-cursor="project" href="${prefix}blog/${encodeURIComponent(post.slug)}/"><div class="article-card__image-wrap"><img class="article-card__image" src="${escapeHtml(assetSrc(post.featuredImage, prefix))}" alt="${escapeHtml(post.imageAlt || post.title)}" width="800" height="500" loading="lazy" decoding="async"></div><div class="article-card__body"><div class="article-card__meta"><strong>${escapeHtml(post.category || 'Journal')}</strong><span>${escapeHtml(post.date)}</span></div><h3>${escapeHtml(post.title)}</h3><span class="article-card__read">Read article <span aria-hidden="true">↗</span></span></div></a></article>`).join('');
   return `<section class="related" aria-labelledby="related-title"><h2 id="related-title">Keep reading<span class="title-dot">.</span></h2><div class="article-grid">${cards}</div></section>`;
 }
 
-function renderArticle(post, posts) {
-  const prefix = '../../';
-  const featured = imageUrl(post.featuredImage);
-  const canonical = post.canonical || `${siteOrigin}/blog/${post.slug}/`;
+function renderArticle(post, posts, { prefix = '../../', sanitize = sanitizeContentHtml, origin = siteOrigin } = {}) {
+  const featured = imageUrl(post.featuredImage, origin);
+  const canonical = post.canonical || `${origin}/blog/${post.slug}/`;
   const title = post.seoTitle || `${post.title} | Ritesh Singh`;
   const description = post.metaDescription || post.excerpt;
   const tags = (post.tags || []).map(tag => `<span class="article-tag">${escapeHtml(tag)}</span>`).join('');
   const shareUrl = encodeURIComponent(canonical);
-  const content = sanitizeContentHtml(post.contentHtml);
+  const content = sanitize(post.contentHtml);
   return `<!doctype html>
 <html lang="en">
 <head>
@@ -92,22 +92,22 @@ function renderArticle(post, posts) {
   <script type="application/ld+json">${JSON.stringify({
     '@context': 'https://schema.org', '@type': 'BlogPosting', headline: post.title,
     description, image: [featured], datePublished: post.date, dateModified: post.updated || post.date,
-    author: { '@type': 'Person', name: 'Ritesh Singh', url: siteOrigin + '/' },
-    publisher: { '@type': 'Person', name: 'Ritesh Singh', url: siteOrigin + '/' },
+    author: { '@type': 'Person', name: post.author || 'Ritesh Singh', url: origin + '/' },
+    publisher: { '@type': 'Person', name: 'Ritesh Singh', url: origin + '/' },
     mainEntityOfPage: { '@type': 'WebPage', '@id': canonical }, url: canonical,
     articleSection: post.category || 'Journal', keywords: (post.tags || []).join(', ')
   }).replaceAll('<', '\\u003c')}</script>
   <script src="${prefix}assets/vendor/gsap.min.js" defer></script>
   <script src="${prefix}assets/vendor/ScrollTrigger.min.js" defer></script>
   <script src="${prefix}script.js" defer></script>
-  <script src="../article.js" defer></script>
+  <script src="${prefix}blog/article.js" defer></script>
 </head>
 <body class="content-page article-page" data-article-url="${escapeHtml(canonical)}">
   <a class="skip-link" href="#main-content">Skip to content</a>
   ${renderHeader(prefix, 'Blog')}
   <main id="main-content" tabindex="-1">
     <article class="article-shell content-shell">
-      <header class="article-hero"><span class="article-hero__category">${escapeHtml(post.category || 'Journal')}</span><h1 id="article-title">${escapeHtml(post.title)}</h1><p class="article-hero__excerpt">${escapeHtml(post.excerpt)}</p><div class="article-hero__byline"><span>By ${escapeHtml(post.author || 'Ritesh Singh')}</span><time datetime="${escapeHtml(post.date)}">${escapeHtml(post.date)}</time>${post.updated && post.updated !== post.date ? `<span>Updated ${escapeHtml(post.updated)}</span>` : ''}</div><figure class="article-featured"><img src="${escapeHtml(assetSrc(post.featuredImage, prefix))}" alt="${escapeHtml(post.imageAlt || post.title)}" width="1200" height="600" decoding="async"><figcaption>${escapeHtml(post.imageAlt || 'Featured article image')}</figcaption></figure></header>
+      <header class="article-hero"><span class="article-hero__category">${escapeHtml(post.category || 'Journal')}</span><h1 id="article-title">${escapeHtml(post.title)}</h1><p class="article-hero__excerpt">${escapeHtml(post.excerpt)}</p><div class="article-hero__byline"><span>By ${escapeHtml(post.author || 'Ritesh Singh')}</span><time datetime="${escapeHtml(post.date)}">${escapeHtml(post.date)}</time>${post.updated && post.updated !== post.date ? `<span>Updated ${escapeHtml(post.updated)}</span>` : ''}<span>${readingMinutes(content)} min read</span></div><figure class="article-featured"><img src="${escapeHtml(assetSrc(post.featuredImage, prefix))}" alt="${escapeHtml(post.imageAlt || post.title)}" width="1200" height="600" decoding="async"><figcaption>${escapeHtml(post.imageAlt || 'Featured article image')}</figcaption></figure></header>
       <div class="article-layout"><div class="article-body">${content}</div><aside class="article-aside" aria-label="Article tools"><div><p class="article-aside__label">Topics</p><div class="article-tags">${tags || '<span class="article-tag">Journal</span>'}</div></div><div><p class="article-aside__label">Share</p><div class="share-links"><a href="https://www.linkedin.com/sharing/share-offsite/?url=${shareUrl}" target="_blank" rel="noopener noreferrer" aria-label="Share on LinkedIn">in</a><a href="https://twitter.com/intent/tweet?url=${shareUrl}&text=${encodeURIComponent(post.title)}" target="_blank" rel="noopener noreferrer" aria-label="Share on X">X</a><button type="button" data-share-copy aria-label="Copy article link">Copy</button></div><p class="form-status" data-share-status role="status" aria-live="polite"></p></div><a class="text-link" href="${prefix}#contact">Discuss a project <span aria-hidden="true">↗</span></a></aside></div>
     </article>
     <div class="content-shell">${renderRelated(posts, post, prefix)}</div>
@@ -137,7 +137,7 @@ function generateBlogPages({ root = defaultRoot } = {}) {
     fs.mkdirSync(directory, { recursive: true });
     fs.writeFileSync(path.join(directory, 'index.html'), renderArticle(post, posts), 'utf8');
   }
-  const publicPosts = published.map(({ contentHtml, ...post }) => post);
+  const publicPosts = published.map(({ contentHtml, ...post }) => ({ ...post, readingMinutes: readingMinutes(contentHtml) }));
   fs.writeFileSync(path.join(outputRoot, 'posts.json'), `${JSON.stringify(publicPosts, null, 2)}\n`, 'utf8');
   return published.map(post => post.slug);
 }

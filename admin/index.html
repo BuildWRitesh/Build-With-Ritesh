@@ -21,7 +21,7 @@
   <main id="main-content" class="admin-main content-shell" tabindex="-1">
     <section id="login-view" class="admin-auth" aria-labelledby="login-title">
       <p class="eyebrow">Private workspace</p>
-      <h1 id="login-title">Journal<br><em>dashboard.</em></h1>
+      <h1 id="login-title">Journal <em>dashboard.</em></h1>
       <p class="admin-lede">Sign in to write, edit and publish Ritesh Singh’s professional notes.</p>
       <form id="login-form" class="admin-form" novalidate>
         <div class="content-field"><label for="login-email">Admin email</label><input id="login-email" name="email" type="email" autocomplete="username" required></div>
@@ -33,7 +33,7 @@
     </section>
 
     <section id="dashboard-view" class="admin-dashboard" hidden aria-labelledby="dashboard-title">
-      <div class="admin-dashboard__head"><div><p class="eyebrow">Private workspace</p><h2 id="dashboard-title">Content<br><em>studio.</em></h2></div><div class="admin-dashboard__actions"><span id="admin-user" class="admin-user"></span><button id="logout-button" class="button button--outline" type="button">Log out</button></div></div>
+      <div class="admin-dashboard__head"><div><p class="eyebrow">Private workspace</p><h2 id="dashboard-title">Content <em>studio.</em></h2></div><div class="admin-dashboard__actions"><span id="admin-user" class="admin-user"></span><button id="logout-button" class="button button--outline" type="button">Log out</button></div></div>
       <div class="admin-stats" aria-label="Journal overview"><div><strong id="stat-total">0</strong><span>Total posts</span></div><div><strong id="stat-published">0</strong><span>Published</span></div><div><strong id="stat-drafts">0</strong><span>Drafts</span></div></div>
       <div class="admin-layout">
         <aside class="admin-list-panel" aria-labelledby="posts-list-title"><div class="admin-panel-heading"><h2 id="posts-list-title">Posts</h2><button id="new-post-button" class="button button--dark" type="button">New post <span aria-hidden="true">＋</span></button></div><div class="admin-list-filters"><label class="sr-only" for="post-search">Search posts</label><input id="post-search" type="search" placeholder="Search posts" autocomplete="off"><label class="sr-only" for="post-status-filter">Filter posts by status</label><select id="post-status-filter"><option value="all">All statuses</option><option value="published">Published</option><option value="draft">Drafts</option></select></div><div id="post-list" class="admin-post-list" aria-live="polite"></div><p id="post-list-status" class="form-status" role="status" aria-live="polite"></p><section class="admin-media-library" aria-labelledby="media-title"><div class="admin-panel-heading"><h3 id="media-title">Media</h3><button id="refresh-media-button" type="button">Refresh</button></div><p class="admin-help">Select an uploaded image to use it as the featured image.</p><div id="media-list" class="admin-media-list"></div><p id="media-status" class="form-status" role="status"></p></section></aside>

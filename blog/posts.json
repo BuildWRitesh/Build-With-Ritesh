@@ -18,7 +18,8 @@
       "WordPress",
       "Web Development",
       "Website Optimization"
-    ]
+    ],
+    "readingMinutes": 2
   },
   {
     "slug": "technical-seo-business-websites",
@@ -39,7 +40,8 @@
       "SEO",
       "Technical SEO",
       "Website Optimization"
-    ]
+    ],
+    "readingMinutes": 2
   },
   {
     "slug": "ads-and-landing-pages",
@@ -60,7 +62,8 @@
       "Google Ads",
       "Meta Ads",
       "Digital Marketing"
-    ]
+    ],
+    "readingMinutes": 2
   },
   {
     "slug": "responsive-website-performance",
@@ -81,7 +84,8 @@
       "Web Development",
       "Performance",
       "UI/UX"
-    ]
+    ],
+    "readingMinutes": 2
   },
   {
     "slug": "ai-and-seo-editorial-workflow",
@@ -102,6 +106,7 @@
       "AI + SEO",
       "Content",
       "Technical SEO"
-    ]
+    ],
+    "readingMinutes": 2
   }
 ]
