@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Paid media landing page illustration</title>
+  <desc id="desc">Campaign signal lines flow into a focused landing page and conversion panel.</desc>
+  <rect width="1200" height="760" fill="#0c192c"/>
+  <path d="M112 210c138-110 238 110 372 0s240 104 370 0 178 34 234-16" fill="none" stroke="#03a099" stroke-width="8" stroke-linecap="round"/>
+  <path d="M112 278c138-110 238 110 372 0s240 104 370 0 178 34 234-16" fill="none" stroke="#64b9b6" stroke-width="3" stroke-dasharray="14 14" stroke-linecap="round"/>
+  <circle cx="112" cy="210" r="15" fill="#64b9b6"/><circle cx="484" cy="210" r="15" fill="#03a099"/><circle cx="854" cy="210" r="15" fill="#64b9b6"/>
+  <rect x="174" y="388" width="530" height="232" rx="14" fill="#f5f7f4"/>
+  <rect x="216" y="430" width="226" height="16" rx="8" fill="#0c192c"/>
+  <rect x="216" y="466" width="366" height="9" rx="4" fill="#50606a" fill-opacity=".55"/>
+  <rect x="216" y="514" width="292" height="12" rx="6" fill="#64b9b6"/>
+  <rect x="216" y="553" width="134" height="33" rx="4" fill="#03a099"/>
+  <rect x="760" y="364" width="278" height="278" rx="14" fill="#202c3b" stroke="#64b9b6" stroke-width="2"/>
+  <circle cx="899" cy="494" r="73" fill="none" stroke="#64b9b6" stroke-width="14" stroke-dasharray="280 180" transform="rotate(-58 899 494)"/>
+  <circle cx="899" cy="494" r="12" fill="#03a099"/>
+  <path d="M899 494V421M899 494l54 40" stroke="#f5f7f4" stroke-width="7" stroke-linecap="round"/>
+</svg>

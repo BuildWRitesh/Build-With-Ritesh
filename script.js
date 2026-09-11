@@ -172,3 +172,37 @@
   document.fonts?.ready.then(() => ScrollTrigger.refresh());
   window.addEventListener('load', () => ScrollTrigger.refresh(), { once: true });
 })();
+
+// A small, real command interface. No evaluation or external commands run here.
+(() => {
+  const form = document.getElementById('terminal-form');
+  if (!form) return;
+  const input = document.getElementById('terminal-command');
+  const output = document.getElementById('terminal-output');
+  const commands = {
+    whoami: ['Ritesh Singh — web developer & digital marketer. 4+ years connecting websites, search and campaigns.', '#about', 'Meet Ritesh'],
+    skills: ['WordPress · HTML · CSS · JavaScript · SEO · Google Ads · Meta Ads. Build, reach, measure and improve.', '#expertise', 'Explore expertise'],
+    projects: ['Explore twelve website, e-commerce and digital marketing projects in the portfolio.', '#work', 'View projects'],
+    contact: ['Let’s discuss your website or campaign: buildwritesh@gmail.com', '#contact', 'Start a conversation'],
+    help: ['Available commands: whoami, skills, projects, contact. Curious? Try “source”.'],
+    source: ['Behind this page: semantic HTML, CSS, JavaScript and carefully considered motion. Small details matter.']
+  };
+  const run = value => {
+    const command = String(value).trim().toLowerCase().replace(/^\$\s*/, '');
+    const result = commands[command] || ['Command not found. Try help, whoami, skills, projects or contact.'];
+    output.replaceChildren(document.createTextNode(result[0]));
+    if (result[1]) { const link = document.createElement('a'); link.href = result[1]; link.textContent = result[2] + ' ↗'; output.append(document.createElement('br'), link); }
+    document.querySelectorAll('[data-terminal]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.terminal === command)));
+    if (!matchMedia('(prefers-reduced-motion: reduce)').matches) output.animate([{opacity:.35,transform:'translateY(4px)'},{opacity:1,transform:'none'}],{duration:230,easing:'ease-out'});
+  };
+  document.querySelectorAll('[data-terminal]').forEach(button => button.addEventListener('click', () => run(button.dataset.terminal)));
+  form.addEventListener('submit', event => { event.preventDefault(); run(input.value); input.value = ''; });
+  document.addEventListener('keydown', event => { if (event.altKey && event.key.toLowerCase() === 't') { event.preventDefault(); input.focus(); } });
+})();
+(() => {
+  const cursor = document.querySelector('.custom-cursor');
+  document.querySelectorAll('.terminal-commands button').forEach(button => {
+    button.addEventListener('pointerenter', () => cursor?.classList.add('is-code'));
+    button.addEventListener('pointerleave', () => cursor?.classList.remove('is-code'));
+  });
+})();

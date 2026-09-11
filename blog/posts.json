@@ -1,0 +1,107 @@
+[
+  {
+    "slug": "wordpress-launch-checklist",
+    "title": "A Practical WordPress Launch Checklist for Business Websites",
+    "excerpt": "A calm, repeatable checklist for taking a WordPress website from the final content pass to a confident launch.",
+    "category": "WordPress",
+    "date": "2026-09-11",
+    "updated": "2026-09-11",
+    "author": "Ritesh Singh",
+    "featuredImage": "assets/blog/wordpress-launch.svg",
+    "imageAlt": "Editorial illustration of a WordPress website launch checklist",
+    "seoTitle": "WordPress Launch Checklist for Business Websites | Ritesh Singh",
+    "metaDescription": "A practical WordPress launch checklist covering content, responsive QA, SEO, forms, analytics and post-launch maintenance.",
+    "focusKeyword": "WordPress launch checklist",
+    "canonical": "https://buildwritesh.github.io/blog/wordpress-launch-checklist/",
+    "status": "published",
+    "tags": [
+      "WordPress",
+      "Web Development",
+      "Website Optimization"
+    ]
+  },
+  {
+    "slug": "technical-seo-business-websites",
+    "title": "A Technical SEO Workflow for Business Websites",
+    "excerpt": "How I turn a technical SEO review into a focused sequence of fixes that visitors and search engines can understand.",
+    "category": "SEO",
+    "date": "2026-09-04",
+    "updated": "2026-09-04",
+    "author": "Ritesh Singh",
+    "featuredImage": "assets/blog/technical-seo.svg",
+    "imageAlt": "Editorial illustration of a technical SEO audit",
+    "seoTitle": "Technical SEO Workflow for Business Websites | Ritesh Singh",
+    "metaDescription": "A practical technical SEO workflow for business websites: crawlability, site structure, on-page quality, performance and measurement.",
+    "focusKeyword": "technical SEO workflow",
+    "canonical": "https://buildwritesh.github.io/blog/technical-seo-business-websites/",
+    "status": "published",
+    "tags": [
+      "SEO",
+      "Technical SEO",
+      "Website Optimization"
+    ]
+  },
+  {
+    "slug": "ads-and-landing-pages",
+    "title": "Connecting Google and Meta Ads to Better Landing Pages",
+    "excerpt": "Paid campaigns work harder when the ad promise, landing page and enquiry path are designed as one experience.",
+    "category": "Digital Marketing",
+    "date": "2026-08-28",
+    "updated": "2026-08-28",
+    "author": "Ritesh Singh",
+    "featuredImage": "assets/blog/paid-media-landing-pages.svg",
+    "imageAlt": "Editorial illustration of paid ads connected to a landing page",
+    "seoTitle": "Google and Meta Ads Landing Page Workflow | Ritesh Singh",
+    "metaDescription": "A practical workflow for connecting Google Ads and Meta Ads to focused, responsive landing pages and measurable enquiry journeys.",
+    "focusKeyword": "ads landing page workflow",
+    "canonical": "https://buildwritesh.github.io/blog/ads-and-landing-pages/",
+    "status": "published",
+    "tags": [
+      "Google Ads",
+      "Meta Ads",
+      "Digital Marketing"
+    ]
+  },
+  {
+    "slug": "responsive-website-performance",
+    "title": "Responsive Website Performance: A Practical Review Process",
+    "excerpt": "A straightforward way to review responsive behaviour, visual stability and performance before a website reaches real users.",
+    "category": "Web Development",
+    "date": "2026-08-21",
+    "updated": "2026-08-21",
+    "author": "Ritesh Singh",
+    "featuredImage": "assets/blog/responsive-performance.svg",
+    "imageAlt": "Editorial illustration of a responsive website tested across devices",
+    "seoTitle": "Responsive Website Performance Review Process | Ritesh Singh",
+    "metaDescription": "A practical review process for responsive websites covering layout, images, scripts, accessibility and real-device performance.",
+    "focusKeyword": "responsive website performance",
+    "canonical": "https://buildwritesh.github.io/blog/responsive-website-performance/",
+    "status": "published",
+    "tags": [
+      "Web Development",
+      "Performance",
+      "UI/UX"
+    ]
+  },
+  {
+    "slug": "ai-and-seo-editorial-workflow",
+    "title": "Using AI in an SEO Workflow Without Losing Editorial Judgment",
+    "excerpt": "A grounded approach to using AI for research and iteration while keeping SEO content accurate, useful and human.",
+    "category": "SEO",
+    "date": "2026-08-14",
+    "updated": "2026-08-14",
+    "author": "Ritesh Singh",
+    "featuredImage": "assets/blog/ai-seo-workflow.svg",
+    "imageAlt": "Editorial illustration of an AI-assisted SEO editorial workflow",
+    "seoTitle": "AI and SEO Editorial Workflow | Ritesh Singh",
+    "metaDescription": "A practical AI and SEO workflow for research, briefs, internal linking and quality review without publishing generic or unverified claims.",
+    "focusKeyword": "AI SEO workflow",
+    "canonical": "https://buildwritesh.github.io/blog/ai-and-seo-editorial-workflow/",
+    "status": "published",
+    "tags": [
+      "AI + SEO",
+      "Content",
+      "Technical SEO"
+    ]
+  }
+]

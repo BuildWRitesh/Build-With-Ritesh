@@ -91,6 +91,12 @@ The company page and social bios support brand themes of websites, SEO, advertis
 
 The brand page's linked domain is `buildwithritesh.com`. It is not used as the site's canonical URL: the requested portfolio repository is [BuildWRitesh.github.io](https://github.com/BuildWRitesh/BuildWRitesh.github.io), whose public root is [https://buildwritesh.github.io/](https://buildwritesh.github.io/).
 
+## Journal and Instagram content
+
+The initial journal articles are editorial notes based on the verified work areas above: WordPress development, responsive websites, SEO, Google Ads, Meta Ads, website optimisation and the development-to-lead-generation workflow. They deliberately avoid unverified clients, awards, outcomes and performance numbers. Each article has a checked-in featured illustration, semantic HTML, an editable SEO record and a generated canonical page under `blog/`.
+
+The Instagram Videos page is intentionally empty until the server has an approved Instagram Graph API configuration. `data/instagram-videos.json` is a truthful fallback, and the Node endpoint filters real video/Reel media before returning only thumbnails and original permalinks. No placeholder posts or invented statistics are used.
+
 ## Review limitations
 
 The general web reader could not fetch several official sources, so successful public-source checks used ordinary HTTPS requests instead. Availability results are point-in-time checks, not a guarantee of future uptime. The latest resume includes an embedded note requesting a 28+ years positioning, but the owner explicitly confirmed 4+ years; the larger figure is not published. No private profiles, sign-in-only data, credentials, recommendations or unprovided resume updates were accessed or invented.

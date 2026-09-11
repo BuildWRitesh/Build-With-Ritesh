@@ -1,0 +1,112 @@
+[
+  {
+    "slug": "wordpress-launch-checklist",
+    "title": "A Practical WordPress Launch Checklist for Business Websites",
+    "excerpt": "A calm, repeatable checklist for taking a WordPress website from the final content pass to a confident launch.",
+    "category": "WordPress",
+    "date": "2026-09-11",
+    "updated": "2026-09-11",
+    "author": "Ritesh Singh",
+    "featuredImage": "assets/blog/wordpress-launch.svg",
+    "imageAlt": "Editorial illustration of a WordPress website launch checklist",
+    "seoTitle": "WordPress Launch Checklist for Business Websites | Ritesh Singh",
+    "metaDescription": "A practical WordPress launch checklist covering content, responsive QA, SEO, forms, analytics and post-launch maintenance.",
+    "focusKeyword": "WordPress launch checklist",
+    "canonical": "https://buildwritesh.github.io/blog/wordpress-launch-checklist/",
+    "status": "published",
+    "tags": [
+      "WordPress",
+      "Web Development",
+      "Website Optimization"
+    ],
+    "contentHtml": "<p>A launch is the point where a website becomes someone’s daily tool. The most useful checklist is therefore less about a dramatic final click and more about a set of small checks that protect the visitor experience.</p><figure class=\"article-inline-media\"><img src=\"/assets/blog/wordpress-launch.svg\" alt=\"Editorial illustration of a WordPress website launch checklist\" loading=\"lazy\"><figcaption>A launch checklist keeps the technical and marketing details connected.</figcaption></figure><h2>Start with the visitor journey</h2><p>Open the site as a first-time visitor on a phone and a laptop. Follow the main path from the home page to a service page, a useful proof point and the contact form. The navigation should make the next step obvious, and every important page should have a clear purpose.</p><h3>Content and layout checks</h3><ul><li>Review headings, button labels, links and contact details for consistency.</li><li>Check that images have meaningful alternative text and sensible dimensions.</li><li>Test the menu, accordions, forms and any third-party embeds with a keyboard.</li><li>Read the smallest screen layout without zooming or horizontal scrolling.</li></ul><h2>Protect the technical foundation</h2><p>Confirm that the site uses one preferred domain, HTTPS and a useful 404 page. Remove staging copy, temporary accounts and unused plugins. Update WordPress core, themes and plugins through a tested process, then make a backup that can actually be restored.</p><p>Performance work starts with the page’s biggest resources. Compress images, load below-the-fold media lazily, avoid unnecessary scripts and check the mobile experience with a real connection. A fast page gives SEO and paid campaigns a stronger destination.</p><h2>Connect SEO and measurement</h2><p>Give every important page a distinct title, description, canonical URL and a logical heading structure. Verify the robots rules, sitemap and Search Console property. Define the contact or enquiry action as a conversion in the analytics setup, and use consistent campaign parameters for paid traffic.</p><blockquote><p>Launch quality is a habit: document what was checked so the next update becomes easier.</p></blockquote><h2>After launch</h2><p>Watch forms, uptime, search indexing and the first real user journeys. Keep a short backlog for content, accessibility and performance improvements. If you would like a second pair of eyes on a WordPress launch, <a href=\"/#contact\">start a conversation</a> or explore the <a href=\"/#work\">portfolio</a>.</p>"
+  },
+  {
+    "slug": "technical-seo-business-websites",
+    "title": "A Technical SEO Workflow for Business Websites",
+    "excerpt": "How I turn a technical SEO review into a focused sequence of fixes that visitors and search engines can understand.",
+    "category": "SEO",
+    "date": "2026-09-04",
+    "updated": "2026-09-04",
+    "author": "Ritesh Singh",
+    "featuredImage": "assets/blog/technical-seo.svg",
+    "imageAlt": "Editorial illustration of a technical SEO audit",
+    "seoTitle": "Technical SEO Workflow for Business Websites | Ritesh Singh",
+    "metaDescription": "A practical technical SEO workflow for business websites: crawlability, site structure, on-page quality, performance and measurement.",
+    "focusKeyword": "technical SEO workflow",
+    "canonical": "https://buildwritesh.github.io/blog/technical-seo-business-websites/",
+    "status": "published",
+    "tags": [
+      "SEO",
+      "Technical SEO",
+      "Website Optimization"
+    ],
+    "contentHtml": "<p>Technical SEO is most useful when it clarifies a website’s structure and removes friction for people. I use a staged workflow so that a long audit becomes a small set of actions the team can prioritise.</p><figure class=\"article-inline-media\"><img src=\"/assets/blog/technical-seo.svg\" alt=\"Editorial illustration of a technical SEO audit\" loading=\"lazy\"><figcaption>Good technical SEO makes a site easier to crawl, understand and use.</figcaption></figure><h2>1. Establish the baseline</h2><p>Start with a crawl, the index coverage report and a sample of real landing pages. Record the preferred domain, HTTP status codes, canonical tags, robots rules and sitemap. Search for duplicate titles, missing descriptions, orphan pages and links that lead to redirects or errors.</p><h3>Look at templates, not only URLs</h3><p>WordPress sites often share templates. A single template issue can affect many pages, so group findings by pattern. Review archive pages, pagination, media attachments and taxonomy pages before deciding whether they should be indexed.</p><h2>2. Make the site understandable</h2><p>Build a shallow, logical navigation that reflects how people describe the services. Use descriptive internal links, one clear H1 per page and headings that create a useful outline. Keep the important copy in the HTML and make sure key content is not hidden behind an interaction that search crawlers cannot access.</p><ol><li>Map each important page to one search intent.</li><li>Choose a concise, specific title and description.</li><li>Connect related pages with natural anchor text.</li><li>Set canonical and redirect rules deliberately.</li></ol><h2>3. Remove performance friction</h2><p>Compress hero images, reserve image space to avoid layout shifts and load only the scripts each page needs. Test on a mid-range phone. Performance is part of usability, and a smoother landing page supports both organic visits and paid traffic.</p><h2>4. Measure the changes</h2><p>Record the URL, issue, action and verification date for every fix. Re-crawl after deployment, inspect representative URLs and monitor the conversions that matter to the business. SEO becomes easier to manage when technical work is connected to a clear user outcome.</p><p>For a review of a site’s structure and search foundations, <a href=\"/#contact\">get in touch</a>. You can also read the <a href=\"/blog/wordpress-launch-checklist/\">WordPress launch checklist</a> for the pre-launch handoff.</p>"
+  },
+  {
+    "slug": "ads-and-landing-pages",
+    "title": "Connecting Google and Meta Ads to Better Landing Pages",
+    "excerpt": "Paid campaigns work harder when the ad promise, landing page and enquiry path are designed as one experience.",
+    "category": "Digital Marketing",
+    "date": "2026-08-28",
+    "updated": "2026-08-28",
+    "author": "Ritesh Singh",
+    "featuredImage": "assets/blog/paid-media-landing-pages.svg",
+    "imageAlt": "Editorial illustration of paid ads connected to a landing page",
+    "seoTitle": "Google and Meta Ads Landing Page Workflow | Ritesh Singh",
+    "metaDescription": "A practical workflow for connecting Google Ads and Meta Ads to focused, responsive landing pages and measurable enquiry journeys.",
+    "focusKeyword": "ads landing page workflow",
+    "canonical": "https://buildwritesh.github.io/blog/ads-and-landing-pages/",
+    "status": "published",
+    "tags": [
+      "Google Ads",
+      "Meta Ads",
+      "Digital Marketing"
+    ],
+    "contentHtml": "<p>An ad does not finish the job when someone clicks. The landing page has to continue the same conversation, help the visitor decide and make the next action feel easy.</p><figure class=\"article-inline-media\"><img src=\"/assets/blog/paid-media-landing-pages.svg\" alt=\"Editorial illustration of paid ads connected to a landing page\" loading=\"lazy\"><figcaption>The ad promise and the landing page should feel like one message.</figcaption></figure><h2>Begin with the campaign intent</h2><p>Write down the audience, offer and action before opening the ad platform. A search campaign may need a direct service page; a social campaign may need more context and proof. The intent determines the page hierarchy, copy and form fields.</p><h3>Keep the message aligned</h3><ul><li>Use the same service language in the ad and the page headline.</li><li>Make the first screen answer who the service is for and what happens next.</li><li>Show relevant proof without burying the enquiry action.</li><li>Keep one primary CTA and a simple fallback contact option.</li></ul><h2>Build for the click context</h2><p>Paid visitors arrive on phones, often from a moment of intent. Keep the page lightweight, preserve generous tap targets and remove navigation that pulls attention away from the task. A responsive WordPress implementation should remain clear at every width, including the form and confirmation state.</p><h2>Measure the complete path</h2><p>Use separate campaign parameters and a consistent conversion definition. Test the form, phone link and thank-you state from the same devices used by visitors. Review search terms and ad feedback alongside landing-page behaviour so the next iteration improves the whole journey.</p><blockquote><p>A campaign is a connected system: the best optimisation opportunity may be on the page after the click.</p></blockquote><h2>Iterate with care</h2><p>Change one meaningful part of the experience at a time—message, layout, form or audience—then give the change enough traffic to learn. Keep a record of what changed and why. This keeps optimisation grounded in the business goal rather than a stream of disconnected tweaks.</p><p>If your ads need a clearer destination, <a href=\"/#contact\">share the brief</a>. My <a href=\"/#work\">website projects</a> show the same build-and-measure approach.</p>"
+  },
+  {
+    "slug": "responsive-website-performance",
+    "title": "Responsive Website Performance: A Practical Review Process",
+    "excerpt": "A straightforward way to review responsive behaviour, visual stability and performance before a website reaches real users.",
+    "category": "Web Development",
+    "date": "2026-08-21",
+    "updated": "2026-08-21",
+    "author": "Ritesh Singh",
+    "featuredImage": "assets/blog/responsive-performance.svg",
+    "imageAlt": "Editorial illustration of a responsive website tested across devices",
+    "seoTitle": "Responsive Website Performance Review Process | Ritesh Singh",
+    "metaDescription": "A practical review process for responsive websites covering layout, images, scripts, accessibility and real-device performance.",
+    "focusKeyword": "responsive website performance",
+    "canonical": "https://buildwritesh.github.io/blog/responsive-website-performance/",
+    "status": "published",
+    "tags": [
+      "Web Development",
+      "Performance",
+      "UI/UX"
+    ],
+    "contentHtml": "<p>Responsive quality is more than making a desktop page narrower. It is the discipline of preserving hierarchy, speed and confidence as the context changes.</p><figure class=\"article-inline-media\"><img src=\"/assets/blog/responsive-performance.svg\" alt=\"Editorial illustration of a responsive website tested across devices\" loading=\"lazy\"><figcaption>Test the same journey across the devices your audience actually uses.</figcaption></figure><h2>Review the layout as a system</h2><p>Start with the content order, then inspect the grid at wide desktop, laptop, tablet and small mobile widths. Look for clipped text, awkward line lengths, sticky elements that cover content and controls that become difficult to tap. A good breakpoint changes the composition when the content needs it.</p><h3>Three quick device checks</h3><ol><li>Complete the primary journey using touch only.</li><li>Rotate the device and repeat the most important interaction.</li><li>Use keyboard focus to confirm that no control disappears off screen.</li></ol><h2>Reduce the cost of the first view</h2><p>Use correctly sized images, modern formats where practical and explicit width and height attributes. Defer non-critical scripts and keep animation work on the compositor. The page should feel responsive before every asset has finished loading.</p><h2>Protect clarity and accessibility</h2><p>Maintain readable contrast, visible focus states and semantic headings. Motion should support the content and respect a reduced-motion preference. Forms need labels, useful validation and a clear success message on small screens.</p><h2>Measure, then refine</h2><p>Pair a real-device pass with browser performance tools and a short list of user journeys. Fix the largest source of friction first, then repeat the same checks after deployment. This creates a dependable loop for WordPress builds and custom front ends alike.</p><p>For a responsive build or performance review, <a href=\"/#contact\">send me the current site</a>. You can also browse the <a href=\"/#work\">portfolio work</a>.</p>"
+  },
+  {
+    "slug": "ai-and-seo-editorial-workflow",
+    "title": "Using AI in an SEO Workflow Without Losing Editorial Judgment",
+    "excerpt": "A grounded approach to using AI for research and iteration while keeping SEO content accurate, useful and human.",
+    "category": "SEO",
+    "date": "2026-08-14",
+    "updated": "2026-08-14",
+    "author": "Ritesh Singh",
+    "featuredImage": "assets/blog/ai-seo-workflow.svg",
+    "imageAlt": "Editorial illustration of an AI-assisted SEO editorial workflow",
+    "seoTitle": "AI and SEO Editorial Workflow | Ritesh Singh",
+    "metaDescription": "A practical AI and SEO workflow for research, briefs, internal linking and quality review without publishing generic or unverified claims.",
+    "focusKeyword": "AI SEO workflow",
+    "canonical": "https://buildwritesh.github.io/blog/ai-and-seo-editorial-workflow/",
+    "status": "published",
+    "tags": [
+      "AI + SEO",
+      "Content",
+      "Technical SEO"
+    ],
+    "contentHtml": "<p>AI can shorten the distance between a question and a first draft, but it cannot replace the context that makes a business website trustworthy. I treat it as a structured assistant inside an editorial workflow.</p><figure class=\"article-inline-media\"><img src=\"/assets/blog/ai-seo-workflow.svg\" alt=\"Editorial illustration of an AI-assisted SEO editorial workflow\" loading=\"lazy\"><figcaption>AI is useful when the human review remains responsible for the final page.</figcaption></figure><h2>Give the work a real brief</h2><p>Start with the audience, page purpose, search intent and evidence available from the business. A clear brief helps an AI tool suggest outlines or questions without inventing a company history, result or feature that cannot be verified.</p><h3>Useful assistance</h3><ul><li>Cluster related questions and identify gaps in an existing outline.</li><li>Suggest alternative headings and concise meta descriptions.</li><li>Draft an internal-link map from a confirmed set of URLs.</li><li>Turn a technical audit into a checklist the team can review.</li></ul><h2>Keep facts and claims grounded</h2><p>Verify every factual statement, product detail, date and external reference before it reaches the page. Replace generic advice with observations from the actual website, analytics context or documented process. If the evidence is missing, leave the claim out.</p><h2>Review the page as a visitor</h2><p>Read the draft for clarity, not only keyword coverage. Does it answer the question early? Are the examples specific enough to be useful? Does the page lead naturally to a next step? Check headings, links, accessibility and mobile layout once the content is in the CMS.</p><blockquote><p>Automation can accelerate the first pass; responsibility still belongs to the person who publishes the page.</p></blockquote><h2>Build a repeatable loop</h2><p>Keep the prompt, source notes and review decisions with the work. Revisit performance and search feedback after publication, then update the page when the evidence changes. This keeps AI inside a practical SEO process rather than turning it into a content shortcut.</p><p>If you need an SEO workflow that fits your actual site and team, <a href=\"/#contact\">let’s talk</a>. The <a href=\"/blog/technical-seo-business-websites/\">technical SEO workflow</a> is a useful companion read.</p>"
+  }
+]

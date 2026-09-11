@@ -4,12 +4,17 @@
   "private": true,
   "scripts": {
     "dev": "node server.js",
+    "admin": "node admin-server.js",
+    "admin:hash": "node scripts/create-admin-hash.js",
     "check": "node scripts/validate.js",
-    "build": "node scripts/validate.js && node build.js",
+    "build": "node scripts/generate-blog.js && node scripts/validate.js && node build.js",
     "preview": "node server.js --preview",
     "test": "node scripts/validate.js --http"
   },
   "engines": {
     "node": ">=20"
+  },
+  "dependencies": {
+    "sanitize-html": "^2.17.7"
   }
 }

@@ -2,7 +2,18 @@ const http = require('node:http');
 const fs = require('node:fs');
 const path = require('node:path');
 
-const publicFiles = new Set(['index.html', 'style.css', 'script.js', 'robots.txt', 'sitemap.xml', 'site.webmanifest', '.nojekyll']);
+const publicFiles = new Set([
+  'index.html',
+  'style.css',
+  'content.css',
+  'script.js',
+  'robots.txt',
+  'sitemap.xml',
+  'site.webmanifest',
+  '.nojekyll',
+  'data/instagram-videos.json'
+]);
+const publicPrefixes = ['assets/', 'blog/', 'instagram-videos/', 'admin/'];
 const mimeTypes = {
   '.html': 'text/html; charset=utf-8',
   '.css': 'text/css; charset=utf-8',
@@ -56,14 +67,22 @@ function createSiteServer({ preview = false } = {}) {
       reply(403, 'Forbidden');
       return;
     }
-    const relativePath = requestPath === '/' ? 'index.html' : segments.join('/');
-    if (!publicFiles.has(relativePath) && !relativePath.startsWith('assets/')) {
+    const requestedRelativePath = requestPath === '/' ? 'index.html' : segments.join('/');
+    const isPublicPath = publicFiles.has(requestedRelativePath)
+      || publicPrefixes.some(prefix => requestedRelativePath === prefix.slice(0, -1) || requestedRelativePath.startsWith(prefix));
+    if (!isPublicPath) {
       reply(404, 'Not found');
       return;
     }
 
     try {
-      const filePath = await fs.promises.realpath(path.resolve(root, relativePath));
+      let filePath = await fs.promises.realpath(path.resolve(root, requestedRelativePath));
+      const initialStats = await fs.promises.stat(filePath);
+      // Directory URLs (for example /blog/ and /blog/article-slug/) resolve to
+      // their generated index file while keeping the source tree private.
+      if (initialStats.isDirectory()) {
+        filePath = await fs.promises.realpath(path.join(filePath, 'index.html'));
+      }
       const insideRoot = path.relative(realRoot, filePath);
       if (insideRoot.startsWith(`..${path.sep}`) || insideRoot === '..' || path.isAbsolute(insideRoot)) {
         reply(403, 'Forbidden');

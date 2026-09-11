@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">AI and SEO workflow illustration</title>
+  <desc id="desc">A structured content workflow connects human insight, search signals and an editorial output.</desc>
+  <rect width="1200" height="760" fill="#f5f7f4"/>
+  <path d="M168 382h862" stroke="#202c3b" stroke-opacity=".22" stroke-width="3"/>
+  <circle cx="222" cy="382" r="94" fill="#0c192c"/>
+  <circle cx="222" cy="382" r="45" fill="none" stroke="#64b9b6" stroke-width="13"/>
+  <path d="M222 337v91M177 382h91" stroke="#03a099" stroke-width="10" stroke-linecap="round"/>
+  <circle cx="600" cy="382" r="126" fill="#e7f0ee" stroke="#03a099" stroke-width="4"/>
+  <path d="M535 380c28-82 102-89 131-33 27 51-6 105-63 111-42 4-65-17-68-42z" fill="none" stroke="#0c192c" stroke-width="12" stroke-linecap="round"/>
+  <path d="M556 433c54 24 99 3 123-36" fill="none" stroke="#64b9b6" stroke-width="12" stroke-linecap="round"/>
+  <rect x="870" y="264" width="194" height="238" rx="12" fill="#202c3b"/>
+  <path d="M908 317h112M908 359h82M908 401h112M908 443h67" stroke="#f5f7f4" stroke-opacity=".8" stroke-width="12" stroke-linecap="round"/>
+  <path d="M316 382h146M742 382h84" stroke="#03a099" stroke-width="7" stroke-linecap="round"/>
+  <path d="m448 363 24 19-24 19M826 363l24 19-24 19" fill="none" stroke="#03a099" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

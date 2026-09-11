@@ -597,3 +597,39 @@ body.page-ready .section-progress { display: flex; opacity: .9; transform: none;
   .site-footer { margin-top: 24px; }
   .custom-cursor, .section-progress { display: none !important; }
 }
+/* Developer identity: the original palette and composition remain the foundation. */
+.hero { position: relative; isolation: isolate; }
+.hero::before { content: ''; position: absolute; z-index: -1; inset: 80px -2% 0; pointer-events: none; background-image: linear-gradient(var(--brand-border) 1px, transparent 1px), linear-gradient(90deg, var(--brand-border) 1px, transparent 1px); background-size: 48px 48px; opacity: .18; mask-image: linear-gradient(110deg, transparent 20%, #000 90%); }
+.hero__hello::after { content: ' / index.html'; color: var(--brand-accent-ink); font-family: var(--mono-font); font-size: 10px; letter-spacing: .03em; }
+.developer-terminal { margin: 42px 0 0; border: 1px solid var(--brand-border); background: var(--brand-primary); color: var(--brand-background); font-family: var(--mono-font); overflow: hidden; }
+.developer-terminal__bar { display: flex; justify-content: space-between; gap: 15px; padding: 14px 22px; border-bottom: 1px solid rgba(178,203,200,.22); font-size: 10px; letter-spacing: .05em; }
+.terminal-ready { color: var(--brand-on-dark-muted); display: inline-flex; align-items: center; gap: 8px; }
+.terminal-ready i { width: 6px; height: 6px; background: var(--brand-highlight); border-radius: 50%; }
+.developer-terminal__body { padding: 22px; }
+.terminal-comment { color: var(--brand-on-dark-muted); font-size: 11px; margin: 0 0 18px; }
+.terminal-commands { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+.terminal-commands button { color: var(--brand-background); background: transparent; border: 1px solid rgba(178,203,200,.35); min-height: 42px; padding: 9px 15px; font: inherit; font-size: 12px; transition: background .2s, border-color .2s; }
+.terminal-commands button:hover, .terminal-commands button:focus-visible, .terminal-commands button[aria-pressed=true] { background: var(--brand-secondary); border-color: var(--brand-highlight); }
+.terminal-output { min-height: 64px; max-width: 850px; font-size: 13px; line-height: 1.7; overflow-wrap: anywhere; }
+.terminal-output a { color: var(--brand-highlight); text-underline-offset: 4px; }
+.terminal-input-row { display: flex; align-items: center; gap: 12px; border-top: 1px solid rgba(178,203,200,.22); margin-top: 18px; padding-top: 12px; }
+.terminal-input-row label { color: var(--brand-highlight); }
+.terminal-input-row input { flex: 1; min-width: 0; border: 0; background: transparent; color: var(--brand-background); font: inherit; font-size: 13px; padding: 10px 3px; }
+.terminal-input-row input::placeholder { color: var(--brand-on-dark-muted); }
+.terminal-input-row button { width: 44px; height: 44px; border: 1px solid rgba(178,203,200,.35); color: var(--brand-highlight); background: transparent; }
+.terminal-hint { margin: 12px 0 0; color: var(--brand-on-dark-muted); font-size: 10px; line-height: 1.6; }
+.terminal-hint kbd { font: inherit; border: 1px solid rgba(178,203,200,.3); padding: 1px 4px; }
+.skills dt::before { content: '['; margin-right: 8px; color: var(--brand-highlight); }
+.skills dt::after { content: ']'; margin-left: 8px; color: var(--brand-highlight); }
+.skills dd { transition: transform .25s ease; }
+.skills dl > div:hover dd { transform: translateX(4px); }
+.project__browser { font-family: var(--mono-font); }
+.project__browser > span:first-child { color: var(--brand-accent-ink); }
+.desktop-nav a[aria-current=page]::after { transform: scaleX(1); }
+@media (max-width:700px) { .developer-terminal__bar, .developer-terminal__body { padding: 16px; } .terminal-ready { font-size: 8px; } .terminal-output { min-height: 115px; } .hero::before { background-size: 32px 32px; } }
+@media (prefers-reduced-motion:reduce) { .skills dd { transition: none; } .skills dl > div:hover dd { transform: none; } }
+/* The boot cue is decorative and never blocks content or navigation. */
+.hero__eyebrow::after { content: 'Ready.'; position: absolute; right: 0; top: 102px; color: var(--brand-accent-ink); font: 10px var(--mono-font); animation: developer-boot .75s ease-out both; }
+@keyframes developer-boot { 0% { opacity: 0; transform: translateY(5px); } 35% { opacity: 1; } 100% { opacity: 1; transform: none; } }
+@media (pointer:fine) and (hover:hover) { .custom-cursor.is-code::after { content: '</>'; position: absolute; inset: 0; display: grid; place-items: center; color: var(--brand-primary); font: 8px var(--mono-font); } .custom-cursor.is-code .custom-cursor__dot { opacity: 0; } }
+@media (max-width:700px) { .hero__eyebrow::after { display: none; } }

@@ -91,14 +91,14 @@
   <header class="site-header">
     <div class="header-inner">
       <a class="brand" href="#top" aria-label="Ritesh Singh home"><img class="brand__logo" src="assets/branding/ritesh-singh-logo.png" alt="" width="48" height="48" decoding="async"><span class="brand__copy">Ritesh Singh<small>Build With Ritesh</small></span></a>
-      <nav class="desktop-nav" aria-label="Primary navigation"><a href="#about">About</a><a href="#experience">Experience</a><a href="#expertise">Expertise</a><a href="#work">Portfolio</a><a href="#contact">Contact</a></nav>
+      <nav class="desktop-nav" aria-label="Primary navigation"><a href="#about">About</a><a href="#experience">Experience</a><a href="#expertise">Expertise</a><a href="#work">Portfolio</a><a href="blog/">Blog</a><a href="instagram-videos/">Instagram</a><a href="#contact">Contact</a></nav>
       <a class="header-contact" href="#contact">Let’s connect <span aria-hidden="true">↗</span></a>
       <button class="menu-toggle" type="button" aria-label="Open menu" aria-controls="mobile-menu" aria-expanded="false" hidden><span></span><span></span></button>
     </div>
   </header>
   <dialog class="mobile-menu" id="mobile-menu" aria-label="Navigation menu">
     <div class="mobile-menu__top"><span class="mobile-menu__brand"><img src="assets/branding/ritesh-singh-logo.png" alt="" width="42" height="42" decoding="async"><span>Build With Ritesh</span></span><button class="menu-close" type="button" aria-label="Close menu">Close <span aria-hidden="true">×</span></button></div>
-    <nav aria-label="Mobile navigation"><a href="#about"><span>01</span>About</a><a href="#experience"><span>02</span>Experience</a><a href="#expertise"><span>03</span>Expertise</a><a href="#work"><span>04</span>Portfolio</a><a href="#contact"><span>05</span>Contact</a></nav>
+    <nav aria-label="Mobile navigation"><a href="#about"><span>01</span>About</a><a href="#experience"><span>02</span>Experience</a><a href="#expertise"><span>03</span>Expertise</a><a href="#work"><span>04</span>Portfolio</a><a href="blog/"><span>05</span>Blog</a><a href="instagram-videos/"><span>06</span>Instagram</a><a href="#contact"><span>07</span>Contact</a></nav>
     <a class="text-link" href="assets/resume/Ritesh_Singh_Resume.pdf" download="Ritesh_Singh_Resume.pdf">Download Resume <span aria-hidden="true">↓</span></a>
   </dialog>
 
@@ -107,7 +107,7 @@
 
   <main id="main-content" tabindex="-1">
     <section class="hero container" id="top" aria-labelledby="hero-title">
-      <div class="hero__eyebrow"><span>Web development × digital marketing</span><span>Gurugram, India</span></div>
+      <div class="hero__eyebrow"><span>&lt;developer /&gt; Web development × digital marketing</span><span>Gurugram, India</span></div>
       <div class="hero__grid">
         <div class="hero__content">
           <p class="eyebrow hero__hello">Hello, I’m</p>
@@ -123,12 +123,21 @@
           <div class="perspective__signature"><img src="assets/profile/ritesh-singh.webp" alt="Ritesh Singh" width="72" height="72" decoding="async"><div><strong>From the website to the campaign.</strong><p>WordPress · Meta Ads · Google Ads</p></div></div>
         </aside>
       </div>
+      <div class="developer-terminal" aria-labelledby="terminal-title">
+        <div class="developer-terminal__bar"><span id="terminal-title">ritesh / portfolio.sh</span><span class="terminal-ready"><i aria-hidden="true"></i>Interactive workspace</span></div>
+        <div class="developer-terminal__body"><p class="terminal-comment">// Explore the person behind the projects</p>
+          <div class="terminal-commands" aria-label="Portfolio commands"><button type="button" data-terminal="whoami">$ whoami</button><button type="button" data-terminal="skills">$ skills</button><button type="button" data-terminal="projects">$ projects</button><button type="button" data-terminal="contact">$ contact</button></div>
+          <div id="terminal-output" class="terminal-output" role="status" aria-live="polite">Ritesh Singh — web developer &amp; digital marketer. 4+ years connecting websites, search and campaigns.</div>
+          <form id="terminal-form" class="terminal-input-row"><label for="terminal-command">$</label><input id="terminal-command" name="command" autocomplete="off" spellcheck="false" aria-label="Portfolio command" placeholder="Type help to explore"><button type="submit" aria-label="Run command">↵</button></form>
+          <p class="terminal-hint">Try a command above, or type help. <kbd>Alt</kbd> + <kbd>T</kbd> to focus.</p>
+        </div>
+      </div>
       <div class="hero__foot"><div class="experience-proof"><strong>4+</strong><p>Years of professional<br>experience</p></div><p class="hero__foot-note">Web development. Paid media. Organic growth.<br>A connected approach to your online presence.</p><a class="scroll-link" href="#about">Get to know me <span aria-hidden="true">↓</span></a></div>
     </section>
 
     <section id="about" class="about section-pad" aria-labelledby="about-title">
       <div class="container">
-        <div class="section-label"><span>01 / About</span><span>The person behind the work</span></div>
+        <div class="section-label"><span>01 // About</span><span>The person behind the work</span></div>
         <div class="about__grid">
           <h2 id="about-title" class="reveal-up">The website is<br>only the <em>beginning.</em></h2>
           <div class="about__copy reveal-up"><p class="lead">My work sits where web development and digital marketing meet.</p><p>I build and maintain responsive WordPress websites, customise themes and plugins, and improve performance and usability. That technical foundation informs how I approach SEO, social media, paid campaigns, landing pages and the journey from a first visit to a lead.</p><p>With 4+ years of professional experience, I’ve worked across website development, e-commerce, Google and Meta Ads, on-page and off-page SEO, social media marketing and performance reporting. I bring the technical detail and the marketing objective into the same conversation.</p><a class="text-link" href="#experience">Explore my experience <span aria-hidden="true">↘</span></a></div>
@@ -139,7 +148,7 @@
 
     <section id="experience" class="experience section-pad" aria-labelledby="experience-title">
       <div class="container">
-        <div class="section-label"><span>02 / Experience</span><span>A foundation built through delivery</span></div>
+        <div class="section-label"><span>02 // Experience</span><span>A foundation built through delivery</span></div>
         <div class="section-intro"><h2 id="experience-title" class="reveal-up">Web foundations.<br><em>Wider perspective.</em></h2><p class="reveal-up">From WordPress development to digital marketing and web solutions.</p></div>
         <div class="timeline">
           <article class="timeline__item reveal-up">
@@ -188,7 +197,7 @@
 
     <section id="work" class="work section-pad" aria-labelledby="work-title">
       <div class="container">
-        <div class="section-label"><span>04 / Portfolio</span><span>Websites, products &amp; campaigns</span></div>
+        <div class="section-label"><span>04 // Portfolio</span><span>Websites, products &amp; campaigns</span></div>
         <div class="section-intro"><h2 id="work-title" class="reveal-up">Projects with<br><em>purpose.</em></h2><p class="reveal-up">A selection of website, e-commerce and digital marketing work. Use the filters to browse the collection.</p></div>
         <div class="portfolio-tools"><p class="eyebrow">Explore the work</p><div class="portfolio-filters" role="group" aria-label="Filter portfolio projects"><button class="portfolio-filter is-active" type="button" data-filter="all" aria-pressed="true">All</button><button class="portfolio-filter" type="button" data-filter="website" aria-pressed="false">Website</button><button class="portfolio-filter" type="button" data-filter="ecommerce" aria-pressed="false">E-commerce</button><button class="portfolio-filter" type="button" data-filter="marketing" aria-pressed="false">Marketing</button></div></div>
         <div class="projects" aria-live="polite">

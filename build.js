@@ -1,12 +1,19 @@
 const fs = require('node:fs');
 const path = require('node:path');
+const { generateBlogPages } = require('./scripts/generate-blog');
 
 const projectRoot = __dirname;
 const outputDirectory = path.join(projectRoot, 'dist');
 const productionFiles = [
   'index.html',
   'style.css',
+  'content.css',
   'script.js',
+  'blog',
+  'instagram-videos',
+  'admin',
+  'data/instagram-videos.json',
+  'assets/blog',
   'assets/branding',
   'assets/fonts',
   'assets/profile',
@@ -26,6 +33,11 @@ const productionFiles = [
   'assets/vendor'
 ];
 const optionalFiles = ['robots.txt', 'sitemap.xml', '.nojekyll', 'site.webmanifest'];
+
+// Article pages are generated from the editable JSON content before the
+// production allowlist is copied. This keeps static hosting and the admin API
+// on the same deterministic content source.
+generateBlogPages({ root: projectRoot });
 
 if (path.dirname(outputDirectory) !== projectRoot || path.basename(outputDirectory) !== 'dist') {
   throw new Error('Refusing to build outside the project dist directory.');

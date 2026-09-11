@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">WordPress launch checklist illustration</title>
+  <desc id="desc">A browser window with structured checklist panels in the Build With Ritesh colour system.</desc>
+  <rect width="1200" height="760" fill="#0c192c"/>
+  <rect x="100" y="92" width="1000" height="576" rx="18" fill="#202c3b" stroke="#64b9b6" stroke-width="2"/>
+  <path d="M100 154h1000" stroke="#64b9b6" stroke-opacity=".45" stroke-width="2"/>
+  <circle cx="142" cy="124" r="9" fill="#03a099"/><circle cx="174" cy="124" r="9" fill="#64b9b6"/><circle cx="206" cy="124" r="9" fill="#f5f7f4" fill-opacity=".6"/>
+  <rect x="168" y="218" width="280" height="328" rx="8" fill="#0c192c"/>
+  <rect x="211" y="263" width="192" height="14" rx="7" fill="#64b9b6"/>
+  <rect x="211" y="304" width="154" height="9" rx="4" fill="#b2cbc8" fill-opacity=".75"/>
+  <rect x="211" y="354" width="28" height="28" rx="5" fill="#03a099"/>
+  <path d="m218 367 7 7 14-18" fill="none" stroke="#f5f7f4" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="259" y="360" width="129" height="12" rx="6" fill="#f5f7f4" fill-opacity=".82"/>
+  <rect x="211" y="414" width="28" height="28" rx="5" fill="#03a099"/>
+  <path d="m218 427 7 7 14-18" fill="none" stroke="#f5f7f4" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="259" y="420" width="98" height="12" rx="6" fill="#f5f7f4" fill-opacity=".82"/>
+  <rect x="211" y="474" width="28" height="28" rx="5" fill="#03a099"/>
+  <path d="m218 487 7 7 14-18" fill="none" stroke="#f5f7f4" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="259" y="480" width="144" height="12" rx="6" fill="#f5f7f4" fill-opacity=".82"/>
+  <rect x="504" y="218" width="530" height="106" rx="8" fill="#f5f7f4"/>
+  <rect x="548" y="260" width="228" height="14" rx="7" fill="#0c192c"/>
+  <rect x="548" y="286" width="330" height="8" rx="4" fill="#50606a" fill-opacity=".55"/>
+  <rect x="504" y="360" width="250" height="186" rx="8" fill="#03a099"/>
+  <path d="M548 468h48l28-50 38 33 42-72 38 45" fill="none" stroke="#f5f7f4" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="790" y="360" width="244" height="186" rx="8" fill="#64b9b6"/>
+  <circle cx="912" cy="453" r="54" fill="none" stroke="#0c192c" stroke-width="14" stroke-dasharray="210 130" transform="rotate(-42 912 453)"/>
+  <circle cx="912" cy="453" r="10" fill="#0c192c"/>
+</svg>

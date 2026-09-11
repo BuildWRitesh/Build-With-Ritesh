@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Responsive website performance illustration</title>
+  <desc id="desc">Desktop, tablet and mobile frames share a fast flowing performance line.</desc>
+  <rect width="1200" height="760" fill="#202c3b"/>
+  <rect x="122" y="162" width="614" height="390" rx="16" fill="#0c192c" stroke="#64b9b6" stroke-width="3"/>
+  <rect x="170" y="210" width="518" height="278" rx="7" fill="#f5f7f4"/>
+  <path d="M220 420h112l42-88 62 120 82-164 48 74 82-38" fill="none" stroke="#03a099" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M220 446h330" stroke="#50606a" stroke-opacity=".4" stroke-width="9" stroke-linecap="round"/>
+  <path d="M356 580h146" stroke="#64b9b6" stroke-width="13" stroke-linecap="round"/>
+  <rect x="826" y="126" width="222" height="438" rx="24" fill="#0c192c" stroke="#64b9b6" stroke-width="3"/>
+  <rect x="856" y="184" width="162" height="280" rx="9" fill="#f5f7f4"/>
+  <path d="M888 390h38l22-54 30 67 22-40" fill="none" stroke="#03a099" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="937" cy="512" r="9" fill="#64b9b6"/>
+  <path d="M760 302c-60-42-86-86-112-140" fill="none" stroke="#03a099" stroke-width="7" stroke-linecap="round"/>
+  <path d="m638 174 10-20 20 9" fill="none" stroke="#03a099" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
