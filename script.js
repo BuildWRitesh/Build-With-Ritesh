@@ -4,6 +4,15 @@
   document.documentElement.classList.add('js');
   requestAnimationFrame(() => document.body?.classList.add('page-ready'));
 
+  const bootSequence = document.querySelector('.boot-sequence');
+  if (bootSequence) {
+    const completeBoot = () => {
+      bootSequence.classList.add('is-complete');
+      window.setTimeout(() => bootSequence.remove(), 260);
+    };
+    window.setTimeout(completeBoot, 760);
+  }
+
   const year = document.getElementById('year');
   if (year) year.textContent = String(new Date().getFullYear());
   const menuButton = document.querySelector('.menu-toggle');
@@ -171,6 +180,33 @@
   }
   document.fonts?.ready.then(() => ScrollTrigger.refresh());
   window.addEventListener('load', () => ScrollTrigger.refresh(), { once: true });
+})();
+
+// Small pointer responses reinforce the developer UI without changing layout.
+(() => {
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches || !matchMedia('(pointer: fine) and (hover: hover)').matches) return;
+  const magneticItems = document.querySelectorAll('.hero__actions a, .header-contact, .project__arrow');
+  magneticItems.forEach(item => {
+    item.addEventListener('pointermove', event => {
+      const rect = item.getBoundingClientRect();
+      const x = ((event.clientX - rect.left) / rect.width - .5) * 8;
+      const y = ((event.clientY - rect.top) / rect.height - .5) * 8;
+      item.style.translate = `${x}px ${y}px`;
+    }, { passive: true });
+    item.addEventListener('pointerleave', () => { item.style.translate = ''; });
+  });
+
+  document.querySelectorAll('.project__preview').forEach(preview => {
+    preview.addEventListener('pointermove', event => {
+      const rect = preview.getBoundingClientRect();
+      preview.style.setProperty('--project-shift-x', `${((event.clientX - rect.left) / rect.width - .5) * 7}px`);
+      preview.style.setProperty('--project-shift-y', `${((event.clientY - rect.top) / rect.height - .5) * 7}px`);
+    }, { passive: true });
+    preview.addEventListener('pointerleave', () => {
+      preview.style.removeProperty('--project-shift-x');
+      preview.style.removeProperty('--project-shift-y');
+    });
+  });
 })();
 
 // A small, real command interface. No evaluation or external commands run here.
