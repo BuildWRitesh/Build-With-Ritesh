@@ -1,256 +1,389 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Build With Ritesh | Portfolio</title>
-
-<link rel="icon" href="Build With Ritesh.png">
-
-<style>
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Inter,Arial,sans-serif;
-}
-
-body{
-
-    height:100vh;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    overflow:hidden;
-
-    background:#08111F;
-
-    background-image:
-    radial-gradient(circle at top right,#00B8C655,transparent 35%),
-    radial-gradient(circle at bottom left,#00B8C633,transparent 30%);
-
-}
-
-.card{
-
-    width:90%;
-    max-width:760px;
-
-    padding:60px;
-
-    text-align:center;
-
-    border-radius:28px;
-
-    background:rgba(12,22,45,.75);
-
-    border:1px solid rgba(0,184,198,.18);
-
-    backdrop-filter:blur(18px);
-
-    box-shadow:
-    0 0 45px rgba(0,184,198,.18),
-    0 20px 50px rgba(0,0,0,.45);
-
-}
-
-.logo{
-
-    width:120px;
-
-    border-radius:50%;
-
-    border:4px solid #00B8C6;
-
-    box-shadow:0 0 35px rgba(0,184,198,.45);
-
-    margin-bottom:30px;
-
-}
-
-h4{
-
-    color:#00B8C6;
-
-    letter-spacing:3px;
-
-    margin-bottom:12px;
-
-    text-transform:uppercase;
-
-}
-
-h1{
-
-    color:white;
-
-    font-size:52px;
-
-    margin-bottom:18px;
-
-}
-
-span{
-
-    color:#00B8C6;
-
-}
-
-p{
-
-    color:#C7D2E0;
-
-    font-size:18px;
-
-    line-height:1.9;
-
-}
-
-.buttons{
-
-    margin-top:40px;
-
-}
-
-.btn{
-
-    display:inline-block;
-
-    padding:15px 35px;
-
-    margin:10px;
-
-    border-radius:50px;
-
-    text-decoration:none;
-
-    font-weight:bold;
-
-    transition:.35s;
-
-}
-
-.primary{
-
-    background:#00B8C6;
-
-    color:#08111F;
-
-}
-
-.primary:hover{
-
-    transform:translateY(-5px);
-
-    box-shadow:0 0 25px #00B8C6;
-
-}
-
-.secondary{
-
-    border:2px solid #00B8C6;
-
-    color:#00B8C6;
-
-}
-
-.secondary:hover{
-
-    background:#00B8C6;
-
-    color:#08111F;
-
-}
-
-footer{
-
-    margin-top:45px;
-
-    color:#7E8DA3;
-
-    font-size:15px;
-
-}
-
-@media(max-width:700px){
-
-.logo{
-
-width:90px;
-
-}
-
-h1{
-
-font-size:38px;
-
-}
-
-.card{
-
-padding:40px 25px;
-
-}
-
-p{
-
-font-size:16px;
-
-}
-
-}
-
-</style>
-
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Siya Gupta — Media relations, social media, and content strategy portfolio.">
+  <meta name="theme-color" content="#f3efe7">
+  <title>Siya Gupta — Creative Communication Portfolio</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Manrope:wght@400;500;600;700&family=Syne:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script>document.documentElement.classList.add('js');</script>
 </head>
-
 <body>
+  <div class="loader" aria-hidden="true">
+    <div class="loader__top"><span>SIYA®</span><span class="loader__count">00</span></div>
+    <div class="loader__line"><span></span></div>
+    <p>Ideas into impact</p>
+  </div>
 
-<div class="card">
+  <div class="noise" aria-hidden="true"></div>
+  <div class="cursor" aria-hidden="true"><span>View</span></div>
 
-<img src="logo.png" class="logo" alt="Build With Ritesh Logo">
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="Siya Gupta home">
+      <span class="brand__mark">SG</span>
+      <span>Siya Gupta</span>
+    </a>
+    <nav class="desktop-nav" aria-label="Primary navigation">
+      <a href="#about">About</a>
+      <a href="#expertise">Expertise</a>
+      <a href="#work">Work</a>
+      <a href="#impact">Impact</a>
+      <a href="#journey">Journey</a>
+    </nav>
+    <div class="header-actions">
+      <a class="header-resume" href="assets/Siya_Gupta_ATS_Resume.pdf" download>Résumé <span>↓</span></a>
+      <a class="availability" href="#contact"><span></span> Let’s talk</a>
+    </div>
+    <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span>
+    </button>
+  </header>
 
-<h4>WELCOME TO MY PORTFOLIO</h4>
+  <div class="mobile-menu" aria-hidden="true">
+    <nav aria-label="Mobile navigation">
+      <a href="#about"><span>01</span>About</a>
+      <a href="#expertise"><span>02</span>Expertise</a>
+      <a href="#work"><span>03</span>Work</a>
+      <a href="#impact"><span>04</span>Impact</a>
+      <a href="#journey"><span>05</span>Journey</a>
+      <a href="#contact"><span>06</span>Contact</a>
+      <a href="assets/Siya_Gupta_ATS_Resume.pdf" download><span>07</span>Résumé ↓</a>
+    </nav>
+  </div>
 
-<h1>Hi, I'm <span>Ritesh Singh</span></h1>
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero__eyebrow reveal-row">
+        <p>Creative communication portfolio</p>
+        <p>Delhi, India <span>•</span> 2026</p>
+      </div>
 
-<p>
+      <h1 id="hero-title" class="hero__title" aria-label="Siya Gupta">
+        <span class="title-line"><span>SIYA</span></span>
+        <span class="title-line title-line--offset"><span>GUPTA<span class="title-dot">.</span></span></span>
+      </h1>
 
-Full Stack Developer focused on building fast,
-modern and scalable web applications.
+      <div class="hero__lower">
+        <div class="hero__role reveal-up">
+          <span class="hero__role-index">01—03</span>
+          <p>Media Relations<br>Social Media<br>Content Strategy</p>
+        </div>
+        <div class="hero__statement reveal-up">
+          <p>I turn research and ideas into communication that makes people <em>stop, notice</em> and <em>connect.</em></p>
+          <a class="circle-link magnetic" href="#impact" aria-label="Explore my work">
+            <span>Explore<br>my work</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </div>
 
-<br><br>
+      <div class="hero__ticker" aria-hidden="true">
+        <div class="ticker-track">
+          <span>Media Relations</span><i>✦</i><span>Content Strategy</span><i>✦</i><span>Social Media</span><i>✦</i><span>Storytelling</span><i>✦</i>
+          <span>Media Relations</span><i>✦</i><span>Content Strategy</span><i>✦</i><span>Social Media</span><i>✦</i><span>Storytelling</span><i>✦</i>
+        </div>
+      </div>
+    </section>
 
-🚀 My portfolio is currently under development.
-Stay tuned for amazing projects and innovative solutions.
+    <section id="about" class="about section-pad">
+      <div class="section-label reveal-up">
+        <span>01</span>
+        <p>About me</p>
+      </div>
+      <div class="about__grid">
+        <p class="about__lead split-text">A communicator with a creative mindset and a curiosity for how stories move.</p>
+        <a class="about__portrait cursor-view reveal-up" href="https://www.instagram.com/p/DZ4gCDhjzdY/" target="_blank" rel="noreferrer" aria-label="View Siya's Instagram post">
+          <img src="assets/siya-portrait.webp" alt="Siya Gupta smiling while holding a hand-painted ceramic piece">
+          <span><b>Siya, off the clock</b><i>Instagram ↗</i></span>
+        </a>
+        <div class="about__copy reveal-up">
+          <p>I’m Siya, a media and communication professional with hands-on experience across social media management, content planning, media relations and outreach.</p>
+          <p>From creating social-first content for the separate BuzzBollywoodd and SpotlightersPost Bollywood pages to building relationships with journalists and influencers, I bring equal parts clarity, curiosity and care to every brief.</p>
+          <a class="text-link" href="#journey">More about my journey <span>↘</span></a>
+        </div>
+      </div>
+      <div class="approach reveal-up">
+        <span>My process</span>
+        <ol>
+          <li><b>01</b>Research</li>
+          <li><b>02</b>Ideate</li>
+          <li><b>03</b>Create</li>
+          <li><b>04</b>Communicate</li>
+          <li><b>05</b>Learn</li>
+        </ol>
+      </div>
+    </section>
 
-</p>
+    <section id="expertise" class="expertise section-pad section-dark">
+      <div class="section-label section-label--light reveal-up">
+        <span>02</span>
+        <p>What I do</p>
+      </div>
+      <div class="expertise__intro">
+        <h2 class="split-text">Strategy in mind.<br><em>Story at heart.</em></h2>
+        <p class="reveal-up">A cross-functional toolkit for thoughtful, audience-first communication.</p>
+      </div>
+      <div class="services">
+        <article class="service-card reveal-card">
+          <div class="service-card__top"><span>01</span><span class="service-icon">↗</span></div>
+          <h3>Media<br>Relations</h3>
+          <p>Researching the right voices and building purposeful conversations around a story.</p>
+          <ul><li>Journalist outreach</li><li>Influencer outreach</li><li>Media databases</li><li>Message drafting</li></ul>
+        </article>
+        <article class="service-card service-card--accent reveal-card">
+          <div class="service-card__top"><span>02</span><span class="service-icon">✦</span></div>
+          <h3>Social<br>Media</h3>
+          <p>Connecting every post to a clear platform, audience and communication objective.</p>
+          <ul><li>Content planning</li><li>Audience engagement</li><li>Campaign execution</li><li>Performance thinking</li></ul>
+        </article>
+        <article class="service-card reveal-card">
+          <div class="service-card__top"><span>03</span><span class="service-icon">↗</span></div>
+          <h3>Content<br>Strategy</h3>
+          <p>Turning ideas into accessible, human content with a strong message and point of view.</p>
+          <ul><li>Content writing</li><li>Creative ideation</li><li>Canva design</li><li>Video editing</li></ul>
+        </article>
+      </div>
+      <div class="tools-line reveal-up">
+        <span>Tools I work with</span>
+        <div><b>Canva</b><b>Claude</b><b>NotebookLM</b><b>Gemini</b><b>Grok</b></div>
+      </div>
+    </section>
 
-<div class="buttons">
+    <section id="work" class="work section-pad">
+      <div class="section-label reveal-up">
+        <span>03</span>
+        <p>Selected work</p>
+      </div>
+      <div class="work__intro">
+        <h2 class="split-text">Research made <em>scroll-worthy.</em></h2>
+        <div class="work__intro-copy reveal-up">
+          <span>Content series / Fashion</span>
+          <p>Social-first carousel concepts that turn trend research into structured, visually engaging stories.</p>
+        </div>
+      </div>
 
-<a href="https://github.com/BuildWRitesh" class="btn primary">
-GitHub
-</a>
+      <article class="work-series">
+        <header class="work-series__header reveal-up">
+          <div><span>Series 01</span><h3>Summer 2026 trend forecast</h3></div>
+          <p>Research · Copy · Visual direction</p>
+        </header>
+        <div class="work-gallery work-gallery--four" aria-label="Summer 2026 trend forecast carousel designs">
+          <figure class="work-card cursor-view reveal-card">
+            <img src="assets/work-trend-cover.jpeg" alt="Cover design asking what will be big in summer 2026">
+            <figcaption><span>01</span>Opening hook</figcaption>
+          </figure>
+          <figure class="work-card cursor-view reveal-card">
+            <img src="assets/work-trend-colours.jpeg" alt="Fashion colour forecast featuring ice blue and sunshine yellow">
+            <figcaption><span>02</span>Colour story</figcaption>
+          </figure>
+          <figure class="work-card cursor-view reveal-card">
+            <img src="assets/work-trend-menswear.jpeg" alt="Menswear forecast featuring utility fits and denim shirts">
+            <figcaption><span>03</span>Menswear</figcaption>
+          </figure>
+          <figure class="work-card cursor-view reveal-card">
+            <img src="assets/work-trend-womenswear.jpeg" alt="Womenswear forecast featuring acid wash and coordinated sets">
+            <figcaption><span>04</span>Womenswear</figcaption>
+          </figure>
+        </div>
+      </article>
 
-<a href="https://www.linkedin.com/in/buildwithritesh/" class="btn secondary">
-LinkedIn
-</a>
+      <article class="work-series work-series--fabric">
+        <header class="work-series__header reveal-up">
+          <div><span>Series 02</span><h3>Streetwear fabrics to watch</h3></div>
+          <p>Educational carousel · SS26</p>
+        </header>
+        <div class="work-gallery work-gallery--three" aria-label="Streetwear fabric education carousel designs">
+          <figure class="work-card cursor-view reveal-card">
+            <img src="assets/work-fabric-cover.jpeg" alt="Cover for a streetwear fabrics to watch in SS26 carousel">
+            <figcaption><span>01</span>Series cover</figcaption>
+          </figure>
+          <figure class="work-card cursor-view reveal-card">
+            <img src="assets/work-fabric-jersey.jpeg" alt="Educational design about heavy single jersey fabric">
+            <figcaption><span>02</span>Single jersey</figcaption>
+          </figure>
+          <figure class="work-card cursor-view reveal-card">
+            <img src="assets/work-fabric-waffle.jpeg" alt="Educational design about waffle fabric">
+            <figcaption><span>03</span>Waffle fabric</figcaption>
+          </figure>
+        </div>
+      </article>
+    </section>
 
-</div>
+    <section id="impact" class="impact section-pad">
+      <div class="section-label reveal-up">
+        <span>04</span>
+        <p>Social media impact</p>
+      </div>
+      <div class="impact__heading">
+        <h2 class="split-text">One month. <em>Millions reached.</em></h2>
+        <div class="impact__note reveal-up">
+          <span>Two independent Bollywood pages</span>
+          <p>BuzzBollywoodd and SpotlightersPost are separate Instagram pages covering Bollywood news and entertainment updates. The analytics below belong to BuzzBollywoodd: in its first 30 days, the new page generated 2.03M views and reached 1.62M accounts.</p>
+          <div class="impact__profiles" aria-label="Instagram pages">
+            <a class="impact__profile" href="https://www.instagram.com/buzzbollywoodd/?hl=en" target="_blank" rel="noreferrer">@buzzbollywoodd <b>↗</b></a>
+            <a class="impact__profile" href="https://www.instagram.com/spotlighterspost/" target="_blank" rel="noreferrer">@spotlighterspost <b>↗</b></a>
+          </div>
+        </div>
+      </div>
 
-<footer>
+      <div class="brand-thumbnail cursor-view reveal-up" aria-label="BuzzBollywoodd and SpotlightersPost are separate Bollywood update pages">
+        <img class="brand-thumbnail__bg" src="assets/buzz-spotlighters-case-study-bg.png" alt="Cinematic red carpet and social growth visual">
+        <div class="brand-thumbnail__logos">
+          <a class="brand-thumbnail__page" href="https://www.instagram.com/buzzbollywoodd/?hl=en" target="_blank" rel="noreferrer" aria-label="Visit BuzzBollywoodd on Instagram">
+            <span><img src="assets/buzzbollywoodd-logo.jpg" alt="BuzzBollywoodd logo"></span>
+            <span><small>Page 01</small><b>@buzzbollywoodd</b></span>
+          </a>
+          <a class="brand-thumbnail__page" href="https://www.instagram.com/spotlighterspost/" target="_blank" rel="noreferrer" aria-label="Visit SpotlightersPost on Instagram">
+            <span><img src="assets/spotlighterspost-logo.jpg" alt="SpotlightersPost logo"></span>
+            <span><small>Page 02</small><b>@spotlighterspost</b></span>
+          </a>
+        </div>
+        <div class="brand-thumbnail__copy">
+          <p>BuzzBollywoodd analytics · First 30 days</p>
+          <strong>0 → 2M<br><em>views.</em></strong>
+          <a href="https://www.instagram.com/buzzbollywoodd/?hl=en" target="_blank" rel="noreferrer">View BuzzBollywoodd ↗</a>
+        </div>
+      </div>
 
-© 2026 Build With Ritesh • Crafted with ❤️
+      <div class="case-study">
+        <div class="case-study__visual cursor-view">
+          <div class="phone phone--back" data-speed="0.94">
+            <img src="assets/insights-35k.jpeg" alt="Instagram analytics showing 35,687 views in a 30-day period" loading="lazy">
+          </div>
+          <div class="phone phone--middle" data-speed="1.03">
+            <img src="assets/insights-288k.jpeg" alt="Instagram analytics showing 288,024 views and 129,419 accounts reached" loading="lazy">
+          </div>
+          <div class="phone phone--front" data-speed="0.98">
+            <img src="assets/insights-2m.png" alt="Instagram insights showing 2,039,747 views and 1,620,558 accounts reached in 30 days" loading="lazy">
+          </div>
+          <span class="visual-caption">BuzzBollywoodd / 30-day analytics</span>
+        </div>
+        <div class="case-study__stats">
+          <div class="stat reveal-up">
+            <span>Views</span>
+            <strong data-count="2039747">2,039,747</strong>
+            <p>across all content<br>in 30 days</p>
+          </div>
+          <div class="stat reveal-up">
+            <span>Accounts reached</span>
+            <strong data-count="1620558">1,620,558</strong>
+            <p>unique accounts shown<br>in platform analytics</p>
+          </div>
+          <div class="stat stat--small reveal-up">
+            <span>Discovery</span>
+            <strong data-count="93.8" data-suffix="%">93.8%</strong>
+            <p>of views came from<br>non-followers</p>
+          </div>
+          <div class="stat stat--small reveal-up">
+            <span>Interactions</span>
+            <strong data-count="98809">98,809</strong>
+            <p>plus <b>597 net followers</b><br>in the same period</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-</footer>
+    <section id="journey" class="journey section-pad section-coral">
+      <div class="section-label reveal-up">
+        <span>05</span>
+        <p>My journey</p>
+      </div>
+      <div class="journey__header">
+        <h2 class="split-text">Built by doing.</h2>
+        <p class="reveal-up">A progression shaped by communication, curiosity and hands-on learning.</p>
+      </div>
+      <div class="timeline">
+        <article class="timeline__item reveal-up">
+          <div class="timeline__meta"><span>2025</span><span>01</span></div>
+          <div class="timeline__role"><h3>Social Media Intern</h3><p>ConvergeX</p></div>
+          <p class="timeline__desc">Supported content creation and day-to-day social media execution.</p>
+        </article>
+        <article class="timeline__item reveal-up">
+          <div class="timeline__meta"><span>2025</span><span>02</span></div>
+          <div class="timeline__role"><h3>Social Media Executive</h3><p>Uniqstop Pvt. Ltd.</p></div>
+          <p class="timeline__desc">Managed social content, content planning and audience engagement.</p>
+        </article>
+        <article class="timeline__item reveal-up">
+          <div class="timeline__meta"><span>Now</span><span>03</span></div>
+          <div class="timeline__role"><h3>Media Relations Executive</h3><p>Avadeti Media</p></div>
+          <p class="timeline__desc">Media research, journalist and influencer outreach, stakeholder communication and content strategy.</p>
+        </article>
+        <article class="timeline__item reveal-up">
+          <div class="timeline__meta"><span>Now</span><span>04</span></div>
+          <div class="timeline__role"><h3>Social Media &amp; Content</h3><p>BuzzBollywoodd + SpotlightersPost · Separate pages</p></div>
+          <p class="timeline__desc">Creates Bollywood-update content for both independent pages and contributed to BuzzBollywoodd crossing one million views and one million accounts reached in its first month.</p>
+        </article>
+      </div>
+    </section>
 
-</div>
+    <section class="credentials section-pad">
+      <div class="section-label reveal-up">
+        <span>06</span>
+        <p>Beyond the desk</p>
+      </div>
+      <div class="credentials__grid">
+        <div class="credentials__intro">
+          <h2 class="split-text">Words, media &amp; <em>real-world experiences.</em></h2>
+          <p class="reveal-up">My education sharpens my relationship with language. Media rooms, stages and community experiences make it practical.</p>
+        </div>
+        <div class="credentials__lists">
+          <div class="credential-group reveal-up">
+            <span>Education</span>
+            <article><h3>B.A. (Hons.) English</h3><p>DU SOL · Expected 2027</p></article>
+            <article><h3>Diploma in Journalism &amp; Mass Communication</h3><p>NIMC · 2025</p></article>
+            <article><h3>Class XII · CBSE</h3><p>91.6%</p></article>
+          </div>
+          <div class="credential-group reveal-up">
+            <span>Media exposure</span>
+            <article><h3>Aap Ki Adalat</h3><p>India TV · Rajat Sharma</p></article>
+            <article><h3>Newsroom visit</h3><p>The Lallantop</p></article>
+            <article><h3>Nationalist Collective</h3><p>Republic Bharat</p></article>
+          </div>
+          <div class="credential-group reveal-up">
+            <span>Recognition</span>
+            <article><h3>Young Student Excellence Award</h3><p>Dainik Jagran</p></article>
+            <article><h3>Certificate of Distinction</h3><p>FEA NGO</p></article>
+            <article><h3>Debate &amp; Extempore</h3><p>Hindi and English</p></article>
+          </div>
+        </div>
+      </div>
+    </section>
 
+    <section id="contact" class="contact section-dark">
+      <div class="contact__orb" aria-hidden="true"></div>
+      <div class="section-label section-label--light reveal-up">
+        <span>07</span>
+        <p>Let’s connect</p>
+      </div>
+      <div class="contact__main">
+        <p class="reveal-up">Have a story to shape?</p>
+        <h2 class="split-text">Let’s make it <em>matter.</em></h2>
+        <a class="contact__email magnetic" href="mailto:guptasiya0520@gmail.com">
+          <span>guptasiya0520@gmail.com</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
+        </a>
+        <div class="contact__actions reveal-up">
+          <a href="mailto:guptasiya0520@gmail.com">Start a conversation <span>↗</span></a>
+          <a href="assets/Siya_Gupta_ATS_Resume.pdf" download>Download résumé <span>↓</span></a>
+          <a href="tel:+919315233248">Call Siya <span>↗</span></a>
+        </div>
+      </div>
+      <footer>
+        <div><span>Based in</span><p>Delhi, India</p></div>
+        <div><span>Call</span><p><a href="tel:+919315233248">+91 93152 33248</a></p></div>
+        <div><span>Status</span><p>Open to opportunities</p></div>
+        <p class="footer__credit">© <span id="year">2026</span> Siya Gupta</p>
+      </footer>
+    </section>
+  </main>
+
+  <script src="assets/gsap.min.js"></script>
+  <script src="assets/ScrollTrigger.min.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
