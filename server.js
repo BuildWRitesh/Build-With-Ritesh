@@ -13,7 +13,7 @@ const publicFiles = new Set([
   '.nojekyll',
   'data/instagram-videos.json'
 ]);
-const publicPrefixes = ['assets/', 'blog/', 'instagram-videos/', 'admin/'];
+const publicPrefixes = ['assets/', 'blog/', 'instagram-videos/', 'admin/', 'services/', 'contact/'];
 const mimeTypes = {
   '.html': 'text/html; charset=utf-8',
   '.css': 'text/css; charset=utf-8',

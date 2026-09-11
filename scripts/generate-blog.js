@@ -29,11 +29,11 @@ const assetSrc = (value, prefix = '') => {
 function renderHeader(prefix, current = 'Blog') {
   const links = [
     ['About', `${prefix}#about`], ['Experience', `${prefix}#experience`], ['Expertise', `${prefix}#expertise`],
-    ['Portfolio', `${prefix}#work`], ['Blog', `${prefix}blog/`], ['Instagram', `${prefix}instagram-videos/`], ['Contact', `${prefix}#contact`]
+    ['Services', `${prefix}services/`], ['Portfolio', `${prefix}#work`], ['Blog', `${prefix}blog/`], ['Instagram', `${prefix}instagram-videos/`], ['Contact', `${prefix}contact/`]
   ];
   const desktop = links.map(([label, href]) => `<a href="${href}"${label === current ? ' aria-current="page"' : ''}>${label}</a>`).join('');
   const mobile = links.map(([label, href], index) => `<a href="${href}"${label === current ? ' aria-current="page"' : ''}><span>${String(index + 1).padStart(2, '0')}</span>${label}</a>`).join('');
-  return `<header class="site-header"><div class="header-inner"><a class="brand" href="${prefix}" aria-label="Ritesh Singh home"><img class="brand__logo" src="${prefix}assets/branding/ritesh-singh-logo.png" alt="" width="48" height="48" decoding="async"><span class="brand__copy">Ritesh Singh<small>Build With Ritesh</small></span></a><nav class="desktop-nav" aria-label="Primary navigation">${desktop}</nav><a class="header-contact" href="${prefix}#contact">Let’s connect <span aria-hidden="true">↗</span></a><button class="menu-toggle" type="button" aria-label="Open menu" aria-controls="mobile-menu" aria-expanded="false" hidden><span></span><span></span></button></div></header><dialog class="mobile-menu" id="mobile-menu" aria-label="Navigation menu"><div class="mobile-menu__top"><span class="mobile-menu__brand"><img src="${prefix}assets/branding/ritesh-singh-logo.png" alt="" width="42" height="42" decoding="async"><span>Build With Ritesh</span></span><button class="menu-close" type="button" aria-label="Close menu">Close <span aria-hidden="true">×</span></button></div><nav aria-label="Mobile navigation">${mobile}</nav><a class="text-link" href="${prefix}assets/resume/Ritesh_Singh_Resume.pdf" download="Ritesh_Singh_Resume.pdf">Download Resume <span aria-hidden="true">↓</span></a></dialog><div class="custom-cursor" aria-hidden="true"><span class="custom-cursor__ring"></span><span class="custom-cursor__dot"></span></div>`;
+  return `<header class="site-header"><div class="header-inner"><a class="brand" href="${prefix}" aria-label="Ritesh Singh home"><img class="brand__logo" src="${prefix}assets/branding/ritesh-singh-logo.png" alt="" width="48" height="48" decoding="async"><span class="brand__copy">Ritesh Singh<small>Build With Ritesh</small></span></a><nav class="desktop-nav" aria-label="Primary navigation">${desktop}</nav><div class="header-actions"><a class="subtle-admin-link" href="${prefix}admin/" aria-label="Admin Login" title="Admin">/admin</a><a class="header-contact" href="${prefix}contact/">Start a Project →</a></div><button class="menu-toggle" type="button" aria-label="Open menu" aria-controls="mobile-menu" aria-expanded="false" hidden><span></span><span></span></button></div></header><dialog class="mobile-menu" id="mobile-menu" aria-label="Navigation menu"><div class="mobile-menu__top"><span class="mobile-menu__brand"><img src="${prefix}assets/branding/ritesh-singh-logo.png" alt="" width="42" height="42" decoding="async"><span>Build With Ritesh</span></span><button class="menu-close" type="button" aria-label="Close menu">Close <span aria-hidden="true">×</span></button></div><nav aria-label="Mobile navigation">${mobile}</nav><div class="mobile-menu-footer"><a class="subtle-admin-link" href="${prefix}admin/" aria-label="Admin Login">/admin</a><a class="text-link" href="${prefix}assets/resume/Ritesh_Singh_Resume.pdf" download="Ritesh_Singh_Resume.pdf">Download Resume <span aria-hidden="true">↓</span></a></div></dialog><div class="custom-cursor" aria-hidden="true"><span class="custom-cursor__ring"></span><span class="custom-cursor__dot"></span></div>`;
 }
 
 function renderFooter(prefix) {
@@ -139,6 +139,18 @@ function generateBlogPages({ root = defaultRoot } = {}) {
   }
   const publicPosts = published.map(({ contentHtml, ...post }) => ({ ...post, readingMinutes: readingMinutes(contentHtml) }));
   fs.writeFileSync(path.join(outputRoot, 'posts.json'), `${JSON.stringify(publicPosts, null, 2)}\n`, 'utf8');
+  
+  const sitemapUrls = [
+    `${siteOrigin}/`,
+    `${siteOrigin}/blog/`,
+    `${siteOrigin}/instagram-videos/`,
+    `${siteOrigin}/services/`,
+    `${siteOrigin}/contact/`,
+    ...published.map(post => `${siteOrigin}/blog/${post.slug}/`)
+  ];
+  const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${sitemapUrls.map(url => `  <url><loc>${url}</loc></url>`).join('\n')}\n</urlset>\n`;
+  fs.writeFileSync(path.join(root, 'sitemap.xml'), sitemapXml, 'utf8');
+
   return published.map(post => post.slug);
 }
 
@@ -147,4 +159,4 @@ if (require.main === module) {
   console.log(`Generated ${slugs.length} blog article page${slugs.length === 1 ? '' : 's'}.`);
 }
 
-module.exports = { escapeHtml, sanitizeContentHtml, renderArticle, generateBlogPages, siteOrigin };
+module.exports = { escapeHtml, sanitizeContentHtml, renderArticle, generateBlogPages, renderHeader, renderFooter, siteOrigin };

@@ -12,6 +12,8 @@ const productionFiles = [
   'blog',
   'instagram-videos',
   'admin',
+  'services',
+  'contact',
   'data/instagram-videos.json',
   'assets/blog',
   'assets/branding',
@@ -38,6 +40,7 @@ const optionalFiles = ['robots.txt', 'sitemap.xml', '.nojekyll', 'site.webmanife
 // production allowlist is copied. This keeps static hosting and the admin API
 // on the same deterministic content source.
 generateBlogPages({ root: projectRoot });
+require('./scripts/generate-services').generateServicePages();
 
 if (path.dirname(outputDirectory) !== projectRoot || path.basename(outputDirectory) !== 'dist') {
   throw new Error('Refusing to build outside the project dist directory.');

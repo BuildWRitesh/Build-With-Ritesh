@@ -332,12 +332,13 @@
     if (!link || link.hasAttribute('download') || link.target || link.closest('[contenteditable]')) return;
     const url = new URL(link.href, location.href);
     if (url.origin !== location.origin || url.pathname === location.pathname || /\.[a-z0-9]+$/i.test(url.pathname)) return;
-    if (!/^\/(?:blog(?:\/|$)|instagram-videos(?:\/|$)|$)/.test(url.pathname)) return;
+    if (url.pathname.startsWith('/api/')) return;
     event.preventDefault();
     if (navigating) return;
     navigating = true;
+    transition.setAttribute('data-route', '$ loading ' + url.pathname + '...');
     transition.classList.add('is-active');
-    setTimeout(() => location.assign(url.href), 300);
+    setTimeout(() => location.assign(url.href), 450);
   });
   addEventListener('pageshow', () => { navigating = false; transition.classList.remove('is-active'); });
 

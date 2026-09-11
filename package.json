@@ -7,7 +7,7 @@
     "admin": "node admin-server.js",
     "admin:hash": "node scripts/create-admin-hash.js",
     "check": "node scripts/validate.js",
-    "build": "node scripts/generate-blog.js && node scripts/validate.js && node build.js",
+    "build": "node scripts/generate-blog.js && node scripts/generate-services.js && node scripts/validate.js && node build.js",
     "preview": "node server.js --preview",
     "test": "node scripts/validate.js --http"
   },
