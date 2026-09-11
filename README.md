@@ -1,4 +1,4 @@
-# Siya Gupta — Portfolio Website
+# Ritesh Singh — Portfolio Website
 
 A responsive, single-page portfolio built with plain HTML, CSS, JavaScript, GSAP and ScrollTrigger.
 
