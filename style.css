@@ -633,3 +633,16 @@ body.page-ready .section-progress { display: flex; opacity: .9; transform: none;
 @keyframes developer-boot { 0% { opacity: 0; transform: translateY(5px); } 35% { opacity: 1; } 100% { opacity: 1; transform: none; } }
 @media (pointer:fine) and (hover:hover) { .custom-cursor.is-code::after { content: '</>'; position: absolute; inset: 0; display: grid; place-items: center; color: var(--brand-primary); font: 8px var(--mono-font); } .custom-cursor.is-code .custom-cursor__dot { opacity: 0; } }
 @media (max-width:700px) { .hero__eyebrow::after { display: none; } }
+/* Editorial technical details, sized to retain the existing reading rhythm. */
+.code-caption { display: flex; justify-content: space-between; gap: 12px; margin-bottom: 25px; padding-bottom: 14px; border-bottom: 1px solid rgba(178,203,200,.3); font: 9px var(--mono-font); color: var(--brand-on-dark-muted); }
+.code-workflow { display: flex; align-items: center; justify-content: space-between; margin: 20px 0; padding: 18px 0; border-block: 1px solid rgba(178,203,200,.22); }
+.code-workflow code { color: var(--brand-on-dark-muted); font: 12px/1.8 var(--mono-font); }
+.code-workflow code span { color: var(--brand-highlight); }
+.code-bracket { color: var(--brand-highlight); opacity: .4; font: 75px/1 var(--mono-font); transform: translateY(var(--bracket-shift,0px)); transition: transform .3s ease-out; }
+.skill-token { display: inline-block; padding: 6px 9px; margin: 3px 3px 3px 0; border: 1px solid rgba(178,203,200,.3); font: 11px/1.5 var(--mono-font); transition: background .2s, border-color .2s; }
+.skill-token:hover { background: rgba(100,185,182,.12); border-color: var(--brand-highlight); }
+.project__meta .eyebrow { font-family: var(--mono-font); letter-spacing: .08em; }
+.hero__perspective { position: relative; overflow: hidden; }
+.hero__perspective::after { content:''; position:absolute; left:0; right:0; top:var(--scan-position,0%); height:1px; background:var(--brand-highlight); opacity:.15; pointer-events:none; transition:top .5s ease-out; }
+@media(max-width:700px) { .code-caption { font-size:8px; } .code-workflow code { font-size:11px; } .code-bracket { font-size:55px; } .skill-token { font-size:10px; padding:5px 7px; } }
+@media(prefers-reduced-motion:reduce) { .code-bracket,.hero__perspective::after,.skill-token { transition:none; } }

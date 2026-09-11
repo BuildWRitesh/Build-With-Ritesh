@@ -206,3 +206,19 @@
     button.addEventListener('pointerleave', () => cursor?.classList.remove('is-code'));
   });
 })();
+
+// Pointer feedback is confined to a small decorative panel and stops on touch.
+(() => {
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)');
+  const fine = matchMedia('(pointer: fine) and (hover: hover)');
+  const panel = document.querySelector('.hero__perspective');
+  if (!panel) return;
+  panel.addEventListener('pointermove', event => {
+    if (reduce.matches || !fine.matches) return;
+    const rect = panel.getBoundingClientRect();
+    const ratio = Math.max(0, Math.min(1,(event.clientY-rect.top)/rect.height));
+    panel.style.setProperty('--scan-position', `${ratio*100}%`);
+    panel.style.setProperty('--bracket-shift', `${(ratio-.5)*10}px`);
+  }, {passive:true});
+  panel.addEventListener('pointerleave', () => { panel.style.removeProperty('--scan-position'); panel.style.removeProperty('--bracket-shift'); });
+})();
