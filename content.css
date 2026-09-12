@@ -199,3 +199,16 @@
   .social-card__media { aspect-ratio: 4/5; }
 }
 @media (pointer:coarse),(prefers-reduced-motion:reduce) { .article-card:hover,.social-card:hover { transform: none; } }
+
+/* ---- Contact page layout (contact/index.html) ---- */
+.inquiry-layout { display: grid; grid-template-columns: 1fr 1.7fr; gap: clamp(40px,7vw,100px); padding: clamp(60px,8vw,100px) 0 clamp(70px,10vw,130px); align-items: start; }
+.inquiry-layout > aside { position: sticky; top: 110px; }
+.inquiry-layout > aside h2 { margin: 0 0 18px; font-family: var(--display-font); font-size: clamp(30px,3.5vw,46px); letter-spacing: -.055em; line-height: 1.04; }
+.inquiry-layout > aside > p { margin: 0 0 20px; color: var(--brand-muted); font-size: 15px; line-height: 1.65; }
+.inquiry-layout > aside .text-link { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; font-size: 14px; color: var(--brand-accent-ink); }
+.inquiry-form-shell { background: var(--brand-primary); color: var(--brand-background); padding: clamp(28px,4vw,52px); border: 1px solid rgba(12,25,44,.18); border-radius: 6px; }
+.inquiry-form-shell .contact-form { padding: 0; border: none; background: transparent; margin-top: 0; }
+.inquiry-form-shell .contact-form__intro { padding-bottom: 20px; border-bottom: 1px solid rgba(178,203,200,.25); margin-bottom: 4px; }
+.inquiry-form-shell .budget-note { display: block; margin-top: 6px; color: var(--brand-on-dark-muted); font-size: 11px; }
+@media (max-width: 900px) { .inquiry-layout { grid-template-columns: 1fr; gap: 36px; } .inquiry-layout > aside { position: static; } }
+@media (max-width: 700px) { .inquiry-layout { padding-block: 44px 68px; } .inquiry-form-shell { padding: 24px 18px; } }
