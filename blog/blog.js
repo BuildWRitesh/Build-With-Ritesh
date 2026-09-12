@@ -24,6 +24,11 @@
     return new Intl.DateTimeFormat('en-IN', { day: '2-digit', month: 'short', year: 'numeric' }).format(date);
   };
   const show = (element, visible) => { element.hidden = !visible; };
+  const fetchWithTimeout = (url, options = {}, timeout = 6000) => {
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), timeout);
+    return fetch(url, { ...options, signal: controller.signal }).finally(() => clearTimeout(timer));
+  };
   const revealCards = () => {
     const cards = [...list.querySelectorAll('.reveal-content')];
     if (!('IntersectionObserver' in window)) { cards.forEach(card => card.classList.add('is-visible')); return; }
@@ -107,8 +112,8 @@
     show(loading, true); show(error, false); show(empty, false); show(list, false);
     if (resultStatus) resultStatus.textContent = '';
     try {
-      let response = await fetch('/api/posts?status=published', { headers: { Accept: 'application/json' }, cache: 'no-store' });
-      if (!response.ok) response = await fetch(fallbackUrl, { headers: { Accept: 'application/json' }, cache: 'no-store' });
+      let response = await fetchWithTimeout('/api/posts?status=published', { headers: { Accept: 'application/json' }, cache: 'no-store' }).catch(() => null);
+      if (!response?.ok) response = await fetchWithTimeout(fallbackUrl, { headers: { Accept: 'application/json' }, cache: 'no-store' });
       if (!response.ok) throw new Error(`Unable to load articles (${response.status})`);
       const payload = await response.json();
       const candidate = Array.isArray(payload) ? payload : payload.posts;

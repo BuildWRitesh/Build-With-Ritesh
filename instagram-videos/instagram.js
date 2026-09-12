@@ -10,6 +10,11 @@
 
   const fallbackUrl = '../data/instagram-videos.json';
   const show = (element, visible) => { element.hidden = !visible; };
+  const fetchWithTimeout = (url, options = {}, timeout = 6000) => {
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), timeout);
+    return fetch(url, { ...options, signal: controller.signal }).finally(() => clearTimeout(timer));
+  };
   const formatDate = value => {
     const date = new Date(value);
     if (Number.isNaN(date.getTime())) return '';
@@ -103,8 +108,8 @@
   const load = async () => {
     show(loading, true); show(empty, false); show(error, false); show(grid, false);
     try {
-      let response = await fetch('/api/instagram-videos', { headers: { Accept: 'application/json' }, cache: 'no-store' });
-      if (!response.ok) response = await fetch(fallbackUrl, { headers: { Accept: 'application/json' }, cache: 'no-store' });
+      let response = await fetchWithTimeout('/api/instagram-videos', { headers: { Accept: 'application/json' }, cache: 'no-store' }).catch(() => null);
+      if (!response?.ok) response = await fetchWithTimeout(fallbackUrl, { headers: { Accept: 'application/json' }, cache: 'no-store' });
       if (!response.ok) throw new Error(`Unable to load Instagram videos (${response.status})`);
       const payload = await response.json();
       const videos = Array.isArray(payload) ? payload : payload.videos;
