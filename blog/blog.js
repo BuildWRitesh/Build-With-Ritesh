@@ -12,7 +12,7 @@
   if (!list || !loading || !empty || !error) return;
 
   let posts = [];
-  const fallbackUrl = './posts.json';
+  const fallbackUrl = '/blog/posts.json';
   const assetUrl = value => {
     if (!value) return '';
     if (/^(?:https?:|data:|\/)/i.test(value)) return value;
