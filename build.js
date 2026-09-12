@@ -19,8 +19,8 @@ const productionFiles = [
   'assets/branding',
   'assets/fonts',
   'assets/profile',
-  'assets/projects/cmt-tools.jpg',
-  'assets/projects/patna-resort.jpg',
+  'assets/projects/cmt-tools.svg',
+  'assets/projects/patna-resort.svg',
   'assets/projects/ojas.svg',
   'assets/projects/avadeti.svg',
   'assets/projects/matra-consultancy.svg',
@@ -29,8 +29,8 @@ const productionFiles = [
   'assets/projects/lb-expression.svg',
   'assets/projects/eera.svg',
   'assets/projects/es-internship.svg',
-  'assets/projects/innosyte.png',
-  'assets/projects/dleaftech.jpg',
+  'assets/projects/innosyte.svg',
+  'assets/projects/dleaftech.svg',
   'assets/resume',
   'assets/vendor'
 ];
