@@ -54,7 +54,7 @@
       const link = document.createElement('a');
       link.className = 'article-card__link';
       link.dataset.cursor = 'project';
-      link.href = `./${encodeURIComponent(post.slug)}/`;
+      link.href = `/blog/${encodeURIComponent(post.slug)}/`;
       const imageWrap = document.createElement('div');
       imageWrap.className = 'article-card__image-wrap';
       const image = document.createElement('img');
