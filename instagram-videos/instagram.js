@@ -15,20 +15,16 @@
     if (Number.isNaN(date.getTime())) return '';
     return new Intl.DateTimeFormat('en-IN', { day: '2-digit', month: 'short', year: 'numeric' }).format(date);
   };
-  const mediaKind = item => {
+  const isVideoMedia = item => {
     const type = String(item.media_type || item.mediaType || '').toUpperCase();
     const product = String(item.media_product_type || item.mediaProductType || '').toUpperCase();
-    if (item.kind) return String(item.kind).toLowerCase();
-    if (type === 'VIDEO' || product === 'REELS' || item.is_video === true) return 'video';
-    if (type === 'CAROUSEL_ALBUM') return 'carousel';
-    return 'image';
+    return String(item.kind || '').toLowerCase() === 'video' || type === 'VIDEO' || product === 'REELS' || item.is_video === true;
   };
-  const hasMedia = item => item && (item.thumbnail_url || item.thumbnailUrl || item.media_url || item.mediaUrl || item.permalink);
+  const hasVideoMedia = item => item && isVideoMedia(item) && (item.thumbnail_url || item.thumbnailUrl || item.media_url || item.mediaUrl) && item.permalink;
   const render = videos => {
     grid.replaceChildren();
-    const items = videos.filter(hasMedia);
+    const items = videos.filter(hasVideoMedia);
     items.forEach((video, index) => {
-      const kind = mediaKind(video);
       const card = document.createElement('article');
       card.className = 'social-card reveal-content';
       card.style.transitionDelay = `${Math.min(index, 5) * 45}ms`;
@@ -37,12 +33,12 @@
       link.target = '_blank';
       link.rel = 'noopener noreferrer';
       link.dataset.cursor = 'project';
-      link.setAttribute('aria-label', `Open Instagram ${kind}${video.caption ? `: ${video.caption.slice(0, 60)}` : ''}`);
+      link.setAttribute('aria-label', `Open Instagram video${video.caption ? `: ${video.caption.slice(0, 60)}` : ''}`);
       const media = document.createElement('div');
       media.className = 'social-card__media';
       const mediaUrl = video.media_url || video.mediaUrl || '';
       const thumbnailUrl = video.thumbnail_url || video.thumbnailUrl || mediaUrl;
-      if (kind === 'video' && mediaUrl) {
+      if (mediaUrl) {
         const player = document.createElement('video');
         player.src = mediaUrl;
         if (thumbnailUrl) player.poster = thumbnailUrl;
@@ -64,7 +60,7 @@
       } else if (thumbnailUrl) {
         const image = document.createElement('img');
         image.src = thumbnailUrl;
-        image.alt = video.imageAlt || (video.caption ? video.caption.slice(0, 120) : 'Ritesh Singh Instagram media');
+        image.alt = video.imageAlt || (video.caption ? video.caption.slice(0, 120) : 'Ritesh Singh Instagram video preview');
         image.loading = 'lazy';
         image.decoding = 'async';
         image.width = 720;
@@ -72,13 +68,11 @@
         image.addEventListener('error', () => image.remove(), { once: true });
         media.append(image);
       }
-      if (kind === 'video' || kind === 'carousel') {
-        const play = document.createElement('span');
-        play.className = 'social-card__play';
-        play.setAttribute('aria-hidden', 'true');
-        play.textContent = kind === 'video' ? '▶' : '＋';
-        media.append(play);
-      }
+      const play = document.createElement('span');
+      play.className = 'social-card__play';
+      play.setAttribute('aria-hidden', 'true');
+      play.textContent = '▶';
+      media.append(play);
       const body = document.createElement('div');
       body.className = 'social-card__body';
       const caption = document.createElement('p');
@@ -86,7 +80,7 @@
       const meta = document.createElement('div');
       meta.className = 'social-card__meta';
       const type = document.createElement('span');
-      type.textContent = String(video.media_product_type || video.mediaProductType || kind).replaceAll('_', ' ');
+      type.textContent = String(video.media_product_type || video.mediaProductType || 'Video').replaceAll('_', ' ');
       const date = document.createElement('span');
       date.textContent = formatDate(video.timestamp);
       meta.append(type, date);
@@ -114,7 +108,7 @@
       if (!response.ok) throw new Error(`Unable to load Instagram videos (${response.status})`);
       const payload = await response.json();
       const videos = Array.isArray(payload) ? payload : payload.videos;
-      const verified = (Array.isArray(videos) ? videos : []).filter(hasMedia);
+      const verified = (Array.isArray(videos) ? videos : []).filter(hasVideoMedia);
       show(loading, false);
       if (!verified.length) { show(empty, true); return; }
       render(verified);

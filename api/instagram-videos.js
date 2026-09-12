@@ -5,10 +5,10 @@ function normalizeMedia(item = {}) {
   const mediaType = String(item.media_type || '').toUpperCase();
   const productType = String(item.media_product_type || '').toUpperCase();
   const children = Array.isArray(item.children?.data) ? item.children.data : [];
-  const child = children.find(entry => entry.media_type === 'VIDEO') || children.find(entry => entry.media_url || entry.thumbnail_url) || {};
-  const kind = mediaType === 'VIDEO' || productType === 'REELS' || child.media_type === 'VIDEO' ? 'video' : mediaType === 'CAROUSEL_ALBUM' ? 'carousel' : 'image';
+  const child = children.find(entry => String(entry.media_type || '').toUpperCase() === 'VIDEO') || {};
+  const kind = mediaType === 'VIDEO' || productType === 'REELS' || child.media_type === 'VIDEO' ? 'video' : 'image';
   const mediaUrl = item.media_url || child.media_url || '';
-  const thumbnailUrl = item.thumbnail_url || child.thumbnail_url || child.media_url || (kind === 'image' ? mediaUrl : '');
+  const thumbnailUrl = item.thumbnail_url || child.thumbnail_url || '';
   return { id: item.id, caption: item.caption || '', media_type: mediaType, media_product_type: productType, media_url: mediaUrl, thumbnail_url: thumbnailUrl, permalink: item.permalink || child.permalink || '', timestamp: item.timestamp || '', kind };
 }
 
@@ -26,7 +26,7 @@ module.exports = async (req, res) => {
     const response = await fetch(url, { headers: { Authorization: `Bearer ${token}` }, signal: AbortSignal.timeout(8000) });
     if (!response.ok) throw new Error(`Instagram API returned ${response.status}`);
     const data = await response.json();
-    const videos = (data.data || []).map(normalizeMedia).filter(item => item.id && (item.media_url || item.thumbnail_url || item.permalink));
+    const videos = (data.data || []).map(normalizeMedia).filter(item => item.id && item.kind === 'video' && (item.media_url || item.thumbnail_url) && item.permalink);
     const payload = { configured: true, source: 'https://www.instagram.com/buildwritesh/', updatedAt: new Date().toISOString(), videos };
     memoryCache = { until: Date.now() + 5 * 60 * 1000, payload };
     return json(res, 200, payload, { 'Cache-Control': 'public, s-maxage=300, stale-while-revalidate=3600' });
