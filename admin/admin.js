@@ -10,6 +10,8 @@
   const listStatus = $('post-list-status');
   const postList = $('post-list');
   const postForm = $('post-form');
+  const accountForm = $('account-form');
+  const accountStatus = $('account-status');
   if (!loginView || !dashboard || !loginForm || !postForm) return;
 
   const fields = {
@@ -148,6 +150,11 @@
       if (error.status === 401) { setView(false); setStatus(loginStatus, 'Your session has expired. Please sign in again.', true); }
     }
   };
+  const loadAccount = async () => {
+    if (!accountForm) return;
+    const payload = await api('/api/admin/account');
+    $('account-email').value = payload.user?.email || '';
+  };
   const readFileAsDataUrl = file => new Promise((resolve, reject) => {
     const reader = new FileReader(); reader.addEventListener('load', () => resolve(String(reader.result))); reader.addEventListener('error', reject); reader.readAsDataURL(file);
   });
@@ -203,9 +210,27 @@
       const payload = await api('/api/admin/login', { method: 'POST', body: JSON.stringify({ email: $('login-email').value.trim(), password: $('login-password').value }) });
       csrfToken = payload.csrfToken || '';
       $('admin-user').textContent = payload.user?.email || '';
+      $('account-email').value = payload.user?.email || '';
       $('login-password').value = '';
-      setView(true); resetEditor(); await Promise.all([loadPosts(), loadMedia()]);
+      setView(true); resetEditor(); await Promise.all([loadPosts(), loadMedia(), loadAccount()]);
     } catch (error) { setStatus(loginStatus, error.message, true); }
+  });
+  accountForm?.addEventListener('submit', async event => {
+    event.preventDefault();
+    if (!accountForm.reportValidity()) return;
+    const currentPassword = $('account-current-password').value;
+    const newPassword = $('account-new-password').value;
+    const confirmPassword = $('account-confirm-password').value;
+    if ((newPassword || confirmPassword) && newPassword !== confirmPassword) { setStatus(accountStatus, 'New password and confirmation must match.', true); return; }
+    setStatus(accountStatus, 'Updating credentials…');
+    try {
+      const payload = await api('/api/admin/account', { method: 'PUT', body: JSON.stringify({ email: $('account-email').value.trim(), currentPassword, newPassword, confirmPassword }) });
+      csrfToken = '';
+      accountForm.reset();
+      $('login-email').value = payload.user?.email || '';
+      setView(false);
+      setStatus(loginStatus, 'Credentials updated. Please sign in again with the new details.');
+    } catch (error) { setStatus(accountStatus, error.message, true); }
   });
   $('logout-button')?.addEventListener('click', async () => {
     try { await api('/api/admin/logout', { method: 'POST', body: '{}' }); } catch { /* show login even if the session already expired */ }
@@ -270,7 +295,7 @@
   (async () => {
     try {
       const payload = await api('/api/admin/session');
-      if (payload.authenticated) { csrfToken = payload.csrfToken || ''; $('admin-user').textContent = payload.user?.email || ''; setView(true); resetEditor(); await Promise.all([loadPosts(), loadMedia()]); }
+      if (payload.authenticated) { csrfToken = payload.csrfToken || ''; $('admin-user').textContent = payload.user?.email || ''; $('account-email').value = payload.user?.email || ''; setView(true); resetEditor(); await Promise.all([loadPosts(), loadMedia(), loadAccount()]); }
       else setView(false);
     } catch { setView(false); setStatus(loginStatus, 'The secure content service is unavailable. Check the production configuration.', true); }
   })();
