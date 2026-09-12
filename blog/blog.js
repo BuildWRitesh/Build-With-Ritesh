@@ -108,20 +108,25 @@
       category?.append(option);
     });
   };
+  const applyPosts = payload => {
+    const candidate = Array.isArray(payload) ? payload : payload.posts;
+    posts = (Array.isArray(candidate) ? candidate : []).filter(post => post && post.status === 'published' && post.slug && post.title);
+    populateCategories();
+    show(loading, false);
+    if (!posts.length) { show(empty, true); return; }
+    render();
+  };
   const load = async () => {
     show(loading, true); show(error, false); show(empty, false); show(list, false);
     if (resultStatus) resultStatus.textContent = '';
     try {
-      let response = await fetchWithTimeout('/api/posts?status=published', { headers: { Accept: 'application/json' }, cache: 'no-store' }).catch(() => null);
-      if (!response?.ok) response = await fetchWithTimeout(fallbackUrl, { headers: { Accept: 'application/json' }, cache: 'no-store' });
+      const response = await fetchWithTimeout(fallbackUrl, { headers: { Accept: 'application/json' }, cache: 'no-store' });
       if (!response.ok) throw new Error(`Unable to load articles (${response.status})`);
-      const payload = await response.json();
-      const candidate = Array.isArray(payload) ? payload : payload.posts;
-      posts = (Array.isArray(candidate) ? candidate : []).filter(post => post && post.status === 'published' && post.slug && post.title);
-      populateCategories();
-      show(loading, false);
-      if (!posts.length) { show(empty, true); return; }
-      render();
+      applyPosts(await response.json());
+      fetchWithTimeout('/api/posts?status=published', { headers: { Accept: 'application/json' }, cache: 'no-store' }, 3000)
+        .then(apiResponse => apiResponse.ok ? apiResponse.json() : null)
+        .then(payload => { if (payload) applyPosts(payload); })
+        .catch(() => {});
     } catch (loadError) {
       console.error(loadError);
       show(loading, false); show(error, true);
