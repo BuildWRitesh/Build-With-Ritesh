@@ -120,3 +120,21 @@ html:has(.admin-page) { background: #0c192c; }
   .admin-list-panel { padding: 18px 15px; }
   .admin-account-panel { padding: 20px 16px; margin-bottom: 24px; }
 }
+
+@media (min-width: 800px) {
+  .admin-auth {
+    max-width: 760px;
+    padding: 42px 48px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto auto 1fr;
+    gap: 0 48px;
+    align-items: center;
+    text-align: left;
+  }
+  .admin-auth .eyebrow { grid-column: 1; grid-row: 1; align-self: end; margin: 0; }
+  .admin-auth h1 { grid-column: 1; grid-row: 2; margin-top: 8px; margin-bottom: 12px; font-size: clamp(32px, 4vw, 44px); }
+  .admin-auth .admin-lede { grid-column: 1; grid-row: 3; align-self: start; margin-bottom: 0; }
+  .admin-auth .admin-note { grid-column: 1; grid-row: 4; align-self: end; margin-top: 24px; margin-bottom: 0; }
+  .admin-auth .admin-form { grid-column: 2; grid-row: 1 / 5; margin: 0; }
+}
