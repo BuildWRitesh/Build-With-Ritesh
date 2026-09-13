@@ -2,8 +2,8 @@ html:has(.admin-page) { background: #0c192c; }
 .admin-page { min-height: 100vh; min-height: 100dvh; display: flex; flex-direction: column; overflow-x: clip; background: var(--paper); }
 .admin-page .site-header, .admin-page .content-footer { flex: 0 0 auto; }
 .admin-page .site-header { position: relative; top: auto; margin-top: clamp(10px, 1.8vw, 22px); }
-.admin-main { flex: 1 0 auto; display: flex; flex-direction: column; justify-content: center; padding: clamp(42px, 6vw, 80px) 0 clamp(48px, 7vw, 86px); }
-.admin-auth { width: min(100%, 460px); margin: auto; display: flex; flex-direction: column; justify-content: center; align-items: stretch; text-align: center; background: #ffffff; padding: 48px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); border: 1px solid rgba(0,0,0,0.05); }
+.admin-main { flex: 1 0 auto; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 40px 16px; min-height: calc(100vh - 150px); }
+.admin-auth { width: 100%; max-width: 460px; display: flex; flex-direction: column; justify-content: center; align-items: stretch; text-align: center; background: #ffffff; padding: 48px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); border: 1px solid rgba(0,0,0,0.05); }
 .admin-auth h1, .admin-dashboard h1, .admin-dashboard h2 { margin: 18px 0 20px; font-family: var(--display-font); font-size: clamp(32px, 5vw, 48px); letter-spacing: -.05em; line-height: 1.1; }
 .admin-auth h1 em, .admin-dashboard h1 em, .admin-dashboard h2 em { color: var(--brand-accent); font-style: normal; }
 .admin-lede { margin: 0 0 32px; color: var(--brand-muted); font-size: 16px; line-height: 1.5; }
@@ -18,6 +18,7 @@ html:has(.admin-page) { background: #0c192c; }
 .admin-form .button { justify-self: stretch; min-height: 52px; justify-content: center; border-radius: 8px; font-weight: 600; font-size: 15px; background: var(--brand-accent); color: #fff; border: none; transition: transform 0.1s ease, box-shadow 0.2s ease; }
 .admin-form .button:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(3,160,153,0.3); }
 .admin-form .button:active { transform: translateY(0); }
+.admin-dashboard { width: 100%; }
 .admin-dashboard__head { display: flex; align-items: end; justify-content: space-between; gap: 30px; padding-bottom: 36px; border-bottom: 1px solid var(--brand-border); }
 .admin-dashboard__head h1 { margin-bottom: 0; }
 .admin-dashboard__actions { display: flex; align-items: center; gap: 14px; padding-bottom: 10px; }
@@ -106,8 +107,7 @@ html:has(.admin-page) { background: #0c192c; }
   .admin-post-list { max-height: 300px; }
 }
 @media (max-width: 700px) {
-  .admin-main { padding-top: 28px; padding-bottom: 44px; }
-  .admin-auth { width: calc(100% - 32px); padding: 32px 24px; margin: auto; }
+  .admin-auth { padding: 32px 24px; }
   .admin-auth .admin-form { padding: 0; gap: 18px; }
   .admin-dashboard__head { align-items: flex-start; flex-direction: column; }
   .admin-dashboard__actions { width: 100%; justify-content: space-between; padding-bottom: 0; }
