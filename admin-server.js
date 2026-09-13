@@ -1,4 +1,4 @@
-'use strict';
+﻿'use strict';
 
 const http = require('node:http');
 const fs = require('node:fs');
@@ -9,7 +9,7 @@ const { createSiteServer } = require('./server');
 
 const projectRoot = __dirname;
 const defaultBlogDataFile = path.join(projectRoot, 'data', 'blog-posts.json');
-const siteBaseUrl = 'https://buildwritesh.github.io';
+const siteBaseUrl = 'https://buildwithritesh.com';
 const sessionCookieName = 'admin_session';
 const sessionMaxAgeSeconds = 60 * 60 * 8;
 const maxJsonBodyBytes = 8 * 1024 * 1024;

@@ -1,4 +1,4 @@
-[
+﻿[
   {
     "slug": "wordpress-launch-checklist",
     "title": "A Practical WordPress Launch Checklist for Business Websites",
@@ -12,7 +12,7 @@
     "seoTitle": "WordPress Launch Checklist for Business Websites | Ritesh Singh",
     "metaDescription": "A practical WordPress launch checklist covering content, responsive QA, SEO, forms, analytics and post-launch maintenance.",
     "focusKeyword": "WordPress launch checklist",
-    "canonical": "https://buildwritesh.github.io/blog/wordpress-launch-checklist/",
+    "canonical": "https://buildwithritesh.com/blog/wordpress-launch-checklist/",
     "status": "published",
     "tags": [
       "WordPress",
@@ -34,7 +34,7 @@
     "seoTitle": "Technical SEO Workflow for Business Websites | Ritesh Singh",
     "metaDescription": "A practical technical SEO workflow for business websites: crawlability, site structure, on-page quality, performance and measurement.",
     "focusKeyword": "technical SEO workflow",
-    "canonical": "https://buildwritesh.github.io/blog/technical-seo-business-websites/",
+    "canonical": "https://buildwithritesh.com/blog/technical-seo-business-websites/",
     "status": "published",
     "tags": [
       "SEO",
@@ -56,7 +56,7 @@
     "seoTitle": "Google and Meta Ads Landing Page Workflow | Ritesh Singh",
     "metaDescription": "A practical workflow for connecting Google Ads and Meta Ads to focused, responsive landing pages and measurable enquiry journeys.",
     "focusKeyword": "ads landing page workflow",
-    "canonical": "https://buildwritesh.github.io/blog/ads-and-landing-pages/",
+    "canonical": "https://buildwithritesh.com/blog/ads-and-landing-pages/",
     "status": "published",
     "tags": [
       "Google Ads",
@@ -78,7 +78,7 @@
     "seoTitle": "Responsive Website Performance Review Process | Ritesh Singh",
     "metaDescription": "A practical review process for responsive websites covering layout, images, scripts, accessibility and real-device performance.",
     "focusKeyword": "responsive website performance",
-    "canonical": "https://buildwritesh.github.io/blog/responsive-website-performance/",
+    "canonical": "https://buildwithritesh.com/blog/responsive-website-performance/",
     "status": "published",
     "tags": [
       "Web Development",
@@ -100,7 +100,7 @@
     "seoTitle": "AI and SEO Editorial Workflow | Ritesh Singh",
     "metaDescription": "A practical AI and SEO workflow for research, briefs, internal linking and quality review without publishing generic or unverified claims.",
     "focusKeyword": "AI SEO workflow",
-    "canonical": "https://buildwritesh.github.io/blog/ai-and-seo-editorial-workflow/",
+    "canonical": "https://buildwithritesh.com/blog/ai-and-seo-editorial-workflow/",
     "status": "published",
     "tags": [
       "AI + SEO",

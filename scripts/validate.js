@@ -1,11 +1,11 @@
-const fs = require('node:fs');
+﻿const fs = require('node:fs');
 const path = require('node:path');
 const http = require('node:http');
 const assert = require('node:assert/strict');
 const { createSiteServer } = require('../server.js');
 
 const projectRoot = path.resolve(__dirname, '..');
-const siteUrl = new URL('https://buildwritesh.github.io/');
+const siteUrl = new URL('https://buildwithritesh.com/');
 const contactEmail = 'buildwritesh@gmail.com';
 const legacyEmail = Buffer.from('cml0ZXNoc2luZ2gwMTAxMkBnbWFpbC5jb20=', 'base64').toString('ascii');
 const resumePath = 'assets/resume/Ritesh_Singh_Resume.pdf';
@@ -212,7 +212,7 @@ function validateSite(root) {
       const articleParsed = parseHtml(articleHtml);
       assert.equal(articleParsed.ids.filter(id => id === 'article-title').length, 1, `Article H1 missing: ${post.slug}`);
       assert(articleHtml.includes('BlogPosting'), `BlogPosting schema missing: ${post.slug}`);
-      assert(articleHtml.includes(post.canonical || `https://buildwritesh.github.io/blog/${post.slug}/`), `Canonical missing: ${post.slug}`);
+      assert(articleHtml.includes(post.canonical || `https://buildwithritesh.com/blog/${post.slug}/`), `Canonical missing: ${post.slug}`);
       assert(/<article[^>]*class="article-shell/.test(articleHtml), `Article layout missing: ${post.slug}`);
     }
   }

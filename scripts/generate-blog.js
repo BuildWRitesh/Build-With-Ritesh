@@ -1,8 +1,8 @@
-const fs = require('node:fs');
+﻿const fs = require('node:fs');
 const path = require('node:path');
 
 const defaultRoot = path.resolve(__dirname, '..');
-const siteOrigin = 'https://buildwritesh.github.io';
+const siteOrigin = 'https://buildwithritesh.com';
 
 const escapeHtml = value => String(value ?? '')
   .replaceAll('&', '&amp;')

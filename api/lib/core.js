@@ -1,8 +1,8 @@
-'use strict';
+﻿'use strict';
 
 const sanitizeHtml = require('sanitize-html');
 
-const SITE_URL = String(process.env.APP_URL || 'https://buildwritesh.github.io').replace(/\/$/, '');
+const SITE_URL = String(process.env.APP_URL || 'https://buildwithritesh.com').replace(/\/$/, '');
 const allowedOrigins = () => new Set([SITE_URL, 'http://localhost:5173', 'http://localhost:4173', 'http://localhost:3000']);
 const text = (value, max = 1000) => String(value ?? '').replace(/[\u0000-\u001f]/g, '').trim().slice(0, max);
 const slugify = value => text(value, 180).normalize('NFKD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 120);

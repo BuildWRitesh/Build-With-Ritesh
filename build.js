@@ -1,4 +1,4 @@
-const fs = require('node:fs');
+﻿const fs = require('node:fs');
 const path = require('node:path');
 const { generateBlogPages } = require('./scripts/generate-blog');
 
@@ -68,14 +68,14 @@ for (const relativePath of [...productionFiles, ...optionalFiles]) {
 // Keep local source URLs stable while allowing Vercel production metadata to
 // follow the assigned custom or project domain.
 const configuredSiteUrl = String(process.env.APP_URL || '').replace(/\/$/, '');
-if (configuredSiteUrl && /^https:\/\//.test(configuredSiteUrl) && configuredSiteUrl !== 'https://buildwritesh.github.io') {
+if (configuredSiteUrl && /^https:\/\//.test(configuredSiteUrl) && configuredSiteUrl !== 'https://buildwithritesh.com') {
   const replaceOrigin = directory => {
     for (const entry of fs.readdirSync(directory, { withFileTypes: true })) {
       const file = path.join(directory, entry.name);
       if (entry.isDirectory()) replaceOrigin(file);
       else if (entry.isFile() && ['.html', '.xml', '.json', '.webmanifest'].includes(path.extname(entry.name))) {
         const source = fs.readFileSync(file, 'utf8');
-        fs.writeFileSync(file, source.replaceAll('https://buildwritesh.github.io', configuredSiteUrl), 'utf8');
+        fs.writeFileSync(file, source.replaceAll('https://buildwithritesh.com', configuredSiteUrl), 'utf8');
       }
     }
   };
