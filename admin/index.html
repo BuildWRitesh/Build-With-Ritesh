@@ -23,11 +23,13 @@
       <p class="eyebrow">// ADMIN_ACCESS</p>
       <h1 id="login-title">$ authenticate</h1>
       <p class="admin-lede">Sign in to write, edit and publish Ritesh Singh’s professional notes.</p>
-      <div class="admin-deco" aria-hidden="true">
-        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-          <polyline points="16 18 22 12 16 6"></polyline>
-          <polyline points="8 6 2 12 8 18"></polyline>
-        </svg>
+      <div class="admin-deco terminal-deco" aria-hidden="true">
+        <code>
+          <span style="opacity:0.5">/* SYSTEM READY */</span><br/>
+          <span style="color:var(--brand-primary)">function</span> <span>authenticate</span>() {<br/>
+          &nbsp;&nbsp;<span style="color:var(--brand-primary)">return</span> <span style="opacity:0.7">"restricted"</span>;<br/>
+          }
+        </code>
       </div>
       <form id="login-form" class="admin-form" novalidate>
         <div class="content-field"><label for="login-email">Admin email</label><input id="login-email" name="email" type="email" autocomplete="username" required></div>
