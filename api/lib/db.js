@@ -1,10 +1,15 @@
 'use strict';
 
-const { neon } = require('@neondatabase/serverless');
+const { Pool } = require('pg');
 const crypto = require('node:crypto');
 const seedPosts = require('../../data/blog-posts.json');
 let schemaReady;
-function sqlClient() { if (!process.env.DATABASE_URL) throw Object.assign(new Error('Database is not configured.'), { status: 503 }); return neon(process.env.DATABASE_URL); }
+let pool;
+function sqlClient() { 
+  if (!process.env.DATABASE_URL) throw Object.assign(new Error('Database is not configured.'), { status: 503 }); 
+  if (!pool) pool = new Pool({ connectionString: process.env.DATABASE_URL, ssl: { rejectUnauthorized: false } });
+  return { query: async (text, params) => (await pool.query(text, params)).rows };
+}
 async function ensureSchema() {
   if (schemaReady) return schemaReady;
   schemaReady = (async () => {
