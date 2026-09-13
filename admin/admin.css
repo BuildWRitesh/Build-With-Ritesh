@@ -2,7 +2,7 @@
 .admin-page .site-header, .admin-page .content-footer { flex: 0 0 auto; }
 .admin-page .site-header { position: relative; top: auto; margin-top: clamp(10px, 1.8vw, 22px); }
 .admin-main { flex: 1 0 auto; display: flex; flex-direction: column; padding: clamp(42px, 6vw, 80px) 0 clamp(48px, 7vw, 86px); }
-.admin-auth { width: min(100%, 480px); margin: auto; display: flex; flex-direction: column; justify-content: center; align-items: stretch; text-align: center; padding: 40px; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 16px; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.02) inset; backdrop-filter: blur(10px); transform: translateY(-5%); aspect-ratio: 1/1.05; }
+.admin-auth { width: min(100%, 480px); margin: 60px auto; display: flex; flex-direction: column; justify-content: center; align-items: stretch; text-align: center; padding: 48px; background: var(--brand-surface); border: 1px solid var(--brand-border); border-radius: 12px; box-shadow: 0 15px 35px rgba(12, 25, 44, 0.04); }
 .admin-auth h1, .admin-dashboard h1, .admin-dashboard h2 { margin: 18px 0 20px; font-family: var(--display-font); font-size: clamp(32px, 5vw, 48px); letter-spacing: -.05em; line-height: 1.1; }
 .admin-auth h1 em, .admin-dashboard h1 em, .admin-dashboard h2 em { color: var(--brand-accent); font-style: normal; }
 .admin-lede { margin: 0 0 32px; color: var(--brand-muted); font-size: 16px; line-height: 1.5; }
@@ -13,10 +13,7 @@
 .admin-auth .content-field label { font-size: 13px; font-weight: 500; color: var(--brand-primary); }
 .admin-auth .content-field input { min-height: 52px; border-radius: 8px; background: rgba(255,255,255,0.8); border: 1px solid var(--brand-border); padding: 0 16px; transition: all 0.2s ease; }
 .admin-auth .content-field input:focus { background: #fff; border-color: var(--brand-accent); box-shadow: 0 0 0 3px rgba(3,160,153,0.15); }
-.password-field-wrap { position: relative; display: flex; align-items: stretch; width: 100%; }
-.password-field-wrap input { flex: 1; min-width: 0; padding-right: 48px !important; }
-.password-toggle { position: absolute; right: 0; top: 0; bottom: 0; width: 46px; min-height: 0; margin: 0; padding: 0; border: none; background: transparent; color: var(--brand-muted); font-size: 12px; cursor: pointer; display: grid; place-items: center; border-radius: 0 8px 8px 0; transition: color .2s ease; line-height: 1; }
-.password-toggle:hover, .password-toggle:focus-visible { color: var(--brand-accent); outline: none; background: transparent; box-shadow: none; }
+
 .admin-form .button { justify-self: stretch; min-height: 52px; justify-content: center; border-radius: 8px; font-weight: 600; font-size: 15px; background: var(--brand-accent); color: #fff; border: none; transition: transform 0.1s ease, box-shadow 0.2s ease; }
 .admin-form .button:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(3,160,153,0.3); }
 .admin-form .button:active { transform: translateY(0); }
