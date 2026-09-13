@@ -50,7 +50,7 @@
 .article-featured img { display: block; width: 100%; aspect-ratio: 2/1; object-fit: cover; }
 .article-featured figcaption, .article-inline-media figcaption { padding: 11px 16px; color: var(--brand-muted); font-family: var(--mono-font); font-size: 9px; letter-spacing: .08em; text-transform: uppercase; }
 .article-layout { display: grid; grid-template-columns: minmax(0, 1fr) 220px; align-items: start; gap: clamp(30px, 7vw, 90px); padding: 35px 0 115px; }
-.article-body { min-width: 0; font-size: 17px; line-height: 1.78; }
+.article-body { min-width: 0; font-size: 17px; line-height: 1.78; max-width: 720px; }
 .article-body > :first-child { margin-top: 0; }
 .article-body p { margin: 0 0 24px; }
 .article-body h2, .article-body h3, .article-body h4 { margin: 45px 0 16px; font-family: var(--display-font); letter-spacing: -.045em; line-height: 1.05; }

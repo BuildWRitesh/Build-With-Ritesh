@@ -48,10 +48,10 @@
   --rule: var(--brand-border);
   --rule-light: rgba(245, 247, 244, .25);
   --gutter: clamp(32px, 6vw, 100px);
-  --space-section: clamp(78px, 8vw, 124px);
-  --space-section-compact: clamp(58px, 6vw, 92px);
-  --space-block: clamp(32px, 4vw, 58px);
-  --space-card: clamp(22px, 2.7vw, 38px);
+  --space-section: clamp(90px, 10vw, 160px);
+  --space-section-compact: clamp(70px, 8vw, 110px);
+  --space-block: clamp(40px, 5vw, 75px);
+  --space-card: clamp(28px, 3.5vw, 48px);
   --body-font: "Manrope", Arial, sans-serif;
   --display-font: "Syne", Arial, sans-serif;
   --mono-font: "DM Mono", monospace;
@@ -109,8 +109,9 @@ ul, ol { margin: 0; padding: 0; }
 
 .container { width: min(100% - var(--gutter) * 2, 1440px); margin-inline: auto; }
 .section-pad { padding-block: var(--space-section); }
+.flag-icon { display: inline-block; font-style: normal; font-size: 1.15em; transform: translateY(1px); line-height: 1; margin-left: 2px; }
 .eyebrow, .section-label, .hero__eyebrow, .mono, .kicker { font-family: var(--mono-font); font-size: 11px; line-height: 1.65; font-weight: 400; letter-spacing: .085em; text-transform: uppercase; }
-.section-label { display: flex; justify-content: space-between; gap: 24px; margin-bottom: var(--space-block); padding-bottom: 18px; border-bottom: 1px solid var(--rule); }
+.section-label { display: flex; justify-content: space-between; gap: 24px; margin-bottom: var(--space-block); padding-bottom: 24px; border-bottom: 1px solid var(--rule); }
 .section-label > :last-child { color: var(--muted); }
 .section-label > :only-child { color: inherit; }
 .section-intro { display: grid; grid-template-columns: 1.15fr 1fr; align-items: end; gap: clamp(32px, 5vw, 66px); margin-bottom: var(--space-block); }
