@@ -1,6 +1,5 @@
 <!doctype html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,210 +14,64 @@
   <script src="/script.js" defer></script>
   <script src="/admin/admin.js" defer></script>
 </head>
-
 <body class="content-page admin-page">
   <a class="skip-link" href="#main-content">Skip to content</a>
-  <header class="site-header">
-    <div class="header-inner"><a class="brand" href="/" aria-label="Ritesh Singh home"><img class="brand__logo"
-          src="/assets/branding/ritesh-singh-logo.png" alt="" width="48" height="48" decoding="async"><span
-          class="brand__copy">Ritesh Singh<small>Build With Ritesh</small></span></a><a class="header-contact"
-        href="/blog/">View journal <span aria-hidden="true">↗</span></a></div>
-  </header>
-  <div class="custom-cursor" aria-hidden="true"><span class="custom-cursor__ring"></span><span
-      class="custom-cursor__dot"></span></div>
+  <header class="site-header"><div class="header-inner"><a class="brand" href="/" aria-label="Ritesh Singh home"><img class="brand__logo" src="/assets/branding/ritesh-singh-logo.png" alt="" width="48" height="48" decoding="async"><span class="brand__copy">Ritesh Singh<small>Build With Ritesh</small></span></a><a class="header-contact" href="/blog/">View journal <span aria-hidden="true">↗</span></a></div></header>
+  <div class="custom-cursor" aria-hidden="true"><span class="custom-cursor__ring"></span><span class="custom-cursor__dot"></span></div>
   <main id="main-content" class="admin-main content-shell" tabindex="-1">
     <section id="login-view" class="admin-auth" aria-labelledby="login-title">
       <p class="eyebrow">// ADMIN_ACCESS</p>
       <h1 id="login-title">$ authenticate</h1>
       <p class="admin-lede">Sign in to write, edit and publish Ritesh Singh’s professional notes.</p>
+      <div class="admin-deco" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="16 18 22 12 16 6"></polyline>
+          <polyline points="8 6 2 12 8 18"></polyline>
+        </svg>
+      </div>
       <form id="login-form" class="admin-form" novalidate>
-        <div class="content-field"><label for="login-email">Admin email</label><input id="login-email" name="email"
-            type="email" autocomplete="username" required></div>
-        <div class="content-field"><label for="login-password">Password</label><input id="login-password"
-            name="password" type="password" autocomplete="current-password" minlength="12" required></div>
-        <button id="login-submit" class="button button--dark" type="submit">Authenticate <span
-            aria-hidden="true">↗</span></button>
+        <div class="content-field"><label for="login-email">Admin email</label><input id="login-email" name="email" type="email" autocomplete="username" required></div>
+        <div class="content-field"><label for="login-password">Password</label><input id="login-password" name="password" type="password" autocomplete="current-password" minlength="12" required></div>
+        <button id="login-submit" class="button button--dark" type="submit">Authenticate <span aria-hidden="true">↗</span></button>
         <p id="login-status" class="form-status" role="status" aria-live="polite"></p>
       </form>
       <p class="admin-note">Private publishing workspace. Your session expires automatically after eight hours.</p>
     </section>
 
     <section id="dashboard-view" class="admin-dashboard" hidden aria-labelledby="dashboard-title">
-      <div class="admin-dashboard__head">
-        <div>
-          <p class="eyebrow">Private workspace</p>
-          <h2 id="dashboard-title">Content <em>studio.</em></h2>
-        </div>
-        <div class="admin-dashboard__actions"><span id="admin-user" class="admin-user"></span><button id="logout-button"
-            class="button button--outline" type="button">Log out</button></div>
-      </div>
-      <div class="admin-stats" aria-label="Journal overview">
-        <div><strong id="stat-total">0</strong><span>Total posts</span></div>
-        <div><strong id="stat-published">0</strong><span>Published</span></div>
-        <div><strong id="stat-drafts">0</strong><span>Drafts</span></div>
-      </div>
+      <div class="admin-dashboard__head"><div><p class="eyebrow">Private workspace</p><h2 id="dashboard-title">Content <em>studio.</em></h2></div><div class="admin-dashboard__actions"><span id="admin-user" class="admin-user"></span><button id="logout-button" class="button button--outline" type="button">Log out</button></div></div>
+      <div class="admin-stats" aria-label="Journal overview"><div><strong id="stat-total">0</strong><span>Total posts</span></div><div><strong id="stat-published">0</strong><span>Published</span></div><div><strong id="stat-drafts">0</strong><span>Drafts</span></div></div>
       <section class="admin-account-panel" aria-labelledby="account-title">
-        <div class="admin-panel-heading">
-          <div>
-            <p class="eyebrow">Security</p>
-            <h2 id="account-title">Account access</h2>
-          </div><span id="account-status" class="form-status" role="status" aria-live="polite"></span>
-        </div>
+        <div class="admin-panel-heading"><div><p class="eyebrow">Security</p><h2 id="account-title">Account access</h2></div><span id="account-status" class="form-status" role="status" aria-live="polite"></span></div>
         <form id="account-form" class="admin-form" novalidate>
           <div class="admin-form-grid admin-form-grid--wide">
-            <div class="content-field"><label for="account-email">Admin email</label><input id="account-email"
-                name="email" type="email" autocomplete="username" required></div>
-            <div class="content-field"><label for="account-current-password">Current password</label><input
-                id="account-current-password" name="currentPassword" type="password" autocomplete="current-password"
-                minlength="12" required></div>
+            <div class="content-field"><label for="account-email">Admin email</label><input id="account-email" name="email" type="email" autocomplete="username" required></div>
+            <div class="content-field"><label for="account-current-password">Current password</label><input id="account-current-password" name="currentPassword" type="password" autocomplete="current-password" minlength="12" required></div>
           </div>
           <div class="admin-form-grid admin-form-grid--wide">
-            <div class="content-field"><label for="account-new-password">New password</label><input
-                id="account-new-password" name="newPassword" type="password" autocomplete="new-password" minlength="12"
-                placeholder="Leave blank to keep current password"></div>
-            <div class="content-field"><label for="account-confirm-password">Confirm new password</label><input
-                id="account-confirm-password" name="confirmPassword" type="password" autocomplete="new-password"
-                minlength="12"></div>
+            <div class="content-field"><label for="account-new-password">New password</label><input id="account-new-password" name="newPassword" type="password" autocomplete="new-password" minlength="12" placeholder="Leave blank to keep current password"></div>
+            <div class="content-field"><label for="account-confirm-password">Confirm new password</label><input id="account-confirm-password" name="confirmPassword" type="password" autocomplete="new-password" minlength="12"></div>
           </div>
-          <div class="admin-editor-actions"><button class="button button--dark" type="submit">Update credentials <span
-                aria-hidden="true">↗</span></button></div>
+          <div class="admin-editor-actions"><button class="button button--dark" type="submit">Update credentials <span aria-hidden="true">↗</span></button></div>
         </form>
       </section>
       <div class="admin-layout">
-        <aside class="admin-list-panel" aria-labelledby="posts-list-title">
-          <div class="admin-panel-heading">
-            <h2 id="posts-list-title">Posts</h2><button id="new-post-button" class="button button--dark"
-              type="button">New post <span aria-hidden="true">＋</span></button>
-          </div>
-          <div class="admin-list-filters"><label class="sr-only" for="post-search">Search posts</label><input
-              id="post-search" type="search" placeholder="Search posts" autocomplete="off"><label class="sr-only"
-              for="post-status-filter">Filter posts by status</label><select id="post-status-filter">
-              <option value="all">All statuses</option>
-              <option value="published">Published</option>
-              <option value="draft">Drafts</option>
-            </select></div>
-          <div id="post-list" class="admin-post-list" aria-live="polite"></div>
-          <p id="post-list-status" class="form-status" role="status" aria-live="polite"></p>
-          <section class="admin-media-library" aria-labelledby="media-title">
-            <div class="admin-panel-heading">
-              <h3 id="media-title">Media</h3><button id="refresh-media-button" type="button">Refresh</button>
-            </div>
-            <p class="admin-help">Select an uploaded image to use it as the featured image.</p>
-            <div id="media-list" class="admin-media-list"></div>
-            <p id="media-status" class="form-status" role="status"></p>
-          </section>
-        </aside>
-        <section class="admin-editor-panel" aria-labelledby="editor-title">
-          <div class="admin-panel-heading">
-            <div>
-              <p class="eyebrow">Write</p>
-              <h2 id="editor-title">New article</h2>
-            </div><span id="editor-status" class="form-status" role="status" aria-live="polite"></span>
-          </div>
+        <aside class="admin-list-panel" aria-labelledby="posts-list-title"><div class="admin-panel-heading"><h2 id="posts-list-title">Posts</h2><button id="new-post-button" class="button button--dark" type="button">New post <span aria-hidden="true">＋</span></button></div><div class="admin-list-filters"><label class="sr-only" for="post-search">Search posts</label><input id="post-search" type="search" placeholder="Search posts" autocomplete="off"><label class="sr-only" for="post-status-filter">Filter posts by status</label><select id="post-status-filter"><option value="all">All statuses</option><option value="published">Published</option><option value="draft">Drafts</option></select></div><div id="post-list" class="admin-post-list" aria-live="polite"></div><p id="post-list-status" class="form-status" role="status" aria-live="polite"></p><section class="admin-media-library" aria-labelledby="media-title"><div class="admin-panel-heading"><h3 id="media-title">Media</h3><button id="refresh-media-button" type="button">Refresh</button></div><p class="admin-help">Select an uploaded image to use it as the featured image.</p><div id="media-list" class="admin-media-list"></div><p id="media-status" class="form-status" role="status"></p></section></aside>
+        <section class="admin-editor-panel" aria-labelledby="editor-title"><div class="admin-panel-heading"><div><p class="eyebrow">Write</p><h2 id="editor-title">New article</h2></div><span id="editor-status" class="form-status" role="status" aria-live="polite"></span></div>
           <form id="post-form" class="admin-form" novalidate>
             <input id="post-original-slug" type="hidden">
-            <div class="admin-form-grid admin-form-grid--wide">
-              <div class="content-field"><label for="post-title">Title</label><input id="post-title" name="title"
-                  required maxlength="180" placeholder="Article title"></div>
-              <div class="content-field"><label for="post-slug">URL slug</label><input id="post-slug" name="slug"
-                  required maxlength="120" pattern="[a-z0-9]+(?:-[a-z0-9]+)*" placeholder="article-slug"></div>
-            </div>
-            <div class="content-field"><label for="post-excerpt">Excerpt</label><textarea id="post-excerpt"
-                name="excerpt" rows="3" maxlength="500" required
-                placeholder="A concise introduction for the listing and search engines."></textarea></div>
-            <div class="admin-form-grid">
-              <div class="content-field"><label for="post-category">Category</label><input id="post-category"
-                  name="category" list="category-options" maxlength="80" required placeholder="SEO"><datalist
-                  id="category-options"></datalist></div>
-              <div class="content-field"><label for="post-status">Status</label><select id="post-status" name="status">
-                  <option value="draft">Draft</option>
-                  <option value="published">Published</option>
-                </select></div>
-              <div class="content-field"><label for="post-date">Publication date</label><input id="post-date"
-                  name="date" type="date" required></div>
-            </div>
-            <fieldset class="admin-media-field">
-              <legend>Featured image</legend>
-              <div class="admin-form-grid admin-form-grid--wide">
-                <div class="content-field"><label for="post-image">Upload image</label><input id="post-image"
-                    type="file" accept="image/png,image/jpeg,image/webp,image/gif"><small class="admin-help">PNG, JPEG,
-                    WebP or GIF, up to 3 MB.</small></div>
-                <div class="content-field"><label for="post-image-url">Image path or URL</label><input
-                    id="post-image-url" name="featuredImage" maxlength="1000"
-                    placeholder="https://... or assets/blog/article-image.webp"></div>
-              </div>
-              <div class="admin-form-grid admin-form-grid--wide">
-                <div class="content-field"><label for="post-image-alt">Image ALT text</label><input id="post-image-alt"
-                    name="imageAlt" maxlength="180" required placeholder="Describe the image clearly"></div>
-                <div id="post-image-preview" class="admin-image-preview" hidden><img id="post-image-preview-image"
-                    alt=""></div>
-              </div>
-            </fieldset>
-            <fieldset class="admin-editor-field">
-              <legend>Article content</legend>
-              <div class="editor-toolbar" role="toolbar" aria-label="Formatting tools"><button type="button"
-                  data-command="bold" aria-label="Bold"><strong>B</strong></button><button type="button"
-                  data-command="italic" aria-label="Italic"><em>I</em></button><button type="button"
-                  data-command="underline" aria-label="Underline"><u>U</u></button><span class="toolbar-divider"
-                  aria-hidden="true"></span><button type="button" data-command="formatBlock" data-value="p"
-                  aria-label="Paragraph">P</button><button type="button" data-command="formatBlock" data-value="h2"
-                  aria-label="Heading 2">H2</button><button type="button" data-command="formatBlock" data-value="h3"
-                  aria-label="Heading 3">H3</button><button type="button" data-command="formatBlock" data-value="h4"
-                  aria-label="Heading 4">H4</button><span class="toolbar-divider" aria-hidden="true"></span><button
-                  type="button" data-command="insertUnorderedList" aria-label="Bulleted list">• list</button><button
-                  type="button" data-command="insertOrderedList" aria-label="Numbered list">1. list</button><button
-                  type="button" data-command="formatBlock" data-value="blockquote"
-                  aria-label="Blockquote">Quote</button><button type="button" data-action="link"
-                  aria-label="Insert link">Link</button><button type="button" data-action="image"
-                  aria-label="Insert image">Image</button><span class="toolbar-divider"
-                  aria-hidden="true"></span><button type="button" data-command="undo"
-                  aria-label="Undo">Undo</button><button type="button" data-command="redo"
-                  aria-label="Redo">Redo</button><button type="button" data-command="removeFormat"
-                  aria-label="Remove formatting">Clear</button><button type="button" data-action="source"
-                  aria-pressed="false" aria-label="Toggle HTML source">HTML</button></div>
-              <div id="post-editor" class="rich-editor" contenteditable="true" role="textbox" aria-multiline="true"
-                aria-label="Article content"></div><textarea id="post-source-editor" class="source-editor"
-                spellcheck="false" aria-label="HTML source" hidden></textarea>
-              <p class="admin-help">Use headings to create the article outline. Images inserted in the editor are
-                uploaded to the protected media endpoint.</p>
-            </fieldset>
-            <fieldset class="admin-seo-field">
-              <legend>SEO controls</legend>
-              <div class="admin-form-grid admin-form-grid--wide">
-                <div class="content-field"><label for="post-seo-title">SEO title</label><input id="post-seo-title"
-                    name="seoTitle" maxlength="180" placeholder="Search result title"></div>
-                <div class="content-field"><label for="post-focus-keyword">Focus keyword</label><input
-                    id="post-focus-keyword" name="focusKeyword" maxlength="100" placeholder="Target phrase"></div>
-              </div>
-              <div class="content-field"><label for="post-meta-description">Meta description</label><textarea
-                  id="post-meta-description" name="metaDescription" rows="3" maxlength="320"
-                  placeholder="A useful summary for search and social previews."></textarea></div>
-              <div class="content-field"><label for="post-canonical">Canonical URL</label><input id="post-canonical"
-                  name="canonical" type="url" maxlength="2000"
-                  placeholder="https://buildwithritesh.com/blog/article-slug/"></div>
-              <div class="content-field"><label for="post-tags">Tags <span class="admin-help-inline">comma
-                    separated</span></label><input id="post-tags" name="tags" maxlength="500"
-                  placeholder="SEO, WordPress, Performance"></div>
-            </fieldset>
-            <div class="admin-editor-actions"><button id="save-draft-button" class="button button--outline"
-                type="submit" data-save-status="draft">Save draft</button><button id="publish-button"
-                class="button button--dark" type="submit" data-save-status="published">Publish article <span
-                  aria-hidden="true">↗</span></button><button id="delete-post-button" class="button button--danger"
-                type="button" hidden>Delete article</button></div>
+            <div class="admin-form-grid admin-form-grid--wide"><div class="content-field"><label for="post-title">Title</label><input id="post-title" name="title" required maxlength="180" placeholder="Article title"></div><div class="content-field"><label for="post-slug">URL slug</label><input id="post-slug" name="slug" required maxlength="120" pattern="[a-z0-9]+(?:-[a-z0-9]+)*" placeholder="article-slug"></div></div>
+            <div class="content-field"><label for="post-excerpt">Excerpt</label><textarea id="post-excerpt" name="excerpt" rows="3" maxlength="500" required placeholder="A concise introduction for the listing and search engines."></textarea></div>
+            <div class="admin-form-grid"><div class="content-field"><label for="post-category">Category</label><input id="post-category" name="category" list="category-options" maxlength="80" required placeholder="SEO"><datalist id="category-options"></datalist></div><div class="content-field"><label for="post-status">Status</label><select id="post-status" name="status"><option value="draft">Draft</option><option value="published">Published</option></select></div><div class="content-field"><label for="post-date">Publication date</label><input id="post-date" name="date" type="date" required></div></div>
+            <fieldset class="admin-media-field"><legend>Featured image</legend><div class="admin-form-grid admin-form-grid--wide"><div class="content-field"><label for="post-image">Upload image</label><input id="post-image" type="file" accept="image/png,image/jpeg,image/webp,image/gif"><small class="admin-help">PNG, JPEG, WebP or GIF, up to 3 MB.</small></div><div class="content-field"><label for="post-image-url">Image path or URL</label><input id="post-image-url" name="featuredImage" maxlength="1000" placeholder="https://... or assets/blog/article-image.webp"></div></div><div class="admin-form-grid admin-form-grid--wide"><div class="content-field"><label for="post-image-alt">Image ALT text</label><input id="post-image-alt" name="imageAlt" maxlength="180" required placeholder="Describe the image clearly"></div><div id="post-image-preview" class="admin-image-preview" hidden><img id="post-image-preview-image" alt=""></div></div></fieldset>
+            <fieldset class="admin-editor-field"><legend>Article content</legend><div class="editor-toolbar" role="toolbar" aria-label="Formatting tools"><button type="button" data-command="bold" aria-label="Bold"><strong>B</strong></button><button type="button" data-command="italic" aria-label="Italic"><em>I</em></button><button type="button" data-command="underline" aria-label="Underline"><u>U</u></button><span class="toolbar-divider" aria-hidden="true"></span><button type="button" data-command="formatBlock" data-value="p" aria-label="Paragraph">P</button><button type="button" data-command="formatBlock" data-value="h2" aria-label="Heading 2">H2</button><button type="button" data-command="formatBlock" data-value="h3" aria-label="Heading 3">H3</button><button type="button" data-command="formatBlock" data-value="h4" aria-label="Heading 4">H4</button><span class="toolbar-divider" aria-hidden="true"></span><button type="button" data-command="insertUnorderedList" aria-label="Bulleted list">• list</button><button type="button" data-command="insertOrderedList" aria-label="Numbered list">1. list</button><button type="button" data-command="formatBlock" data-value="blockquote" aria-label="Blockquote">Quote</button><button type="button" data-action="link" aria-label="Insert link">Link</button><button type="button" data-action="image" aria-label="Insert image">Image</button><span class="toolbar-divider" aria-hidden="true"></span><button type="button" data-command="undo" aria-label="Undo">Undo</button><button type="button" data-command="redo" aria-label="Redo">Redo</button><button type="button" data-command="removeFormat" aria-label="Remove formatting">Clear</button><button type="button" data-action="source" aria-pressed="false" aria-label="Toggle HTML source">HTML</button></div><div id="post-editor" class="rich-editor" contenteditable="true" role="textbox" aria-multiline="true" aria-label="Article content"></div><textarea id="post-source-editor" class="source-editor" spellcheck="false" aria-label="HTML source" hidden></textarea><p class="admin-help">Use headings to create the article outline. Images inserted in the editor are uploaded to the protected media endpoint.</p></fieldset>
+            <fieldset class="admin-seo-field"><legend>SEO controls</legend><div class="admin-form-grid admin-form-grid--wide"><div class="content-field"><label for="post-seo-title">SEO title</label><input id="post-seo-title" name="seoTitle" maxlength="180" placeholder="Search result title"></div><div class="content-field"><label for="post-focus-keyword">Focus keyword</label><input id="post-focus-keyword" name="focusKeyword" maxlength="100" placeholder="Target phrase"></div></div><div class="content-field"><label for="post-meta-description">Meta description</label><textarea id="post-meta-description" name="metaDescription" rows="3" maxlength="320" placeholder="A useful summary for search and social previews."></textarea></div><div class="content-field"><label for="post-canonical">Canonical URL</label><input id="post-canonical" name="canonical" type="url" maxlength="2000" placeholder="https://buildwithritesh.com/blog/article-slug/"></div><div class="content-field"><label for="post-tags">Tags <span class="admin-help-inline">comma separated</span></label><input id="post-tags" name="tags" maxlength="500" placeholder="SEO, WordPress, Performance"></div></fieldset>
+            <div class="admin-editor-actions"><button id="save-draft-button" class="button button--outline" type="submit" data-save-status="draft">Save draft</button><button id="publish-button" class="button button--dark" type="submit" data-save-status="published">Publish article <span aria-hidden="true">↗</span></button><button id="delete-post-button" class="button button--danger" type="button" hidden>Delete article</button></div>
           </form>
         </section>
       </div>
     </section>
   </main>
-  <footer class="content-footer section-dark">
-    <div class="content-shell">
-      <div class="site-footer"><a class="footer-brand" href="../"><img src="../assets/branding/ritesh-singh-logo.png"
-            alt="" width="42" height="42" decoding="async"><span>Ritesh Singh<b aria-hidden="true">.</b></span></a>
-        <p>© <span id="year">2026</span> Ritesh Singh</p><a href="../blog/">Open journal <span
-            aria-hidden="true">↗</span></a>
-      </div>
-    </div>
-  </footer>
+  <footer class="content-footer section-dark"><div class="content-shell"><div class="site-footer"><a class="footer-brand" href="../"><img src="../assets/branding/ritesh-singh-logo.png" alt="" width="42" height="42" decoding="async"><span>Ritesh Singh<b aria-hidden="true">.</b></span></a><p>© <span id="year">2026</span> Ritesh Singh</p><a href="../blog/">Open journal <span aria-hidden="true">↗</span></a></div></div></footer>
 </body>
-
 </html>
