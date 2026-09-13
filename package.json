@@ -16,7 +16,6 @@
   },
   "dependencies": {
     "@neondatabase/serverless": "^1.1.0",
-    "@supabase/supabase-js": "^2.45.0",
     "@vercel/blob": "^2.8.0",
     "resend": "^6.28.0",
     "sanitize-html": "^2.17.7"

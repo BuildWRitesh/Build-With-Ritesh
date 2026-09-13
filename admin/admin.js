@@ -12,7 +12,21 @@
   const postForm = $('post-form');
   const accountForm = $('account-form');
   const accountStatus = $('account-status');
+  const loginSubmit = $('login-submit');
+  const passwordToggle = $('password-toggle');
   if (!loginView || !dashboard || !loginForm || !postForm) return;
+
+  // Password show/hide toggle
+  if (passwordToggle) {
+    passwordToggle.addEventListener('click', () => {
+      const input = $('login-password');
+      const show = input.type === 'password';
+      input.type = show ? 'text' : 'password';
+      passwordToggle.setAttribute('aria-label', show ? 'Hide password' : 'Show password');
+      passwordToggle.setAttribute('aria-pressed', String(show));
+      passwordToggle.textContent = show ? '\u25CF' : '\u25CB';
+    });
+  }
 
   const fields = {
     title: $('post-title'), slug: $('post-slug'), excerpt: $('post-excerpt'), category: $('post-category'),
@@ -206,14 +220,19 @@
     event.preventDefault();
     if (!loginForm.reportValidity()) return;
     setStatus(loginStatus, 'Signing in…');
+    if (loginSubmit) { loginSubmit.disabled = true; loginSubmit.textContent = 'Authenticating…'; }
     try {
       const payload = await api('/api/admin/login', { method: 'POST', body: JSON.stringify({ email: $('login-email').value.trim(), password: $('login-password').value }) });
       csrfToken = payload.csrfToken || '';
       $('admin-user').textContent = payload.user?.email || '';
       $('account-email').value = payload.user?.email || '';
       $('login-password').value = '';
+      // Reset password field type
+      const pi = $('login-password'); if (pi) pi.type = 'password';
+      if (passwordToggle) { passwordToggle.setAttribute('aria-pressed', 'false'); passwordToggle.textContent = '\u25CF'; }
       setView(true); resetEditor(); await Promise.all([loadPosts(), loadMedia(), loadAccount()]);
     } catch (error) { setStatus(loginStatus, error.message, true); }
+    finally { if (loginSubmit) { loginSubmit.disabled = false; loginSubmit.innerHTML = 'Authenticate <span aria-hidden="true">↗</span>'; } }
   });
   accountForm?.addEventListener('submit', async event => {
     event.preventDefault();
