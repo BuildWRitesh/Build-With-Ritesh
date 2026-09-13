@@ -1,18 +1,18 @@
 html:has(.admin-page) { background: #0c192c; }
 .admin-page { min-height: 100vh; min-height: 100dvh; display: flex; flex-direction: column; overflow-x: clip; background: var(--paper); }
 .admin-page .site-header, .admin-page .content-footer { flex: 0 0 auto; }
-.admin-page .site-header { position: relative; top: auto; margin-top: clamp(10px, 1.8vw, 22px); }
-.admin-main { flex: 1 0 auto; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 40px 16px; min-height: calc(100vh - 150px); }
-.admin-auth { width: 100%; max-width: 440px; display: flex; flex-direction: column; justify-content: center; align-items: stretch; text-align: center; background: #ffffff; padding: 36px 32px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); border: 1px solid rgba(0,0,0,0.05); }
-.admin-auth h1, .admin-dashboard h1, .admin-dashboard h2 { margin: 18px 0 20px; font-family: var(--display-font); font-size: clamp(32px, 5vw, 48px); letter-spacing: -.05em; line-height: 1.1; }
+.admin-page .site-header { position: relative; top: auto; }
+.admin-main { flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 24px 16px; }
+.admin-auth { width: 100%; max-width: 420px; display: flex; flex-direction: column; justify-content: center; align-items: stretch; text-align: center; background: #ffffff; padding: 32px 28px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); border: 1px solid rgba(0,0,0,0.05); }
+.admin-auth h1, .admin-dashboard h1, .admin-dashboard h2 { margin: 12px 0 16px; font-family: var(--display-font); font-size: clamp(32px, 5vw, 42px); letter-spacing: -.05em; line-height: 1.1; }
 .admin-auth h1 em, .admin-dashboard h1 em, .admin-dashboard h2 em { color: var(--brand-accent); font-style: normal; }
-.admin-lede { margin: 0 0 32px; color: var(--brand-muted); font-size: 16px; line-height: 1.5; }
+.admin-lede { margin: 0 0 20px; color: var(--brand-muted); font-size: 15px; line-height: 1.5; }
 .admin-note, .admin-help { color: var(--brand-muted); font-size: 12px; line-height: 1.55; }
 .admin-form { display: flex; flex-direction: column; gap: 20px; text-align: left; width: 100%; }
-.admin-auth .admin-form { padding: 0; border: none; background: transparent; box-shadow: none; margin-bottom: 22px; }
+.admin-auth .admin-form { padding: 0; border: none; background: transparent; box-shadow: none; margin-bottom: 12px; }
 .admin-auth .content-field { gap: 8px; display: flex; flex-direction: column; }
 .admin-auth .content-field label { font-size: 13px; font-weight: 500; color: var(--brand-primary); }
-.admin-auth .content-field input { min-height: 52px; border-radius: 8px; background: rgba(255,255,255,0.8); border: 1px solid var(--brand-border); padding: 0 16px; transition: all 0.2s ease; }
+.admin-auth .content-field input { min-height: 48px; border-radius: 8px; background: rgba(255,255,255,0.8); border: 1px solid var(--brand-border); padding: 0 16px; transition: all 0.2s ease; }
 .admin-auth .content-field input:focus { background: #fff; border-color: var(--brand-accent); box-shadow: 0 0 0 3px rgba(3,160,153,0.15); }
 
 .admin-form .button { justify-self: stretch; min-height: 52px; justify-content: center; border-radius: 8px; font-weight: 600; font-size: 15px; background: var(--brand-accent); color: #fff; border: none; transition: transform 0.1s ease, box-shadow 0.2s ease; }
