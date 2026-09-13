@@ -891,7 +891,6 @@ body.menu-open .site-header { transform: none; }
   .skill-logo img { width: 20px; height: 20px; flex-basis: 20px; }
   .skills dl>div { padding: 18px; }
   .hero__eyebrow { font-size: 10px; letter-spacing: 0; }
-  .hero__eyebrow > :last-child { flex: 0 0 75px; }
   .section-label { font-size: 10px; letter-spacing: .015em; }
   .section-label > :last-child { font-size: 10px; }
   .hero__perspective { padding: 24px; }
@@ -906,7 +905,7 @@ body.menu-open .site-header { transform: none; }
   .form-field label { font-size: 11px; }
   .form-field input,.form-field select,.form-field textarea { font-size: 16px; }
   .footer-shell .site-footer,.content-footer .site-footer { flex-wrap: wrap; gap: 10px 20px; }
-  .site-footer p { order: 3; flex-basis: 100%; text-align: left; }
+  .site-footer p { order: 3; flex-basis: 100%; text-align: center; }
   .site-footer > a:last-child { font-size: 10px; margin-left: 0; }
 }
 @media (pointer:coarse),(prefers-reduced-motion:reduce) {
